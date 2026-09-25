@@ -29,7 +29,7 @@
             android:background="#FF0000" />
     </androidx.cardview.widget.CardView>
 
-    <com.mivio.editor.customviews.HSVColorPickerView
+    <com.mhirex.editor.customviews.HSVColorPickerView
         android:id="@+id/hsvColorPicker"
         android:layout_width="match_parent"
         android:layout_height="250dp"

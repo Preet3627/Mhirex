@@ -1,5 +1,5 @@
-MhireX
-Copyright (c) 2026 MhireX contributors
+Mhirex
+Copyright (c) 2026 Mhirex contributors
 
 This distribution is a rebrand and continuation of LibreCuts, an Android video
 editor originally authored by Tharun Birla and contributors.
@@ -8,7 +8,7 @@ Upstream project:
 https://github.com/tharunbirla/LibreCuts
 
 The upstream MIT copyright notice and permission text are retained verbatim in
-LICENSE. The MhireX rebrand, compatibility work, and other modifications do not
+LICENSE. The Mhirex rebrand, compatibility work, and other modifications do not
 replace or remove the upstream copyright notice or attribution.
 
 The application links the GPL-3.0-licensed ffmpeg-kit-full-gpl dependency at

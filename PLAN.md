@@ -1,8 +1,8 @@
-# MhireX — Technical Implementation Plan
+# Mhirex — Technical Implementation Plan
 
 **Repository:** fork of [tharunbirla/LibreCuts](https://github.com/tharunbirla/LibreCuts)
 **Audited at commit:** `a510390` (upstream last commit 2026-09-12)
-**Target product:** MhireX — a fast, mobile-first, open-source creator video editor for Android
+**Target product:** Mhirex — a fast, mobile-first, open-source creator video editor for Android
 **Document status:** authoritative. Updated whenever architecture changes during implementation.
 
 ---
@@ -158,7 +158,7 @@ Opening a project containing an effect this build does not recognise **silently 
 
 **B4 — `android.graphics.Movie` for GIF** — deprecated across `ImageOverlayView.kt` and `DraggableImageOverlayView.kt` (15 sites), unmaintained API, no frame budget.
 
-**B5 — ExoPlayer 2.19.1 is end-of-life.** `com.google.android.exoplayer` is deprecated, receives no updates, and is missing capabilities MhireX needs (audio offload, precise `ContentPosition`, effect/timestamp support). Confined to 1 file + 1 layout, so migration is tractable.
+**B5 — ExoPlayer 2.19.1 is end-of-life.** `com.google.android.exoplayer` is deprecated, receives no updates, and is missing capabilities Mhirex needs (audio offload, precise `ContentPosition`, effect/timestamp support). Confined to 1 file + 1 layout, so migration is tractable.
 
 **B6 — Zero real tests.** `ExampleUnitTest` is `assertEquals(4, 2 + 2)`; `ExampleInstrumentedTest` asserts the package name. No coverage of the serializer, filter builder, beat detection, or undo/redo.
 
@@ -181,12 +181,12 @@ Opening a project containing an effect this build does not recognise **silently 
 ### 0.7 Licensing and dependency risk
 
 **L1 — GPL-3.0 binary inside an MIT-licensed app.**
-The app declares MIT but ships `com.antonkarpenko:ffmpeg-kit-full-gpl:2.1.0`. The `-gpl` bundle enables x264, x265, vid.stab, libass and others, which makes the **entire distributed binary subject to GPL-3.0**. GPL requires corresponding source availability for the combined work. LibreCuts does not publish a corresponding-source offer, nor does the About screen state that the binary is GPL. This is a pre-existing, real compliance gap that MhireX must resolve rather than inherit silently.
+The app declares MIT but ships `com.antonkarpenko:ffmpeg-kit-full-gpl:2.1.0`. The `-gpl` bundle enables x264, x265, vid.stab, libass and others, which makes the **entire distributed binary subject to GPL-3.0**. GPL requires corresponding source availability for the combined work. LibreCuts does not publish a corresponding-source offer, nor does the About screen state that the binary is GPL. This is a pre-existing, real compliance gap that Mhirex must resolve rather than inherit silently.
 
 **L2 — ffmpeg-kit is retired.**
 `arthenica/ffmpeg-kit` was **archived 2026-07-02**. The successor "FFmpegKitNext" is source-only. The `antonkarpenko` fork is a community fork of a dead project: it receives no upstream FFmpeg security patches, and FFmpeg has a steady CVE stream. Dependency risk: **high**.
 
-**L3 — Rebrand must not erase attribution.** MIT §"The above copyright notice ... shall be included in all copies". Renaming the app to MhireX is fine; deleting Tharun Birla's copyright from LICENSE, the About screen, or the source headers is **not permitted**. MhireX must add its own attribution as a *cumulative* notice.
+**L3 — Rebrand must not erase attribution.** MIT §"The above copyright notice ... shall be included in all copies". Renaming the app to Mhirex is fine; deleting Tharun Birla's copyright from LICENSE, the About screen, or the source headers is **not permitted**. Mhirex must add its own attribution as a *cumulative* notice.
 
 ### 0.8 Audit conclusions
 
@@ -214,7 +214,7 @@ A dedicated pass over the render/export pipeline produced a verified defect regi
 | **P0-4** | `copyContentUriToTempFile` **hardcodes the `.mp4` extension** for every source, and downstream type detection reads the *extension of the cached copy*, not the original MIME type. | `VideoEditingViewModel.kt:1646-1657`, `:828-834` | Images, GIFs and audio tracks copied from `content://` become `temp_videoNNNN.mp4`, are classified as **video**, and can receive `-stream_loop -1` on a still image. Overlay timing and loop behaviour become nondeterministic | Derive the extension from the source MIME type via `MimeTypeMap`; type-detect overlays from the **original** URI |
 | **P0-5** | **`copyFontToCache` returns the cache `alias`, not a path** | `FFmpegRenderEngine.kt:101-124` (returns `alias`) | `drawtext` receives a non-absolute `fontfile` → **text overlays and subtitles silently fail to render in the export**, with no error | Return `fontFile.absolutePath` |
 | **P0-6** | `MediaStore` insert has **no `IS_PENDING` flag** | `ExportService.kt:209-265` | If the process dies mid-copy, a **truncated, permanently indexed, unplayable file** is left in the user's Movies library forever | `IS_PENDING=1` → stream bytes → `IS_PENDING=0`; delete the row on failure |
-| **P0-7** | **`VideoEditingActivity` hard-crashes when launched without a `VIDEO_URI` extra.** `setupExoPlayer()` builds the ExoPlayer only inside `if (videoUri != null)`, but `onCreate` then calls `player.addListener(…)` unconditionally — `UninitializedPropertyAccessException: lateinit property player has not been initialized`. *(Found during Phase 0 device verification, not by the static audit: the only in-app caller, `MainActivity.kt:555`, always supplies the extra, so no normal user path reaches it.)* | `VideoEditingActivity.kt:714` (throw site), `:5111-5113` (conditional init); reachable via the `exported="true"` declaration — see SEC-33 | Any app on the device can send an explicit intent and hard-crash MhireX. No graceful error, no recovery | **Fixed in Phase 0:** construct the player unconditionally, attach media only when a URI exists. Building an ExoPlayer is cheap and requires no URI |
+| **P0-7** | **`VideoEditingActivity` hard-crashes when launched without a `VIDEO_URI` extra.** `setupExoPlayer()` builds the ExoPlayer only inside `if (videoUri != null)`, but `onCreate` then calls `player.addListener(…)` unconditionally — `UninitializedPropertyAccessException: lateinit property player has not been initialized`. *(Found during Phase 0 device verification, not by the static audit: the only in-app caller, `MainActivity.kt:555`, always supplies the extra, so no normal user path reaches it.)* | `VideoEditingActivity.kt:714` (throw site), `:5111-5113` (conditional init); reachable via the `exported="true"` declaration — see SEC-33 | Any app on the device can send an explicit intent and hard-crash Mhirex. No graceful error, no recovery | **Fixed in Phase 0:** construct the player unconditionally, attach media only when a URI exists. Building an ExoPlayer is cheap and requires no URI |
 
 #### P1 — reliability and lifecycle
 
@@ -266,7 +266,7 @@ Dependency is pinned to `2.1.0` while **`2.2.1` is the current release**, and it
 
 ## 1. Product Vision
 
-**MhireX is a fast, mobile-first, open-source video editor built for short-form creators who cut on their phone.**
+**Mhirex is a fast, mobile-first, open-source video editor built for short-form creators who cut on their phone.**
 
 The product loop is deliberately short and rhythmic:
 
@@ -309,7 +309,7 @@ Documented in full in §0.3. Summary of the load-bearing constraints:
 Single `:app` module is **retained deliberately**. Reasons: the ABI splits and the ~90 MB ffmpeg AAR already make builds heavy; splitting into Gradle modules adds configuration and build time for a project whose team is small, and Media3/ffmpeg interactions are inherently cross-cutting. Modularity is enforced by **package boundaries and one-way dependencies** instead, verified by an architecture test (§8).
 
 ```
-com.mivio.editor
+com.mhirex.editor
 ├── core/            Cross-cutting primitives. No Android UI deps.
 │   ├── model/       Immutable domain model (Project, Track, Clip, Effect, …)
 │   ├── time/        Timebase, rational arithmetic, frame↔time conversion
@@ -506,13 +506,13 @@ interface EditOp { fun apply(s: EditorState): EditorState; fun invert(): EditOp 
 
 ```
 ProjectStore
-  save(project)   → write to <cache>/tmp-uuid.json → fsync → atomic rename → <projects>/uuid.mivio
+  save(project)   → write to <cache>/tmp-uuid.json → fsync → atomic rename → <projects>/uuid.lcprj
   load(id)        → read → parse → migrate(schemaVersion) → validate → Project
   list()          → metadata index (no full parse)
   recover()       → on cold start, sweep *.tmp, promote or discard; surface quarantined files
 ```
 
-- **Format:** `.mivio` = JSON (Gson, hand-written polymorphic codec **with a `schemaVersion` and a real migration chain**). Not protobuf/ProtoBuf — the model is deeply nested and human-debuggable JSON has real value for an open-source project; the compression win does not justify the codegen and migration complexity now.
+- **Format:** `.lcprj` = JSON (Gson, hand-written polymorphic codec **with a `schemaVersion` and a real migration chain**). Not protobuf/ProtoBuf — the model is deeply nested and human-debuggable JSON has real value for an open-source project; the compression win does not justify the codegen and migration complexity now.
 - **Media references** are persisted with `takePersistableUriPermission`; `MediaRef` also stores a content hash so a missing file is reported precisely rather than failing at export.
 - **Atomic writes + recovery** are mandatory (fixes B2 and the interrupted-operation case in Phase 22).
 
@@ -530,25 +530,25 @@ ProjectStore
 > Each feature states: existing implementation → required changes → files affected → new components → data-model changes → UI changes → rendering changes → performance → testing → dependencies → risks → acceptance criteria.
 > Ordering and full task decomposition live in `TODO.md`.
 
-### 4.1 Rebrand to MhireX
+### 4.1 Rebrand to Mhirex
 
 - **Existing:** `app_name` = "LibreCuts" (16 locales; `values-zh-rCN` = 自由剪辑). 41 `package com.tharunbirla.librecuts` declarations, 6 `R` imports, 7 brand strings × 17 locales. `str_made_by_tharun_birla`, `str_github_sponsors`, `str_sponsor_project`. Fastlane metadata, README, `.github/FUNDING.yml`, AboutLibraries config.
 - **Required changes:**
-  1. `app_name` → `MhireX` in **all 17 locales** (delete the zh translated brand).
-  2. `str_downloads_librecuts` → `Downloads/MhireX`; same for Movies/Music/Pictures defaults.
-  3. New strings for About/credits that **keep** Tharun Birla's MIT attribution and add MhireX's.
-  4. Package rename `com.tharunbirla.librecuts` → `com.mivio.editor`; change `namespace` only and keep `applicationId` unchanged for upgrade continuity.
+  1. `app_name` → `Mhirex` in **all 17 locales** (delete the zh translated brand).
+  2. `str_downloads_librecuts` → `Downloads/Mhirex`; same for Movies/Music/Pictures defaults.
+  3. New strings for About/credits that **keep** Tharun Birla's MIT attribution and add Mhirex's.
+  4. Package rename `com.tharunbirla.librecuts` → `com.mhirex.editor` for **both** `namespace` and `applicationId`. (Originally scoped to `namespace` only — see AD-2.)
   5. `local.properties`-independent: `resources.properties` stays.
-  6. Rename `.lcprj` extension → `.mivio`, **with a reader for legacy `.lcprj`**.
+  6. Keep the persisted `.lcprj` extension for compatibility; future schema changes are handled by the versioned migrator rather than by introducing a Mivio-era extension.
 - **Files:** all 41 Kotlin files, `app/build.gradle`, all 17 `strings.xml`, `AndroidManifest.xml`, `fastlane/**`, `README.md`, `.github/FUNDING.yml`, `LICENSE`, add `NOTICE`.
 - **New components:** `NOTICE` file; `LicensesFragment` listing ffmpeg-kit as **GPL-3.0** (fixes L1 visibility).
 - **Data model:** `EditRecipe` gains `schemaVersion`; legacy `.lcprj` mapped through `LegacyProjectMigrator`.
 - **UI:** new adaptive launcher icon, splash colour, About screen with dual attribution.
 - **Performance:** n/a.
-- **Testing:** JVM test asserting all 17 locales resolve `app_name` to "MhireX"; test that `.lcprj` still loads.
+- **Testing:** JVM test asserting all 17 locales resolve `app_name` to "Mhirex"; test that `.lcprj` still loads.
 - **Dependencies:** none.
-- **Risks:** ⚠️ **`applicationId` change orphans existing user data** and breaks upgrade from LibreCuts. **Decision:** keep `applicationId = com.tharunbirla.librecuts` for the MhireX 1.x line so LibreCuts users can upgrade without losing saved projects, F-Droid/Obtainium listings, and Weblate. `namespace` moves to `com.mivio.editor` (source-level only, no data impact). The `applicationId` change is deferred to a documented MhireX 2.0 migration with a data-import step. This is recorded in §9.
-- **Acceptance:** app label reads MhireX in all locales; no obsolete LibreCuts product-name string remains in user-visible UI, while the required upstream attribution is preserved; MIT attribution present in LICENSE + NOTICE + About; app builds and a LibreCuts `.lcprj` opens.
+- **Risks:** ⚠️ **`applicationId` change orphans existing user data** and breaks upgrade from LibreCuts. **Revised decision (supersedes the original, see AD-2):** `applicationId` is now `com.mhirex.editor`, matching the `namespace`. Accepted consequences: (a) Mhirex installs as a **separate app** from LibreCuts — no upgrade path, so LibreCuts users must reinstall and their saved projects/settings are unreachable; (b) any prior LibreCuts install is *not* replaced, so both apps coexist; (c) the F-Droid/Obtainium/Play listings and Weblate project under `com.tharunbirla.librecuts` no longer track Mhirex and need new listings. Gained: a package id Mhirex actually owns, which is a **prerequisite for Play Store publication** — only the package owner can publish to it. If in-place LibreCuts upgrade is later judged more valuable than owning the id, a data-import migration must be built before switching back. This is recorded in §9.
+- **Acceptance:** app label reads Mhirex in all locales; no obsolete LibreCuts product-name string remains in user-visible UI, while the required upstream attribution is preserved; MIT attribution present in LICENSE + NOTICE + About; app builds and a LibreCuts `.lcprj` opens.
 
 ### 4.2 Multi-track project model
 
@@ -864,7 +864,7 @@ Covered per-feature above. Cross-cutting work:
 
 ### 4.23 Optional AI (Phase 21 of the brief)
 
-**Decision: AI is explicitly out of scope for MhireX 1.x and is architecturally isolated if added later.**
+**Decision: AI is explicitly out of scope for Mhirex 1.x and is architecturally isolated if added later.**
 
 Rationale: AI is not the product's identity; a bundled model would add tens of MB, break the GPL/F-Droid story, and require network or on-device inference the mid-range target cannot afford. Adding it later is cheap *because* the architecture isolates editing intent from implementation: a tool that emits `EditOp`s is all an AI feature needs.
 
@@ -906,7 +906,7 @@ Acceptance for this phase: the seams are documented and the app ships with no mo
 | `androidx.media3:media3-effect` | Apache-2.0 | GPU `Effect` chain for preview transforms/colour — the core of fixing B1 | No |
 | `androidx.media3:media3-common` | Apache-2.0 | Media item/timeline primitives | No |
 | `androidx.media3:media3-transformer` | Apache-2.0 | Future high-quality export path if ffmpeg is retired | **Yes** — defer; not needed for 1.x |
-| `androidx.core:core-splashscreen` | Apache-2.0 | Correct Android 12+ splash for the MhireX brand | Yes, but correct |
+| `androidx.core:core-splashscreen` | Apache-2.0 | Correct Android 12+ splash for the Mhirex brand | Yes, but correct |
 | `androidx.security:security-crypto` | Apache-2.0 | EncryptedSharedPreferences for settings | **Yes** — use plain prefs; settings are not sensitive. **Rejected.** |
 | `io.coil-kt:coil` + `coil-video` | Apache-2.0 | Replaces deprecated `android.graphics.Movie` for GIF/sticker decoding (B4); adds thumbnail caching | No (B4 must be fixed) |
 | `org.jetbrains.kotlinx:kotlinx-collections-immutable` | Apache-2.0 | Structural sharing for `List<Clip>` — avoids O(n) copies per edit | Yes, but materially improves timeline perf |
@@ -919,7 +919,7 @@ Acceptance for this phase: the seams are documented and the app ships with no mo
 
 Sequenced, lowest-risk-first:
 
-1. **Short term (MhireX 1.0):** keep `ffmpeg-kit-full-gpl` — replacing the render engine is not the point of this project, and the filter-graph compiler is our strongest asset. **But** add prominent, honest GPL-3.0 attribution in the About/Licenses screen and publish a corresponding-source offer for the combined work, as GPL-3.0 §6 requires. This closes the actual compliance gap. **Also bump the pin from `2.1.0` to `2.2.1`** (current as of 2026-07-13) and vendor the artifact with a recorded SHA-256 so the binary is auditable.
+1. **Short term (Mhirex 1.0):** keep `ffmpeg-kit-full-gpl` — replacing the render engine is not the point of this project, and the filter-graph compiler is our strongest asset. **But** add prominent, honest GPL-3.0 attribution in the About/Licenses screen and publish a corresponding-source offer for the combined work, as GPL-3.0 §6 requires. This closes the actual compliance gap. **Also bump the pin from `2.1.0` to `2.2.1`** (current as of 2026-07-13) and vendor the artifact with a recorded SHA-256 so the binary is auditable.
 2. **Evaluate downgrade:** the app already prefers `h264_mediacodec` (hardware). Software fallback uses `libx264`. If `ffmpeg-kit-min-gpl` (LGPL: zlib + MediaCodec only) can serve the pipeline — it can, since `drawtext`/`xfade`/`overlay`/`amix`/`sidechaincompress` are all LGPL-buildable with freetype — the binary drops out of GPL entirely. **Task: verify the exact filter set against an LGPL build, then downgrade if it passes.** This is the single highest-value licensing action available.
 3. **Long term:** track FFmpegKitNext (source-only) and be ready to build our own AAR via its scripts, giving us pinned FFmpeg versions with security patches.
 
@@ -934,7 +934,7 @@ Sequenced, lowest-risk-first:
 ### 6.1 Project license
 
 - **LibreCuts is MIT, © 2024 Tharun Birla.** MIT §: *"The above copyright notice and this permission notice shall be included in all copies or substantial portions."*
-- **MhireX may be MIT and may add its own copyright line, cumulatively.** MhireX **must not** remove or obscure the original notice. Therefore the rebrand keeps: the `LICENSE` copyright line, a `NOTICE` file crediting Tharun Birla, the About screen's "Based on LibreCuts by Tharun Birla (MIT)", and unmodified source headers.
+- **Mhirex may be MIT and may add its own copyright line, cumulatively.** Mhirex **must not** remove or obscure the original notice. Therefore the rebrand keeps: the `LICENSE` copyright line, a `NOTICE` file crediting Tharun Birla, the About screen's "Based on LibreCuts by Tharun Birla (MIT)", and unmodified source headers.
 - This is a hard constraint on §4.1, not a preference.
 
 ### 6.2 Dependency licenses
@@ -1029,9 +1029,9 @@ Incremental, buildable at every step. Each stage ships working software.
 
 | Stage | Content | Gate |
 |---|---|---|
-| **0 — Rebrand + P0 fixes** | App name → MhireX in 17 locales; package/namespace → `com.mivio.editor`; NOTICE/ASSETS.md; About screen with dual attribution; GPL-3.0 disclosure; delete dead code; declare coroutines explicitly; fix the "always true" branches; fix deprecated Intent/clip APIs. **Plus all six P0 defects (§0.9): P0-1 no-op export on API 29+, P0-2 audio-only-as-mp3, P0-3 speed+reverse duration corruption, P0-4 hardcoded `.mp4` temp extension, P0-5 font alias not path, P0-6 `IS_PENDING` on MediaStore.** Also P1-7 (ANR), P1-8 (cancel-as-failure), P1-9 (session leak), P1-11 (temp cleanup), P1-12 (global cancel), SEC-31 | Builds; all locales say MhireX; legacy `.lcprj` still opens; **no-op save works on Android 10+**; text/subtitles render in export; no temp files leak on any failure path |
+| **0 — Rebrand + P0 fixes** | App name → Mhirex in 17 locales; package/namespace → `com.mhirex.editor`; NOTICE/ASSETS.md; About screen with dual attribution; GPL-3.0 disclosure; delete dead code; declare coroutines explicitly; fix the "always true" branches; fix deprecated Intent/clip APIs. **Plus all six P0 defects (§0.9): P0-1 no-op export on API 29+, P0-2 audio-only-as-mp3, P0-3 speed+reverse duration corruption, P0-4 hardcoded `.mp4` temp extension, P0-5 font alias not path, P0-6 `IS_PENDING` on MediaStore.** Also P1-7 (ANR), P1-8 (cancel-as-failure), P1-9 (session leak), P1-11 (temp cleanup), P1-12 (global cancel), SEC-31 | Builds; all locales say Mhirex; legacy `.lcprj` still opens; **no-op save works on Android 10+**; text/subtitles render in export; no temp files leak on any failure path |
 | **0.5 — Export quality** | P3-18 `+faststart`, P3-19 no-upscale guard, P3-17 unified rate control, P3-20 parameter-based retry, P3-21 correct progress total, P3-22 `LC-202` mapping, P3-26 warn on unknown transition | Exported MP4s stream progressively; 480p→2160p is refused or clamped; hardware and software exports documented and consistent |
-| **1 — Foundations** | `core/` primitives (Timebase, Rational, Result, Easing); `ui/` design system (MhireX tokens, components); architecture test enforcing layer dependencies | Unit tests green; lint green |
+| **1 — Foundations** | `core/` primitives (Timebase, Rational, Result, Easing); `ui/` design system (Mhirex tokens, components); architecture test enforcing layer dependencies | Unit tests green; lint green |
 | **2 — Project v2** | `Project`/`Track`/`Clip`; `schemaVersion` + migrations; `ProjectStore` with atomic writes and recovery; `LegacyProjectMigrator` | Migrator fixture tests pass; crash-recovery tests pass |
 | **3 — Editor state** | `EditorStore`; `EditOp`; `HistoryManager` with coalescing; all existing operations routed through it | Undo/redo covers all operations; `invert(apply(s))==s` |
 | **4 — Player + preview** | Media3 migration; `Composition`-based preview with GPU effects; **remove all FFmpeg from the preview path**; deprecate `android.graphics.Movie` | First frame < 150 ms; no FFmpeg process spawned by preview; device test |
@@ -1058,8 +1058,8 @@ Recorded because these decisions are load-bearing and later phases must not sile
 | # | Decision | Rationale | Status |
 |---|---|---|---|
 | **AD-1** | Single `:app` module; package boundaries + architecture test | Modularity without Gradle build overhead given the heavy ffmpeg AAR | Accepted |
-| **AD-2** | Keep `applicationId = com.tharunbirla.librecuts` for 1.x; move `namespace` to `com.mivio.editor` | Preserves user data, F-Droid/Obtainium listings, and Weblate on rebrand. A `applicationId` change orphans user projects | Accepted (revisit at 2.0) |
-| **AD-3** | Retain MIT; add MhireX attribution cumulatively; never remove Tharun Birla's notice | MIT requires the copyright notice in all copies | Binding |
+| **AD-2** | `namespace` **and** `applicationId` both → `com.mhirex.editor` | **REVERSED from the original "keep `applicationId = com.tharunbirla.librecuts`" decision, at the user's explicit request.** Trading upgrade continuity for a package id Mhirex owns, which Play Store publication requires. Accepted loss: no LibreCuts→Mhirex upgrade path (separate app, reinstall, orphaned projects/settings), plus stale F-Droid/Obtainium/Weblate listings that must be re-listed. Reverting later requires a data-import migration | Accepted (revisit with a migration) |
+| **AD-3** | Retain MIT; add Mhirex attribution cumulatively; never remove Tharun Birla's notice | MIT requires the copyright notice in all copies | Binding |
 | **AD-4** | Disclose GPL-3.0 for the ffmpeg binary and publish corresponding source; evaluate an LGPL downgrade | Pre-existing compliance gap; LGPL downgrade is the highest-value fix | Accepted |
 | **AD-5** | Keep XML + ViewBinding; do **not** migrate to Compose | 60 existing layouts and heavily Canvas-based custom views. Compose would be a second rewrite on top of one rewrite. Not required by any feature | Accepted |
 | **AD-6** | Timeline is a custom `View`, not Compose/RecyclerView | Filmstrip + trim-handle + multi-lane drawing is a single continuous canvas; a RecyclerView fights it | Accepted |

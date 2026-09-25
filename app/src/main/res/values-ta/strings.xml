@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="str_loop">சுழற்சி</string>
-    <string name="app_name">MhireX</string>
+    <string name="app_name">Mhirex</string>
     <string name="trim">நறுக்கு</string>
     <string name="split">பிரி</string>
     <string name="export">ஏற்றுமதி</string>
@@ -18,7 +18,7 @@
     <string name="str_low_quality_fastest">குறைந்த தரம் (மிக விரைவானது)</string>
     <string name="str_smallest_file_size_fastest_exp">மிகக் குறைந்த கோப்பு அளவு, அதிவேக ஏற்றுமதி</string>
     <string name="str_export_location">ஏற்றுமதி இருப்பிடம்</string>
-    <string name="str_downloads_mhirex">Downloads/MhireX</string>
+    <string name="str_downloads_mhirex">Downloads/Mhirex</string>
     <string name="str_preview">முன்னோட்டம்</string>
     <string name="str_0_00_0_00">0:00 / 0:00</string>
     <string name="str_timeline_empty">காலவரிசை காலியாக உள்ளது</string>
@@ -82,13 +82,13 @@
     <string name="str_settings">அமைப்புகள்</string>
     <string name="str_general">பொதுவானவை</string>
     <string name="str_export_folder">ஏற்றுமதி கோப்புறை</string>
-    <string name="str_default_movies_mhirex">Default (Movies/MhireX)</string>
+    <string name="str_default_movies_mhirex">Default (Movies/Mhirex)</string>
     <string name="str_check_for_updates">புதுப்பிப்புகளைச் சரிபார்க்கவும்</string>
     <string name="str_manually_check_for_the_latest">புதிய பதிப்பை கைமுறையாகச் சரிபார்க்கவும்</string>
     <string name="str_v1_0_beta4">v1.0-beta5</string>
     <string name="str_a_privacy_friendly_open_source">ஆண்ட்ராய்டுக்கான தனியுரிமைக்கு முன்னுரிமை தரும் திறந்த மூல வீடியோ எடிட்டர்.\nவாட்டர்மார்க் இல்லாத வீடியோக்களை உங்கள் சாதனத்திலேயே ஏற்றுமதி செய்யுங்கள்.</string>
     <string name="str_support_amp_feedback">ஆதரவு &amp; கருத்துகள்</string>
-    <string name="str_mhirex_is_open_source_help">MhireX ஒரு திறந்த மூல திட்டம். GitHub இல் ஸ்டார் செய்வதன் மூலமோ அல்லது பிழைகளைப் புகாரளிப்பதன் மூலமோ இதை மேம்படுத்த எங்களுக்கு உதவுங்கள்.</string>
+    <string name="str_mhirex_is_open_source_help">Mhirex ஒரு திறந்த மூல திட்டம். GitHub இல் ஸ்டார் செய்வதன் மூலமோ அல்லது பிழைகளைப் புகாரளிப்பதன் மூலமோ இதை மேம்படுத்த எங்களுக்கு உதவுங்கள்.</string>
     <string name="str_star_on_github">GitHub-இல் ஸ்டார் செய்யவும்</string>
     <string name="str_report_a_bug">பிழையைப் புகாரளிக்கவும்</string>
     <string name="str_sponsor_project">திட்டத்திற்கு நிதியுதவி அளிக்கவும்</string>
@@ -151,13 +151,13 @@
     <string name="str_video_export_folder">வீடியோ ஏற்றுமதி கோப்புறை</string>
     <string name="str_audio_export_folder">ஆடியோ ஏற்றுமதி கோப்புறை</string>
     <string name="str_snapshot_export_folder">ஸ்னாப்ஷாட் ஏற்றுமதி கோப்புறை</string>
-    <string name="str_default_music_mhirex">Default (Music/MhireX)</string>
-    <string name="str_default_pictures_mhirex">Default (Pictures/MhireX)</string>
+    <string name="str_default_music_mhirex">Default (Music/Mhirex)</string>
+    <string name="str_default_pictures_mhirex">Default (Pictures/Mhirex)</string>
     <string name="str_app_language">பயன்பாட்டு மொழி</string>
     <string name="str_system_default">சாதன இயல்புநிலை</string>
     <string name="str_opacity">ஒளிபுகாமை</string>
     <string name="str_reset">மீட்டமை</string>
-    <string name="str_help_translate">MhireX-ஐ மொழிபெயர்க்கவும்</string>
+    <string name="str_help_translate">Mhirex-ஐ மொழிபெயர்க்கவும்</string>
     <string name="str_contribute_translations_on_weblate">Weblate இல் மொழிபெயர்ப்புகளைப் பங்களிக்கவும்</string>
     <string name="str_fullscreen_editor">முழுத்திரை எடிட்டர்</string>
     <string name="str_fullscreen_editor_desc">எடிட் செய்யும் போது நிலைப்பட்டி மற்றும் வழிசெலுத்தல் பட்டியை மறைக்கவும்</string>

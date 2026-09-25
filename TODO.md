@@ -1,4 +1,4 @@
-# MhireX — Implementation TODO
+# Mhirex — Implementation TODO
 
 **Read `PLAN.md` first.** This file is the execution checklist. Every task is atomic and verifiable.
 
@@ -17,39 +17,39 @@ export GRADLE_OPTS="-Djava.net.preferIPv4Stack=true"                            
 
 ---
 
-## Phase 0 — Rebrand to MhireX + P0 defect fixes
+## Phase 0 — Rebrand to Mhirex + P0 defect fixes
 
 * [x] **0.1 Inventory and freeze the rebrand surface**
   * [x] Record the 41 `package com.tharunbirla.librecuts` declarations (all `.kt`/`.java`) → `docs/rebrand-inventory.md` §1
   * [x] Record the 6 `com.tharunbirla.librecuts.R` imports → §1
   * [x] Record the 7 brand strings in `values/strings.xml` × 17 locales → §3
-  * [x] Record the `values-zh-rCN` translated brand (自由剪辑) that must be replaced with the Latin "MhireX" → §3
+  * [x] Record the `values-zh-rCN` translated brand (自由剪辑) that must be replaced with the Latin "Mhirex" → §3
   * [x] Record `fastlane/metadata/**`, `README.md`, `.github/FUNDING.yml`, `res/raw/film.json` → §6, §7
   * [x] Confirm `LICENSE` MIT notice and decide the exact `NOTICE` wording → §8 (wording decided; `NOTICE` file not yet written)
   * [ ] Add `assets/licenses/` folder for bundled-asset licence files
 
 * [x] **0.2 App label and brand strings**
-  * [x] `app_name` → `MhireX` in `values/strings.xml`
-  * [x] `app_name` → `MhireX` in all 16 other `values-*/strings.xml` (incl. overwriting the zh translation)
-  * [x] `str_downloads_mhirex` → `Downloads/MhireX` (all locales)
-  * [x] `str_default_movies_mhirex` → `Default (Movies/MhireX)`
-  * [x] `str_default_music_mhirex` → `Default (Music/MhireX)`
-  * [x] `str_default_pictures_mhirex` → `Default (Pictures/MhireX)`
-  * [x] `str_mhirex_is_open_source_help` → reworded for MhireX, keeps "open source" + GitHub link
-  * [ ] `str_help_translate` → **BLOCKED:** reworded to "Translate MhireX", but the URL still points at the LibreCuts Weblate project. Needs a real MhireX Weblate project first.
+  * [x] `app_name` → `Mhirex` in `values/strings.xml`
+  * [x] `app_name` → `Mhirex` in all 16 other `values-*/strings.xml` (incl. overwriting the zh translation)
+  * [x] `str_downloads_mhirex` → `Downloads/Mhirex` (all locales)
+  * [x] `str_default_movies_mhirex` → `Default (Movies/Mhirex)`
+  * [x] `str_default_music_mhirex` → `Default (Music/Mhirex)`
+  * [x] `str_default_pictures_mhirex` → `Default (Pictures/Mhirex)`
+  * [x] `str_mhirex_is_open_source_help` → reworded for Mhirex, keeps "open source" + GitHub link
+  * [ ] `str_help_translate` → **BLOCKED:** reworded to "Translate Mhirex", but the URL still points at the LibreCuts Weblate project. Needs a real Mhirex Weblate project first. The README now says so explicitly, so contributors do not send Mhirex strings to the upstream project.
   * [x] `str_made_by_tharun_birla` → **kept verbatim in all 16 locales** (MIT requires the notice in every copy), plus a new additive `str_mhirex_based_on` line in the About card
   * [x] Rename the string *keys* containing `librecuts` to `mhirex` (done after values; `R.string` refs in Kotlin updated too)
   * [x] Sweep the whole `res/values*/` tree — no product-name or translated-brand leftovers; the required `LibreCuts` attribution remains in `str_mhirex_based_on`
 
 * [x] **0.3 Package / namespace rename**
-  * [x] `app/build.gradle`: `namespace 'com.mivio.editor'` — `applicationId` deliberately unchanged (PLAN AD-2)
+  * [x] `app/build.gradle`: `namespace 'com.mhirex.editor'` — `applicationId` deliberately unchanged (PLAN AD-2)
   * [x] `AndroidManifest.xml`: no hardcoded `com.tharunbirla` package attributes remain
-  * [x] Move `app/src/main/java/com/tharunbirla/librecuts/**` → `app/src/main/java/com/mivio/editor/**`
+  * [x] Move `app/src/main/java/com/tharunbirla/librecuts/**` → `app/src/main/java/com/mhirex/editor/**` (was briefly `com.mivio.editor`; see AD-2)
   * [x] Move `app/src/test/java/...` and `app/src/androidTest/java/...` to match
   * [x] Rewrite all `package` declarations
   * [x] Rewrite all `import com.tharunbirla.librecuts.*` statements
   * [x] Rewrite the 6 `R` imports
-  * [x] `AndroidManifest.xml` `.LibreCutsApplication` → `.MhireXApplication` (class + file renamed)
+  * [x] `AndroidManifest.xml` `.LibreCutsApplication` → `.MhirexApplication` (class + file renamed)
   * [x] **18 fully-qualified custom-view references in 7 XML layouts also rewritten** — these resolve by reflection, so a stale FQCN compiles fine and crashes at inflate time
   * [x] Build and confirm zero `unresolved reference` errors
   * [x] Brand/path/link literals extracted to `Branding.kt` so a rebrand is a one-file change
@@ -66,7 +66,7 @@ export GRADLE_OPTS="-Djava.net.preferIPv4Stack=true"                            
   * [x] Add `data/media/MediaPublisher.kt` — single implementation of "publish a finished file", used by all three previously-duplicated call sites
   * [x] Route the raw path through `MediaPublisher` (MediaStore + `IS_PENDING`)
   * [x] Preserve SAF tree-URI support, with fallback to MediaStore when the grant is revoked
-  * [x] Use the `MhireX` folder name for the default location
+  * [x] Use the `Mhirex` folder name for the default location
   * [x] Remove the direct-public-`File` branch entirely
   * [x] Add an instrumentation test asserting a readable `content://` URI → `MediaPublisherInstrumentedTest`
   * [x] **Verified on a real API 36 arm64 emulator:** publish returns a `content://` URI whose bytes read back byte-identical to the source
@@ -106,7 +106,7 @@ export GRADLE_OPTS="-Djava.net.preferIPv4Stack=true"                            
   * [x] Stream the bytes, then `update` to `IS_PENDING=0`
   * [x] On failure *or* cancellation, delete the pending row / the partial SAF document
   * [x] Route the third site, `VideoEditingActivity.saveBitmapToGallery`, through `MediaPublisher` too — it had the same missing `IS_PENDING` and additionally reported success without checking `Bitmap.compress` returned true
-  * [x] **Verified on a real API 36 emulator:** a successful publish reads back `IS_PENDING=0` and lands in `Movies/MhireX`; a cancelled publish leaves no row and nothing pending; a missing source fails without creating a row; the image collection lands in `Pictures/MhireX`
+  * [x] **Verified on a real API 36 emulator:** a successful publish reads back `IS_PENDING=0` and lands in `Movies/Mhirex`; a cancelled publish leaves no row and nothing pending; a missing source fails without creating a row; the image collection lands in `Pictures/Mhirex`
   * [ ] Test: SIGKILL the process mid-copy → no truncated file remains in the library (the cancel path is covered; a true process kill is not)
 
 * [x] **0.10a P0-7 / SEC-33 — `VideoEditingActivity` hard crash + unnecessary export** — *found and fixed during device verification*
@@ -166,23 +166,30 @@ export GRADLE_OPTS="-Djava.net.preferIPv4Stack=true"                            
 
 * [ ] **0.16 Branding assets and documentation**
   * [x] Add the additive `str_mhirex_based_on` attribution to the About card, keeping the MIT notice in every locale
-  * [x] Create `NOTICE` crediting Tharun Birla (MIT) + MhireX, cumulatively
+  * [x] Create `NOTICE` crediting Tharun Birla (MIT) + Mhirex, cumulatively
   * [x] Create `ASSETS.md` recording origin + licence for **every** bundled asset (unknown filter/transition provenance is explicitly marked as a release blocker)
   * [ ] Document the `trans_preview_*.webp` and `filter_preview_*.jpg` provenance, or regenerate
   * [x] Identify `res/raw/film.json` — the loading-screen Lottie animation, in use
-  * [x] Update `README.md` for MhireX, keeping upstream attribution
+  * [x] Update `README.md` for Mhirex, keeping upstream attribution
+    * [x] Drop the Weblate badge — it renders "LibreCuts" and counts the upstream project, not Mhirex. Re-add it when Mhirex has its own translation project (same treatment as the F-Droid badge in 0.16).
+    * [x] Deduplicate the GitHub Releases badge; distribution row is now GitHub Releases · Obtainium · Discord
+    * [x] Add a "Status: active development" block and a "What's next" roadmap so the README does not advertise unimplemented features as shipped (roadmap items come from `PLAN.md` §9 and are explicitly marked as not in current builds)
+    * [x] Stop presenting the LibreCuts wiki as Mhirex documentation. Troubleshooting now points at the in-app error screen (which prefills a Mhirex issue), the issue tracker, and Discord; the `LC-###` codes and their upstream wiki reference are described as background, with `ErrorCode.kt` named as the authoritative list. **Do not rename the codes while the upstream wiki still documents them** — see 0.17 notes.
+    * [x] Move "Keep Android Open" out of the top of the README into a bottom "Android Freedom" section, so the document positions the product first and states its position second
+    * [x] Reword the origin story: keep the credits, drop the "developed just for him" phrasing
+    * [x] Add a "Translations" section that states plainly that no Mhirex translation project exists yet and directs contributors to pull requests instead of the LibreCuts Weblate project
   * [x] Update `fastlane/metadata/android/en-US/**` (title, short/full description)
   * [ ] Update `.github/FUNDING.yml`
   * [ ] Add the ffmpeg-kit **GPL-3.0** entry to the AboutLibraries screen (currently missing entirely)
-  * [x] Design a MhireX adaptive launcher icon + splash colour — `logo.png` is now the launcher/about/onboarding image; adaptive foregrounds point to it. A separate splash treatment remains for Phase 1.
+  * [x] Design a Mhirex adaptive launcher icon + splash colour — `logo.png` is now the launcher/about/onboarding image; adaptive foregrounds point to it. A separate splash treatment remains for Phase 1.
   * [ ] Add a copyright header policy note for new files
 
 * [ ] **0.17 Phase 0 verification**
   * [x] `./gradlew :app:assembleDebug` succeeds (3 ABI-split APKs)
   * [x] `./gradlew :app:testDebugUnitTest` green (the only JVM test is still the upstream `assertEquals(4, 2+2)`)
   * [x] `./gradlew :app:connectedDebugAndroidTest` green — **11/11 on a real API 36 arm64 emulator**
-  * [x] App label reads "MhireX" — asserted at runtime by instrumentation; `values-el` omits `app_name` and correctly falls back to the default
-  * [x] `applicationId` is still `com.tharunbirla.librecuts`; guarded by a regression test so it cannot be changed by accident (PLAN AD-2)
+  * [x] App label reads "Mhirex" — asserted at runtime by instrumentation; `values-el` omits `app_name` and correctly falls back to the default
+  * [x] `applicationId` and `namespace` are both `com.mhirex.editor` — **AD-2 reversed at user request**; guarded by a regression test so the two cannot drift apart by accident. Mhirex is a separate app from LibreCuts: no upgrade path, reinstall required, prior projects/settings unreachable, and F-Droid/Obtainium/Weblate listings need re-listing
   * [x] `VideoEditingActivity` inflates and reaches RESUMED on the emulator, proving all 18 renamed custom-view FQCNs resolve by reflection
   * [x] No-op save works on API 29+ — covered on API 36 by `MediaPublisherInstrumentedTest`
   * [ ] A legacy LibreCuts `.lcprj` still opens
@@ -191,24 +198,24 @@ export GRADLE_OPTS="-Djava.net.preferIPv4Stack=true"                            
   * [ ] Verify on API 29 / 33 / 34 (only the `android-36.1` image is installed locally)
   * [ ] `ASSETS.md` complete
   * **Blockers:**
-  1. **GitHub repository is live at [`Preet3627/Mhirex`](https://github.com/Preet3627/Mhirex).** `Branding.REPO_URL`, issue links, README download links and the in-app Star action now target the new repository. `WEBLATE` intentionally remains the upstream LibreCuts community until a separate MhireX translation project exists.
+  1. **GitHub repository is live at [`Preet3627/Mhirex`](https://github.com/Preet3627/Mhirex).** `Branding.REPO_URL`, issue links, README download links and the in-app Star action now target the new repository. `WEBLATE` intentionally remains the upstream LibreCuts community until a separate Mhirex translation project exists, and the README no longer advertises it.
   2. **`filter_preview_*.jpg` and `trans_preview_*.webp` have no documented provenance.** Shipping them without a licence record is a release blocker; this is an audit task, not a code task.
   3. **Only an `android-36.1` system image is installed locally.** API 29/33/34 remain unverified; covering them means downloading those system images.
   **Notes:**
-  - **New P0 defect found and fixed during device verification (absent from the original audit).** `VideoEditingActivity` crashed with `UninitializedPropertyAccessException: lateinit property player has not been initialized` at `onCreate:714`. `setupExoPlayer()` built the ExoPlayer only inside `if (videoUri != null)`, but `onCreate` then called `player.addListener(...)` unconditionally. Normal use always supplies a `VIDEO_URI` extra from `MainActivity`, which is why the audit missed it — but the activity is `exported="true"` with **no permission guard** and honours an explicit intent, so any app on the device could hard-crash MhireX. Fixed by constructing the player unconditionally and attaching media only when a URI exists. **SEC-33 is now closed:** the activity is `exported="false"`; any future external entry point must add both an intent filter and a signature-level permission.
+  - **New P0 defect found and fixed during device verification (absent from the original audit).** `VideoEditingActivity` crashed with `UninitializedPropertyAccessException: lateinit property player has not been initialized` at `onCreate:714`. `setupExoPlayer()` built the ExoPlayer only inside `if (videoUri != null)`, but `onCreate` then called `player.addListener(...)` unconditionally. Normal use always supplies a `VIDEO_URI` extra from `MainActivity`, which is why the audit missed it — but the activity is `exported="true"` with **no permission guard** and honours an explicit intent, so any app on the device could hard-crash Mhirex. Fixed by constructing the player unconditionally and attaching media only when a URI exists. **SEC-33 is now closed:** the activity is `exported="false"`; any future external entry point must add both an intent filter and a signature-level permission.
   - Three mistakes made and corrected during this phase, all recorded so they are not repeated:
     1. A bulk `sed` for the rebrand had a stray `"` in its replacement, corrupting 7 URL/path string literals. Fixed by extracting the literals into `Branding.kt` rather than re-patching the quotes, so the class of error cannot recur.
     2. `res/raw/film.json` was deleted on a false "unused" verdict. The original grep searched for `R.raw` / `film.json`, which cannot match the XML attribute form `app:lottie_rawRes="@raw/film"`. The build caught it immediately. **Rule adopted: audit assets by reference form (`@raw/`, `@drawable/`, `@string/`), not by symbol name.**
     3. The first `MediaPublisher` rewiring left two duplicate closing braces, truncating the `VideoEditingActivity` class body and producing 1322 cascading errors. **Rule adopted: after replacing a block that ends mid-function, re-read the following lines — do not trust the brace balance implied by the old text.**
-  - `Branding.PREFS_NAME` is intentionally still `"librecuts_prefs"`. It is a persisted data key, not brand surface: renaming it would silently discard every existing user's settings on upgrade. Same reasoning for the `LC-1xx` error codes, which are cited in the upstream troubleshooting wiki.
-  - **Emulator setup for future phases:** an AVD named `mivio_test` exists (API 36, `google_apis_playstore`, arm64-v8a, 3 GB RAM / 4 cores). Build with JDK 17 and `GRADLE_OPTS=-Djava.net.preferIPv4Stack=true`, then `ANDROID_SERIAL=emulator-5554 ./gradlew :app:connectedDebugAndroidTest`. Note that `connectedDebugAndroidTest` **uninstalls the app afterwards**, so reinstall the ABI-matched APK (`app-arm64-v8a-debug.apk`) before any manual `adb shell am start`.
+  - `Branding.PREFS_NAME` is intentionally still `"librecuts_prefs"`. **The original justification is now void:** with `applicationId = com.mhirex.editor` there is no LibreCuts data to preserve and no upgrade path, so the name is kept only as a frozen identifier and MIT provenance. The `LC-1xx` error codes are kept for a still-valid reason: they are cited in the upstream troubleshooting wiki, so renaming them would break those references.
+  - **Emulator setup for future phases:** a local AVD (its on-disk name predates the rebrand and is not an app identifier) exists — API 36, `google_apis_playstore`, arm64-v8a, 3 GB RAM / 4 cores. Build with JDK 17 and `GRADLE_OPTS=-Djava.net.preferIPv4Stack=true`, then `ANDROID_SERIAL=emulator-5554 ./gradlew :app:connectedDebugAndroidTest`. Note that `connectedDebugAndroidTest` **uninstalls the app afterwards**, so reinstall the ABI-matched APK (`app-arm64-v8a-debug.apk`) before any manual `adb shell am start`.
 
 ---
 
 ## Phase 1 — Core primitives & design system
 
 * [ ] **1.1 `core/` package skeleton + architecture guard**
-  * [ ] Create `com.mivio.editor.core`
+  * [ ] Create `com.mhirex.editor.core`
   * [ ] Write an architecture test: `core`/`data`/`engine` must not import `feature`/`ui`
   * [ ] Add `core/time/Rational.kt` (immutable, reduced, safe arithmetic)
   * [ ] Add `core/time/Timebase.kt` (frame ↔ time conversion, microsecond constants)
@@ -226,8 +233,8 @@ export GRADLE_OPTS="-Djava.net.preferIPv4Stack=true"                            
   * [ ] `core/result/Result.kt` — small `Outcome<T>` type used across layers
   * [ ] Unit tests: error mapping table
 
-* [ ] **1.4 `ui/` design system — MhireX tokens**
-  * [ ] Decide the MhireX palette (keep OLED black; replace "Electric Pink" with the MhireX accent)
+* [ ] **1.4 `ui/` design system — Mhirex tokens**
+  * [ ] Decide the Mhirex palette (keep OLED black; replace "Electric Pink" with the Mhirex accent)
   * [ ] Write `ui/theme/Color.kt`, `Type.kt`, `Shape.kt`, `Dimens.kt`
   * [ ] Port and re-theme `themes.xml` / `colors.xml`
   * [ ] Build standard components: `PrimaryButton`, `ToolChip`, `SliderRow`, `SectionHeader`, `BottomSheetScaffold`
@@ -279,7 +286,7 @@ export GRADLE_OPTS="-Djava.net.preferIPv4Stack=true"                            
 
 * [ ] **2.5 Atomic storage + recovery**
   * [ ] `data/project/ProjectStore.kt`
-  * [ ] `save()`: write `cache/tmp-<uuid>.json` → `fsync` → atomic rename → `projects/<id>.mivio`
+  * [ ] `save()`: write `cache/tmp-<uuid>.json` → `fsync` → atomic rename → `projects/<id>.lcprj`
   * [ ] `load()`: read → parse → `migrate(schemaVersion)` → `validate` → `Project`
   * [ ] `list()`: metadata index without full parse
   * [ ] `recover()`: on cold start sweep `*.tmp`; promote or discard; surface quarantined files
@@ -1010,8 +1017,8 @@ export GRADLE_OPTS="-Djava.net.preferIPv4Stack=true"                            
 ## Phase 19 — Licensing & assets
 
 * [ ] **19.1 Project licence**
-  * [ ] Keep MIT; add MhireX attribution **cumulatively**
-  * [ ] `NOTICE` credits Tharun Birla (MIT) + MhireX
+  * [ ] Keep MIT; add Mhirex attribution **cumulatively**
+  * [ ] `NOTICE` credits Tharun Birla (MIT) + Mhirex
   * [ ] Verify no existing copyright header was altered
   * [ ] About screen shows both
 
@@ -1098,7 +1105,7 @@ export GRADLE_OPTS="-Djava.net.preferIPv4Stack=true"                            
   * [ ] Screenshot every screen
 
 * [ ] **21.6 Documentation**
-  * [ ] `README.md` — MhireX, features, build instructions (**including the JDK 17 requirement**)
+  * [ ] `README.md` — Mhirex, features, build instructions (**including the JDK 17 requirement**)
   * [ ] `CONTRIBUTING.md`
   * [ ] `ARCHITECTURE.md` — the layer diagram and the "UI never calls FFmpeg" rule
   * [ ] `LICENSE_AUDIT.md` — dependency licences and obligations
@@ -1229,7 +1236,7 @@ export GRADLE_OPTS="-Djava.net.preferIPv4Stack=true"                            
 |---|---|
 | Jetpack Compose | 60 existing layouts; Canvas-heavy custom views; not required by any feature (AD-5) |
 | Gradle multi-module | Modularity enforced by packages + an architecture test instead (AD-1) |
-| `applicationId` change | Orphans user data; deferred to MhireX 2.0 with a data-import step (AD-2) |
+| `applicationId` change | Orphans user data; deferred to Mhirex 2.0 with a data-import step (AD-2) |
 | `media3-transformer` export | ffmpeg pipeline is good enough for 1.x; valuable if ffmpeg is retired |
 | ProtoBuf project format | Deeply nested model; JSON is human-debuggable for an OSS project (AD-9) |
 | AI tools | Not the product identity; mid-range devices cannot afford it (AD-15) |

@@ -39,7 +39,7 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" tools:node="remove" />
 
     <application
-        android:name=".MhireXApplication"
+        android:name=".MhirexApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -85,9 +85,9 @@
             could launch the editor against a content:// URI it holds no grant for. That is also
             what made P0-7 remotely triggerable — the editor hard-crashed in onCreate when the
             VIDEO_URI extra was absent, so a one-line malicious intent was a denial of service
-            against MhireX.
+            against Mhirex.
 
-            If an external entry point is ever wanted (e.g. "Edit with MhireX" from a file
+            If an external entry point is ever wanted (e.g. "Edit with Mhirex" from a file
             manager), add the <intent-filter> AND a signature-level permission in the same
             change. Do not restore exported="true" on its own.
         -->

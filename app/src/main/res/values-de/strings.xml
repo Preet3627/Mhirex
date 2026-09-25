@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">MhireX</string>
+    <string name="app_name">Mhirex</string>
     <string name="str_loop">Schleife</string>
     <string name="trim">Kürzen</string>
     <string name="split">Teilen</string>
@@ -21,7 +21,7 @@
     <string name="str_medium_quality_default">Mittlere Qualität (Standard)</string>
     <string name="str_balanced_quality_and_file_size">Ausgewogene Qualität und Dateigröße</string>
     <string name="str_best_visual_quality_larger_fil">Beste Bildqualität, größere Datei</string>
-    <string name="str_downloads_mhirex">Downloads/MhireX</string>
+    <string name="str_downloads_mhirex">Downloads/Mhirex</string>
     <string name="str_timeline_empty">Zeitleiste leer</string>
     <string name="str_high_quality_1080p_original">Hohe Qualität (1080p/Original)</string>
     <string name="str_smallest_file_size_fastest_exp">Kleinste Datei, schnellster Export</string>
@@ -89,7 +89,7 @@
     <string name="str_if_you_encounter_any_export_is">Falls Probleme beim Export oder der Darstellung auftreten, tippe hier um unsere Wiki-Anleitung zur Fehlerbehebung und zu Fehlercodes zu lesen.</string>
     <string name="str_github_sponsors">GitHub Sponsoren</string>
     <string name="str_show_your_appreciation_by_star">Zeige deine Wertschätzung, indem du dem Repo einen Stern gibst</string>
-    <string name="str_mhirex_is_open_source_help">MhireX ist Open-Source. Hilf uns besser zu werden, in dem du dem Projekt einen Stern auf GitHub gibst oder Fehler meldest.</string>
+    <string name="str_mhirex_is_open_source_help">Mhirex ist Open-Source. Hilf uns besser zu werden, in dem du dem Projekt einen Stern auf GitHub gibst oder Fehler meldest.</string>
     <string name="str_star_on_github">Stern auf GitHub geben</string>
     <string name="str_open_source_licenses">Open Source Lizenzen</string>
     <string name="str_view_third_party_software_licenses">Zeige Software Lizenzen von Drittanbietern</string>
@@ -114,7 +114,7 @@
     <string name="str_9_16">9:16</string>
     <string name="str_1_1">1:1</string>
     <string name="str_voice_over">Sprachaufnahme</string>
-    <string name="str_default_movies_mhirex">Standard (Movies/MhireX)</string>
+    <string name="str_default_movies_mhirex">Standard (Movies/Mhirex)</string>
     <string name="toast_microphone_permission_required">Mikrofon-Berechtigung für Sprachaufnahme benötigt</string>
     <string name="toast_snapping_enabled">Einrasten ein</string>
     <string name="toast_snapping_disabled">Einrasten aus</string>
@@ -151,13 +151,13 @@
     <string name="str_video_export_folder">Video Exportverzeichnis</string>
     <string name="str_audio_export_folder">Audio Exportordner</string>
     <string name="str_snapshot_export_folder">Schnappschuss Exportordner</string>
-    <string name="str_default_music_mhirex">Standard (Music/MhireX)</string>
-    <string name="str_default_pictures_mhirex">Standard (Pictures/MhireX)</string>
+    <string name="str_default_music_mhirex">Standard (Music/Mhirex)</string>
+    <string name="str_default_pictures_mhirex">Standard (Pictures/Mhirex)</string>
     <string name="str_app_language">App Sprache</string>
     <string name="str_system_default">Systemstandard</string>
     <string name="str_opacity">Deckkraft</string>
     <string name="str_reset">Zurücksetzen</string>
-    <string name="str_help_translate">MhireX übersetzen</string>
+    <string name="str_help_translate">Mhirex übersetzen</string>
     <string name="str_contribute_translations_on_weblate">Übersetzungen auf Weblate beitragen</string>
     <string name="str_fullscreen_editor">Vollbildeditor</string>
     <string name="str_fullscreen_editor_desc">Status- und Navigationsleiste während Bearbeitung verstecken</string>

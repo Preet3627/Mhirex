@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="str_loop">Slučka</string>
-    <string name="app_name">MhireX</string>
+    <string name="app_name">Mhirex</string>
     <string name="trim">Strih</string>
     <string name="split">Rozdeliť</string>
     <string name="export">Exportovať</string>
@@ -18,7 +18,7 @@
     <string name="str_low_quality_fastest">Nízka kvalita (najrýchlejšie)</string>
     <string name="str_smallest_file_size_fastest_exp">Najmenšia veľkosť súboru, najrýchlejší export</string>
     <string name="str_export_location">Miesto exportu</string>
-    <string name="str_downloads_mhirex">Downloads/MhireX</string>
+    <string name="str_downloads_mhirex">Downloads/Mhirex</string>
     <string name="str_preview">NÁHĽAD</string>
     <string name="str_0_00_0_00">0:00 / 0:00</string>
     <string name="str_timeline_empty">Časová os je prázdna</string>
@@ -54,13 +54,13 @@
     <string name="str_settings">Nastavenia</string>
     <string name="str_general">Všeobecné</string>
     <string name="str_export_folder">Priečinok na export</string>
-    <string name="str_default_movies_mhirex">Predvolené (Movies/MhireX)</string>
+    <string name="str_default_movies_mhirex">Predvolené (Movies/Mhirex)</string>
     <string name="str_check_for_updates">Skontrolovať dostupnosť aktualizácií</string>
     <string name="str_manually_check_for_the_latest">Manuálne skontrolovať, či je k dispozícii najnovšia verzia</string>
     <string name="str_v1_0_beta4">v1.0-beta5</string>
     <string name="str_a_privacy_friendly_open_source">Videoeditor s ohľadom na súkromie a s otvoreným zdrojovým kódom pre Android.\nUložte si lokálne videá bez vodoznaku.</string>
     <string name="str_support_amp_feedback">Podpora a spätná väzba</string>
-    <string name="str_mhirex_is_open_source_help">MhireX je projekt s otvoreným zdrojovým kódom. Pomôžte nám ho vylepšiť tým, že projekt označíte hviezdičkou na GitHub-e alebo nahlásite chyby.</string>
+    <string name="str_mhirex_is_open_source_help">Mhirex je projekt s otvoreným zdrojovým kódom. Pomôžte nám ho vylepšiť tým, že projekt označíte hviezdičkou na GitHub-e alebo nahlásite chyby.</string>
     <string name="str_star_on_github">Dajte hviezdičku na GitHub-e</string>
     <string name="str_report_a_bug">Nahlásiť chybu</string>
     <string name="str_sponsor_project">Sponzorovať projekt</string>
@@ -109,13 +109,13 @@
     <string name="toast_failed_to_save_video_to_galler">Nepodarilo sa uložiť video do galérie</string>
     <string name="toast_export_cancelled">Export bol zrušený</string>
     <string name="str_snapshot_export_folder">Priečinok na export snímok</string>
-    <string name="str_default_music_mhirex">Predvolené (Music/MhireX)</string>
-    <string name="str_default_pictures_mhirex">Predvolené (Pictures/MhireX)</string>
+    <string name="str_default_music_mhirex">Predvolené (Music/Mhirex)</string>
+    <string name="str_default_pictures_mhirex">Predvolené (Pictures/Mhirex)</string>
     <string name="str_app_language">Jazyk aplikácie</string>
     <string name="str_system_default">Predvolené nastavenie systému</string>
     <string name="str_opacity">Priehľadnosť</string>
     <string name="str_reset">Obnoviť</string>
-    <string name="str_help_translate">Preložiť MhireX</string>
+    <string name="str_help_translate">Preložiť Mhirex</string>
     <string name="str_contribute_translations_on_weblate">Prispejte prekladmi na Weblate</string>
     <string name="str_fullscreen_editor">Editor na celú obrazovku</string>
     <string name="str_fullscreen_editor_desc">Skryť nástrojový panel a navigačný panel počas úprav</string>

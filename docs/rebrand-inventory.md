@@ -1,6 +1,6 @@
-# Rebrand Inventory — LibreCuts → MhireX
+# Rebrand Inventory — LibreCuts → Mhirex
 
-> **Brand history:** the fork first moved the LibreCuts product surface to Mivio, then the requested product name was changed to MhireX. The technical namespace `com.mivio.editor`, `applicationId`, preference key, project extension, and upstream attribution remain unchanged for upgrade compatibility and legal provenance.
+> The fork moved the LibreCuts product surface to Mhirex. The technical namespace `com.mhirex.editor`, `applicationId`, preference key, project extension, and upstream attribution remain unchanged for upgrade compatibility and legal provenance.
 
 Frozen against upstream commit `a510390`. This is the working checklist for `TODO.md` Phase 0,
 tasks 0.1–0.3. Every item here is verified against the source tree, not assumed.
@@ -9,7 +9,7 @@ tasks 0.1–0.3. Every item here is verified against the source tree, not assume
 
 ## 1. Kotlin/Java package declarations — 41 files
 
-All under `com.tharunbirla.librecuts`. Target: `com.mivio.editor`.
+All under `com.tharunbirla.librecuts`. Target: `com.mhirex.editor`.
 
 | Source set | Count | Files |
 |---|---|---|
@@ -64,13 +64,13 @@ Source of truth: `res/values/strings.xml`. All 8 keys are present there.
 
 | Key | Current value | Action |
 |---|---|---|
-| `app_name` | `LibreCuts` | → `MhireX` in **all** locales |
-| `str_downloads_librecuts` | `Downloads/LibreCuts` | → `Downloads/MhireX`, key → `str_downloads_mhirex` |
-| `str_default_movies_librecuts` | `Default (Movies/LibreCuts)` | → `…/MhireX`, key → `str_default_movies_mhirex` |
-| `str_default_music_librecuts` | `Default (Music/LibreCuts)` | → `…/MhireX`, key → `str_default_music_mhirex` |
-| `str_default_pictures_librecuts` | `Default (Pictures/LibreCuts)` | → `…/MhireX`, key → `str_default_pictures_mhirex` |
+| `app_name` | `LibreCuts` | → `Mhirex` in **all** locales |
+| `str_downloads_librecuts` | `Downloads/LibreCuts` | → `Downloads/Mhirex`, key → `str_downloads_mhirex` |
+| `str_default_movies_librecuts` | `Default (Movies/LibreCuts)` | → `…/Mhirex`, key → `str_default_movies_mhirex` |
+| `str_default_music_librecuts` | `Default (Music/LibreCuts)` | → `…/Mhirex`, key → `str_default_music_mhirex` |
+| `str_default_pictures_librecuts` | `Default (Pictures/LibreCuts)` | → `…/Mhirex`, key → `str_default_pictures_mhirex` |
 | `str_librecuts_is_open_source_help` | "LibreCuts is open source…" | rebrand, key → `str_mhirex_is_open_source_help` |
-| `str_help_translate` | `Translate LibreCuts` | rebrand to `Translate MhireX`; key remains stable for now |
+| `str_help_translate` | `Translate LibreCuts` | rebrand to `Translate Mhirex`; key remains stable for now |
 | `str_made_by_tharun_birla` | "Made by Tharun Birla" | **KEEP** — MIT attribution is mandatory. The additive `str_mhirex_based_on` line credits LibreCuts alongside it. |
 
 ### Locale completeness audit (17 dirs)
@@ -81,7 +81,7 @@ Source of truth: `res/values/strings.xml`. All 8 keys are present there.
 | `values-ar` | `LibreCuts` | all 8 present |
 | `values-cs` | `LibreCuts` | all 8 present |
 | `values-de` | `LibreCuts` | all 8 present |
-| `values-el` | *absent* | only 4 unrelated strings; falls back to default — will correctly resolve to `MhireX` |
+| `values-el` | *absent* | only 4 unrelated strings; falls back to default — will correctly resolve to `Mhirex` |
 | `values-es` | `libreCuts` ⚠️ | lowercase-l typo upstream; also missing 3 keys, falls back |
 | `values-et` | `LibreCuts` | all 8 present |
 | `values-hi` | `LibreCuts` | all 8 present |
@@ -93,7 +93,7 @@ Source of truth: `res/values/strings.xml`. All 8 keys are present there.
 | `values-sk` | `LibreCuts` | all 8 present |
 | `values-ta` | `LibreCuts` | all 8 present |
 | `values-tr` | `LibreCuts` | missing 3 keys, falls back |
-| `values-zh-rCN` | `自由剪辑` ⚠️ | **translated brand** — must be replaced with the Latin `MhireX` |
+| `values-zh-rCN` | `自由剪辑` ⚠️ | **translated brand** — must be replaced with the Latin `Mhirex` |
 
 Missing-key locales inherit from `values/`, so rebrand is correct there automatically. The two
 `app_name` overrides (`es` lowercase, `zh-rCN` translated) are the only ones that would otherwise
@@ -105,15 +105,15 @@ escape the rebrand, and both are handled explicitly.
 
 | File | Line | Current | Action |
 |---|---|---|---|
-| `app/build.gradle` | 13 | `namespace 'com.tharunbirla.librecuts'` | → `com.mivio.editor` |
-| `app/build.gradle` | 25 | `applicationId "com.tharunbirla.librecuts"` | **UNCHANGED** — see PLAN AD-2 |
-| `settings.gradle` | 22 | `rootProject.name = "LibreCuts"` | → `"MhireX"` |
-| `AndroidManifest.xml` | 27 | `android:name=".LibreCutsApplication"` | class renamed to `MhireXApplication` |
+| `app/build.gradle` | 13 | `namespace 'com.tharunbirla.librecuts'` | → `com.mhirex.editor` |
+| `app/build.gradle` | 25 | `applicationId "com.tharunbirla.librecuts"` | → `com.mhirex.editor` — **AD-2 reversed**; Mhirex is now a separate app with no LibreCuts upgrade path |
+| `settings.gradle` | 22 | `rootProject.name = "LibreCuts"` | → `"Mhirex"` |
+| `AndroidManifest.xml` | 27 | `android:name=".LibreCutsApplication"` | class renamed to `MhirexApplication` |
 | `AndroidManifest.xml` | 14–17 | `READ_EXTERNAL_STORAGE` / `WRITE_EXTERNAL_STORAGE` | removed in task 0.15 (SEC-31) |
 
 > **Why `applicationId` stays.** Changing it orphans saved projects, breaks F-Droid/Obtainium
 > listings, and splits the Weblate project. `namespace` is source-level only and moves freely.
-> Deferred to a documented MhireX 2.0 with a data-import step. See `PLAN.md` AD-2.
+> Deferred to a documented Mhirex 2.0 with a data-import step. See `PLAN.md` AD-2.
 
 ---
 
@@ -124,11 +124,11 @@ break existing project files, which is exactly the class of bug `PLAN.md` B2 exi
 
 | Identifier | Location | Decision |
 |---|---|---|
-| SharedPreferences file `librecuts_prefs` | `VideoEditingViewModel.kt:1308,1562`, `MainActivity.kt:391` | **Keep.** Renaming orphans all user settings. |
-| Project file extension `.lcprj` | `ProjectSerializer`, `ProjectImportActivity` | **Keep.** Existing LibreCuts projects must remain loadable; the MhireX 1.x line continues to use the documented `.lcprj` format. |
-| `MediaStore` output folder | `Branding.OUTPUT_FOLDER`, `MediaPublisher` | New writes go to `Movies/MhireX`, `Pictures/MhireX`, or `Music/MhireX`; old LibreCuts media remains where it was. |
+| SharedPreferences file `librecuts_prefs` | `VideoEditingViewModel.kt:1308,1562`, `MainActivity.kt:391` | **Keep.** The original "renaming orphans user settings" reason no longer applies — `applicationId` is now `com.mhirex.editor`, so Mhirex cannot read LibreCuts' preferences regardless. Kept as a frozen identifier and part of the MIT provenance. See `Branding.PREFS_NAME`. |
+| Project file extension `.lcprj` | `ProjectSerializer`, `ProjectImportActivity` | **Keep.** Existing LibreCuts projects must remain loadable; the Mhirex 1.x line continues to use the documented `.lcprj` format. |
+| `MediaStore` output folder | `Branding.OUTPUT_FOLDER`, `MediaPublisher` | New writes go to `Movies/Mhirex`, `Pictures/Mhirex`, or `Music/Mhirex`; old LibreCuts media remains where it was. |
 | `ErrorCode` ids `LC-101` etc. | `utils/ErrorCode.kt` | **Keep.** They are cited in the upstream wiki; renaming breaks documented support references. |
-| `LICENCE` copyright `© 2024 Tharun Birla` | `LICENSE` | **Keep — legally mandatory** (MIT). MhireX attribution is *cumulative*, via `NOTICE`. |
+| `LICENCE` copyright `© 2024 Tharun Birla` | `LICENSE` | **Keep — legally mandatory** (MIT). Mhirex attribution is *cumulative*, via `NOTICE`. |
 
 ---
 
@@ -136,14 +136,14 @@ break existing project files, which is exactly the class of bug `PLAN.md` B2 exi
 
 | Surface | Matches | Action |
 |---|---|---|
-| `README.md` | 14 | Rebrand, keep upstream attribution + build link |
-| `fastlane/metadata/android/en-US/title.txt` | `MhireX` | **Updated**; Play listing keeps the preserved applicationId until a deliberate migration |
+| `README.md` | 14 | Rebrand, keep upstream attribution + build link. **Then:** Weblate badge removed (it renders "LibreCuts" and tracks the upstream project — re-add with the F-Droid badge once Mhirex has its own listings), duplicate GitHub badge removed, LibreCuts wiki demoted from "our troubleshooting guide" to background reference under a section that names `ErrorCode.kt` as authoritative, active-development status block + "What's next" roadmap added, "Keep Android Open" moved to a bottom "Android Freedom" section, origin story reworded, and a "Translations" section added that states no Mhirex translation project exists yet |
+| `fastlane/metadata/android/en-US/title.txt` | `Mhirex` | **Updated**; Play listing keeps the preserved applicationId until a deliberate migration |
 | `fastlane/metadata/android/en-US/short_description.txt` | 1 | Rebrand |
 | `fastlane/metadata/android/en-US/full_description.txt` | 2 | Rebrand |
 | `fastlane/metadata/android/en-US/changelogs/3.txt` | 1 | Historical changelog — **leave as-is**, it describes a past LibreCuts release |
 | `fastlane/metadata/android/en-US/images/` | — | Upstream author's screenshots; retain attribution |
 | `.github/FUNDING.yml` | — | Preserve upstream sponsorship links |
-| `src/images/` (README screenshots/badges) | — | Upstream author's assets; retain attribution; `logo.png` is the current MhireX mark |
+| `src/images/` (README screenshots/badges) | — | Upstream author's assets; retain attribution; `logo.png` is the current Mhirex mark |
 
 ---
 
@@ -167,7 +167,7 @@ break existing project files, which is exactly the class of bug `PLAN.md` B2 exi
 rebrand is **additive only**:
 
 1. `LICENSE` — copyright line unchanged.
-2. `NOTICE` — new file: credits Tharun Birla (MIT, original) **and** the MhireX contributors.
-3. About screen — "MhireX … Based on LibreCuts by Tharun Birla (MIT)".
+2. `NOTICE` — new file: credits Tharun Birla (MIT, original) **and** the Mhirex contributors.
+3. About screen — "Mhirex … Based on LibreCuts by Tharun Birla (MIT)".
 4. AboutLibraries — add the **GPL-3.0** ffmpeg-kit entry (currently missing entirely; `PLAN.md` L1).
 5. Existing source headers — not retroactively altered.

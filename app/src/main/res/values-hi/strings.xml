@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="str_loop">लूप</string>
-    <string name="app_name">MhireX</string>
+    <string name="app_name">Mhirex</string>
     <string name="trim">ट्रिम</string>
     <string name="split">स्प्लिट</string>
     <string name="export">निर्यात करें</string>
@@ -18,7 +18,7 @@
     <string name="str_low_quality_fastest">निम्न गुणवत्ता (सबसे तेज़)</string>
     <string name="str_smallest_file_size_fastest_exp">सबसे छोटा फ़ाइल आकार, सबसे तेज़ निर्यात</string>
     <string name="str_export_location">निर्यात स्थान</string>
-    <string name="str_downloads_mhirex">Downloads/MhireX</string>
+    <string name="str_downloads_mhirex">Downloads/Mhirex</string>
     <string name="str_preview">पूर्वावलोकन</string>
     <string name="str_0_00_0_00">0:00 / 0:00</string>
     <string name="str_timeline_empty">टाइमलाइन खाली है</string>
@@ -82,13 +82,13 @@
     <string name="str_settings">सेटिंग्स</string>
     <string name="str_general">सामान्य</string>
     <string name="str_export_folder">निर्यात फ़ोल्डर</string>
-    <string name="str_default_movies_mhirex">डिफ़ॉल्ट (Movies/MhireX)</string>
+    <string name="str_default_movies_mhirex">डिफ़ॉल्ट (Movies/Mhirex)</string>
     <string name="str_check_for_updates">अपडेट की जाँच करें</string>
     <string name="str_manually_check_for_the_latest">नवीनतम संस्करण के लिए मैन्युअल रूप से जाँच करें</string>
     <string name="str_v1_0_beta4">v1.0-beta5</string>
     <string name="str_a_privacy_friendly_open_source">Android के लिए एक गोपनीयता-अनुकूल, ओपन-सोर्स वीडियो एडिटर।\nवॉटरमार्क मुक्त वीडियो को डिवाइस पर स्थानीय रूप से निर्यात करें।</string>
     <string name="str_support_amp_feedback">सहायता और प्रतिक्रिया</string>
-    <string name="str_mhirex_is_open_source_help">MhireX ओपन सोर्स है। GitHub पर प्रोजेक्ट को स्टार करके या बग रिपोर्ट करके इसे बेहतर बनाने में हमारी सहायता करें।</string>
+    <string name="str_mhirex_is_open_source_help">Mhirex ओपन सोर्स है। GitHub पर प्रोजेक्ट को स्टार करके या बग रिपोर्ट करके इसे बेहतर बनाने में हमारी सहायता करें।</string>
     <string name="str_star_on_github">GitHub पर स्टार करें</string>
     <string name="str_report_a_bug">बग की रिपोर्ट करें</string>
     <string name="str_sponsor_project">प्रोजेक्ट को प्रायोजित करें</string>
@@ -151,13 +151,13 @@
     <string name="str_video_export_folder">वीडियो निर्यात फ़ोल्डर</string>
     <string name="str_audio_export_folder">ऑडियो निर्यात फ़ोल्डर</string>
     <string name="str_snapshot_export_folder">स्नैपशॉट निर्यात फ़ोल्डर</string>
-    <string name="str_default_music_mhirex">डिफ़ॉल्ट (Music/MhireX)</string>
-    <string name="str_default_pictures_mhirex">डिफ़ॉल्ट (Pictures/MhireX)</string>
+    <string name="str_default_music_mhirex">डिफ़ॉल्ट (Music/Mhirex)</string>
+    <string name="str_default_pictures_mhirex">डिफ़ॉल्ट (Pictures/Mhirex)</string>
     <string name="str_app_language">ऐप की भाषा</string>
     <string name="str_system_default">सिस्टम डिफ़ॉल्ट</string>
     <string name="str_opacity">अपारदर्शिता (Opacity)</string>
     <string name="str_reset">रीसेट करें</string>
-    <string name="str_help_translate">MhireX का अनुवाद करें</string>
+    <string name="str_help_translate">Mhirex का अनुवाद करें</string>
     <string name="str_contribute_translations_on_weblate">Weblate पर अनुवाद में योगदान दें</string>
     <string name="str_fullscreen_editor">फ़ुलस्क्रीन एडिटर</string>
     <string name="str_fullscreen_editor_desc">संपादन के दौरान स्टेटस बार और नेविगेशन बार छिपाएं</string>

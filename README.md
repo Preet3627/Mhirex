@@ -1,13 +1,13 @@
-# MhireX
+# Mhirex
 
 <div align="center">
-  <img src="logo.png" alt="MhireX logo" width="180"/>
+  <img src="logo.png" alt="Mhirex logo" width="180"/>
   <br/>
   <br/>
   <br/>
 
   <a href="https://github.com/Preet3627/Mhirex">
-    <img src="https://img.shields.io/badge/Star_MhireX-ea4aaa?style=for-the-badge&logo=github&logoColor=white" height="35" alt="Star MhireX on GitHub" />
+    <img src="https://img.shields.io/badge/Star_Mhirex-ea4aaa?style=for-the-badge&logo=github&logoColor=white" height="35" alt="Star Mhirex on GitHub" />
   </a>
   <a href="LICENSE">
     <img src="https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge" height="35" alt="License" />
@@ -17,39 +17,37 @@
   <a href="https://github.com/Preet3627/Mhirex/releases/latest">
     <img src="src/images/badges/badge_github.png" alt="Get it on GitHub" height="96" />
   </a>
-  <a href="https://f-droid.org/packages/com.tharunbirla.librecuts/">
-    <img src="src/images/badges/badge_fdroid.png" alt="Get it on F-Droid" height="96" />
-  </a>
+  <!-- F-Droid badge removed: Mhirex's applicationId is com.mhirex.editor, so the existing
+       com.tharunbirla.librecuts F-Droid listing tracks LibreCuts, not Mhirex. Re-add the badge
+       once Mhirex has its own F-Droid metadata (f-droid.toml + build metadata under this id). -->
   <a href="https://apps.obtainium.imranr.dev/redirect?r=obtainium://add/https://github.com/Preet3627/Mhirex">
     <img src="src/images/badges/badge_obtainium.png" height="96" alt="Get it on Obtainium" />
   </a>
   <a href="https://discord.gg/gwr3nE7YW">
     <img src="src/images/badges/badge_discord.png" height="96" alt="Join Discord" />
   </a>
-  <a href="https://hosted.weblate.org/engage/librecuts/">
-    <img src="https://hosted.weblate.org/widget/librecuts/librecuts/287x66-grey.png" height="96" alt="Translation status" />
-  </a>
+  <!-- Weblate badge removed: hosted.weblate.org/engage/librecuts renders "LibreCuts" and counts
+       the upstream translation project, not Mhirex. See "Translations" below for how to help
+       until Mhirex has a translation project of its own. -->
 </div>
 
 <br/>
 
-**MhireX** is a free, open-source video editor for Android that prioritizes simplicity, efficiency, and privacy. Built for seamless performance, it empowers creators to easily select, edit, and export watermark-free videos locally on their device.
+> **Status: active development.** Mhirex is being rebuilt on top of its LibreCuts foundation. The
+> core editing tools listed below work today; the multi-track architecture, instant GPU preview,
+> beat-sync workflow, and creator-focused features are being built and shipped incrementally.
+> Treat releases as beta software, and please [open an issue](https://github.com/Preet3627/Mhirex/issues)
+> when something breaks. See [What's next](#-whats-next) for the roadmap.
 
-The app idea comes from [@_fivetriple.8_](https://www.instagram.com/_fivetriple.8_/). It was developed just for him by **Preet Patel**, with [@il__mehul_patel__li](https://www.instagram.com/il__mehul_patel__li/) also connected to the project. MhireX is based on LibreCuts by Tharun Birla and retains the upstream MIT license and attribution. See [`NOTICE`](NOTICE) and [`ASSETS.md`](ASSETS.md) for third-party and release notices.
+**Mhirex** is a free, open-source video editor for Android that prioritizes simplicity, efficiency, and privacy. Built for seamless performance, it empowers creators to easily select, edit, and export watermark-free videos locally on their device.
 
----
-
-## ✊ Keep Android Open
-
-[![Keep Android Open](https://img.shields.io/badge/Keep-Android_Open-brightgreen?style=for-the-badge&logo=android)](https://keepandroidopen.org/)
-
-Google's mandatory developer verification policy goes into effect in **September 2026** (in just a few months). This mandate requires all independent developers to submit government ID and centrally register with Google, threatening user privacy, sideloading freedom, and the distribution of free and open-source software (FOSS) on Android. 
-
-Help resist this gatekeeping and support the movement at [keepandroidopen.org](https://keepandroidopen.org/).
+**Project origin.** Mhirex started as a personal tool, built by **Preet Patel** for [@_fivetriple.8_](https://www.instagram.com/_fivetriple.8_/), who wanted to cut videos on his phone without installing anything from a store. It is now maintained as a public project, with [@il__mehul_patel__li](https://www.instagram.com/il__mehul_patel__li/) also contributing. Mhirex is based on [LibreCuts](https://github.com/tharunbirla/LibreCuts) by Tharun Birla and retains the upstream MIT license and full attribution — see [`NOTICE`](NOTICE) and [`ASSETS.md`](ASSETS.md) for third-party and release notices.
 
 ---
 
 ## 🚀 Features
+
+Everything in this list ships today.
 
 - **Trim** - Remove unwanted parts from the beginning or end of a video clip with a real-time timeline control.
 - **Overlays** - Place text, stickers, images, GIFs, and video overlays on top of video clips to create engaging content. Includes support for continuous media looping.
@@ -76,6 +74,21 @@ Help resist this gatekeeping and support the movement at [keepandroidopen.org](h
 - **Android 13+ Themed Icon** - Supports native monochrome adaptive icons for Android 13+ system themes.
 - **Hardware Acceleration** - Super-fast and reliable video exports using device hardware-accelerated `h264_mediacodec` encoding (with seamless automatic fallback to software encoding for maximum device compatibility) and accurate FFmpeg progress calculation.
 
+## 🛠️ What's next
+
+Planned and in development — **not available in current builds**. The design and the staged rollout
+are documented in [`PLAN.md`](PLAN.md); the work queue is tracked in [`TODO.md`](TODO.md).
+
+- **Multi-track timeline** - A real project model (video, audio, and overlay tracks) replacing the single flat video track, with continuous zoom, multi-select, and frame-accurate snapping.
+- **Instant preview** - GPU-composited preview that no longer spawns an FFmpeg process, so scrubbing and previewing stay interactive on mid-range hardware.
+- **Beat detection and Sync to Beat** - On-device tempo and beat analysis, beat markers on the timeline, and a one-tap way to cut a montage to the music.
+- **Sound effects** - A built-in, license-clean SFX library that can auto-attach to cuts and stays attached when you move or delete the clip it belongs to.
+- **Effect stacks and meme packs** - Layered, intensity-controlled effects with editable presets (including custom LUTs) instead of single fixed filters.
+- **Text upgrades** - Text animation presets, stroke, shadow, background, scale, and rotation, plus meme-text templates that stay fully editable.
+- **Transitions and templates** - Typed transition groups, automatic (`AUTO`) transition selection, and a photo-slideshow planner with Ken Burns styles.
+- **Platform export presets** - One-tap presets for Reels, Shorts, TikTok, and YouTube, with the share pipeline encoding once instead of per-target.
+- **Structured undo** - Per-operation undo/redo for every edit, replacing today's whole-project snapshots.
+
 ## 📱 Screenshots
 
 <div align="center">
@@ -95,13 +108,13 @@ Help resist this gatekeeping and support the movement at [keepandroidopen.org](h
   </table>
 </div>
 
-## 💖 Support MhireX
+## 💖 Support Mhirex
 
-MhireX is a personal project built with passion and provided for free. If it helped you create something amazing, please star the new repository and follow the people behind the app.
+Mhirex is a personal project built with passion and provided for free. If it helped you create something amazing, please star the repository and follow the people behind the app.
 
 <div align="center">
   <br/>
-  <a href="https://github.com/Preet3627/Mhirex"><img src="https://img.shields.io/github/stars/Preet3627/Mhirex?style=for-the-badge&logo=github&logoColor=white" alt="Star MhireX on GitHub" /></a>
+  <a href="https://github.com/Preet3627/Mhirex"><img src="https://img.shields.io/github/stars/Preet3627/Mhirex?style=for-the-badge&logo=github&logoColor=white" alt="Star Mhirex on GitHub" /></a>
   &nbsp;&nbsp;
   <a href="https://www.instagram.com/_fivetriple.8_/"><img src="https://img.shields.io/badge/Instagram-%40_fivetriple.8_-E4405F?style=for-the-badge&logo=instagram&logoColor=white" alt="App idea on Instagram" /></a>
   <br/>
@@ -132,7 +145,7 @@ MhireX is a personal project built with passion and provided for free. If it hel
 
 ## 🔒 Permissions
 
-MhireX uses the following permissions to function properly:
+Mhirex uses the following permissions to function properly:
 
 - **READ_MEDIA_AUDIO/VIDEO/IMAGES**: For accessing media files on devices running Android 13 (API level 33) and above.
 - **READ_EXTERNAL_STORAGE**: To read media on older Android versions.
@@ -141,11 +154,32 @@ MhireX uses the following permissions to function properly:
 
 Exports are published through Android MediaStore or a user-selected SAF folder; the app does not request legacy public-directory write access.
 
+## 🌍 Translations
+
+Mhirex ships with 17 languages today. Those translations were inherited from the LibreCuts community when the project was forked, so some strings still carry upstream wording.
+
+**Mhirex does not have its own translation project yet**, so there is no translation platform badge to link to — a LibreCuts one would count a different project and send contributors to the wrong place. Until Mhirex's own project exists:
+
+- Translate or correct strings by editing the relevant `app/src/main/res/values-<locale>/strings.xml` and opening a pull request.
+- Not sure which string needs work? Open an issue describing what reads wrong and in which language.
+- The in-app "Translate Mhirex" entry still points at the LibreCuts Weblate project, so **do not send Mhirex strings there** — pull requests are the route for now.
+
 ## 🔧 Troubleshooting & Support
 
-If you encounter any export failures, codec errors, or unexpected crashes during your editing workflow:
-- Refer to our comprehensive [Error Codes & Troubleshooting Guide](https://github.com/tharunbirla/LibreCuts/wiki/Error-Codes-&-Troubleshooting) on the Wiki.
-- Join our [Discord Community](https://discord.gg/gwr3nE7YW) for real-time support, suggestions, and app updates.
+If an export fails, a codec error appears, or the app crashes:
+
+1. **Use the in-app error screen.** Mhirex shows a diagnostic log with copy and share buttons, plus a button that opens a pre-filled GitHub issue for the exact error code. Attach that log — it is what makes a bug fixable.
+2. **Search [existing issues](https://github.com/Preet3627/Mhirex/issues).** It may already be known and under discussion.
+3. **Otherwise open an issue** using the [bug report template](.github/ISSUE_TEMPLATE/bug_report.yml), with your device model, Android version, and the log from step 1.
+4. **Ask on [Discord](https://discord.gg/gwr3nE7YW)** for real-time help and suggestions.
+
+**About error codes.** Mhirex currently uses the upstream `LC-###` codes, so they still match the
+[LibreCuts troubleshooting wiki](https://github.com/tharunbirla/LibreCuts/wiki/Error-Codes-&-Troubleshooting)
+(`LC-101` FFmpeg failure, `LC-102` missing font, `LC-201` source file missing, `LC-202` save to
+gallery failed, `LC-301` out of memory, `LC-500` unexpected crash). The authoritative list is
+[`ErrorCode.kt`](app/src/main/java/com/mhirex/editor/utils/ErrorCode.kt). That wiki documents
+LibreCuts rather than Mhirex, so treat it as background and not as Mhirex documentation; a
+Mhirex-specific guide is still to be written.
 
 ## 🤝 Contributing
 
@@ -156,6 +190,12 @@ Contributions are welcome! If you have suggestions or improvements, feel free to
 3. Commit your changes.
 4. Push to the branch.
 5. Submit a pull request.
+
+## 🗽 Android Freedom
+
+Mhirex is distributed as an open-source APK rather than through the Play Store, and keeping it that way is part of the project's point. Google's mandatory developer verification policy begins enforcing in **September 2026**, requiring all Android developers — including independent ones — to submit government ID and register centrally, which threatens sideloading freedom and the distribution of free and open-source software on Android.
+
+If that matters to you, the campaign is documented at [keepandroidopen.org](https://keepandroidopen.org/).
 
 ## 📝 License
 

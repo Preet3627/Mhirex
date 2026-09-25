@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="str_loop">Цикл</string>
-    <string name="app_name">MhireX</string>
+    <string name="app_name">Mhirex</string>
     <string name="trim">Обрезать</string>
     <string name="split">Разделить</string>
     <string name="export">Экспортировать</string>
@@ -18,7 +18,7 @@
     <string name="str_low_quality_fastest">Низкое качество (Быстрое)</string>
     <string name="str_smallest_file_size_fastest_exp">Наименьший размер файла, быстрая скорость экспорта</string>
     <string name="str_export_location">Папка экспорта</string>
-    <string name="str_downloads_mhirex">Загрузки/MhireX</string>
+    <string name="str_downloads_mhirex">Загрузки/Mhirex</string>
     <string name="str_preview">ПРЕДПРОСМОТР</string>
     <string name="str_0_00_0_00">0:00 / 0:00</string>
     <string name="str_timeline_empty">Временная дорожка пуста</string>
@@ -82,13 +82,13 @@
     <string name="str_settings">Настройки</string>
     <string name="str_general">Общее</string>
     <string name="str_export_folder">Папка для экспорта</string>
-    <string name="str_default_movies_mhirex">По умолчанию (Видео/MhireX)</string>
+    <string name="str_default_movies_mhirex">По умолчанию (Видео/Mhirex)</string>
     <string name="str_check_for_updates">Проверить наличие обновлений</string>
     <string name="str_manually_check_for_the_latest">Проверить последнюю версию вручную</string>
     <string name="str_v1_0_beta4">v1.0-beta5</string>
     <string name="str_a_privacy_friendly_open_source">Уважающий конфиденциальность, открытый редактор видео на Android.\nСохраняйте видео на телефоне без водяных меток.</string>
     <string name="str_support_amp_feedback">Поддержка и отзывы</string>
-    <string name="str_mhirex_is_open_source_help">MhireX это проект с открытым исходным кодом. Помогите нам стать лучше, поставив звезду нашему проекту на GitHub или сообщив об ошибке.</string>
+    <string name="str_mhirex_is_open_source_help">Mhirex это проект с открытым исходным кодом. Помогите нам стать лучше, поставив звезду нашему проекту на GitHub или сообщив об ошибке.</string>
     <string name="str_star_on_github">Поставить звезду на GitHub</string>
     <string name="str_report_a_bug">Сообщить об ошибке</string>
     <string name="str_sponsor_project">Поддержать проект</string>
@@ -151,13 +151,13 @@
     <string name="str_video_export_folder">Папка экспорта видео</string>
     <string name="str_audio_export_folder">Папка экспорта аудио</string>
     <string name="str_snapshot_export_folder">Папка экспорта снимков</string>
-    <string name="str_default_music_mhirex">По умолчанию (Музыка/MhireX)</string>
-    <string name="str_default_pictures_mhirex">По умолчанию (Изображения/MhireX)</string>
+    <string name="str_default_music_mhirex">По умолчанию (Музыка/Mhirex)</string>
+    <string name="str_default_pictures_mhirex">По умолчанию (Изображения/Mhirex)</string>
     <string name="str_app_language">Язык приложения</string>
     <string name="str_system_default">Как в системе</string>
     <string name="str_opacity">Прозрачность</string>
     <string name="str_reset">Сброс</string>
-    <string name="str_help_translate">Перевести MhireX</string>
+    <string name="str_help_translate">Перевести Mhirex</string>
     <string name="str_contribute_translations_on_weblate">Предложите перевод на Weblate</string>
     <string name="str_fullscreen_editor">Полноэкранный редактор</string>
     <string name="str_fullscreen_editor_desc">Скрыть панели навигации и статуса во время редактирования</string>

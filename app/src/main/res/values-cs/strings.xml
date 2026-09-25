@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="str_loop">Smyčka</string>
-    <string name="app_name">MhireX</string>
+    <string name="app_name">Mhirex</string>
     <string name="trim">Zkrátit</string>
     <string name="split">Rozdělit</string>
     <string name="export">Exportovat</string>
@@ -18,7 +18,7 @@
     <string name="str_low_quality_fastest">Nízká kvalita (nejrychlejší)</string>
     <string name="str_smallest_file_size_fastest_exp">Nejmenší soubor, nejrychlejší export</string>
     <string name="str_export_location">Umístění exportu</string>
-    <string name="str_downloads_mhirex">Downloads/MhireX</string>
+    <string name="str_downloads_mhirex">Downloads/Mhirex</string>
     <string name="str_preview">NÁHLED</string>
     <string name="str_0_00_0_00">0:00 / 0:00</string>
     <string name="str_timeline_empty">Časová osa je prázdná</string>
@@ -82,13 +82,13 @@
     <string name="str_settings">Nastavení</string>
     <string name="str_general">Obecné</string>
     <string name="str_export_folder">Složka pro export</string>
-    <string name="str_default_movies_mhirex">Výchozí (Movies/MhireX)</string>
+    <string name="str_default_movies_mhirex">Výchozí (Movies/Mhirex)</string>
     <string name="str_check_for_updates">Zkontrolovat aktualizace</string>
     <string name="str_manually_check_for_the_latest">Ručně zkontrolovat nejnovější verzi</string>
     <string name="str_v1_0_beta4">v1.0-beta5</string>
     <string name="str_a_privacy_friendly_open_source">Open source editor videa pro Android šetrný k soukromí.\nExportujte videa bez vodoznaku přímo v zařízení.</string>
     <string name="str_support_amp_feedback">Podpora a zpětná vazba</string>
-    <string name="str_mhirex_is_open_source_help">MhireX je open source. Pomozte nám ho vylepšit – dejte projektu hvězdičku na GitHubu nebo nahlaste chyby.</string>
+    <string name="str_mhirex_is_open_source_help">Mhirex je open source. Pomozte nám ho vylepšit – dejte projektu hvězdičku na GitHubu nebo nahlaste chyby.</string>
     <string name="str_star_on_github">Hvězdička na GitHubu</string>
     <string name="str_report_a_bug">Nahlásit chybu</string>
     <string name="str_sponsor_project">Podpořit projekt</string>
@@ -151,13 +151,13 @@
     <string name="str_video_export_folder">Složka pro export videa</string>
     <string name="str_audio_export_folder">Složka pro export zvuku</string>
     <string name="str_snapshot_export_folder">Složka pro export snímků</string>
-    <string name="str_default_music_mhirex">Výchozí (Music/MhireX)</string>
-    <string name="str_default_pictures_mhirex">Výchozí (Pictures/MhireX)</string>
+    <string name="str_default_music_mhirex">Výchozí (Music/Mhirex)</string>
+    <string name="str_default_pictures_mhirex">Výchozí (Pictures/Mhirex)</string>
     <string name="str_app_language">Jazyk aplikace</string>
     <string name="str_system_default">Podle systému</string>
     <string name="str_opacity">Průhlednost</string>
     <string name="str_reset">Obnovit</string>
-    <string name="str_help_translate">Přeložit MhireX</string>
+    <string name="str_help_translate">Přeložit Mhirex</string>
     <string name="str_contribute_translations_on_weblate">Přispějte překlady na Weblate</string>
     <string name="str_fullscreen_editor">Editor na celou obrazovku</string>
     <string name="str_fullscreen_editor_desc">Skrýt stavový a navigační panel během úprav</string>

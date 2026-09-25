@@ -14,7 +14,7 @@
     <string name="str_low_quality_fastest">Baja calidad (Más rápido)</string>
     <string name="str_smallest_file_size_fastest_exp">Menor tamaño de archivo, exportación más rápida</string>
     <string name="str_export_location">Ubicación de exportación</string>
-    <string name="str_downloads_mhirex">Downloads/MhireX</string>
+    <string name="str_downloads_mhirex">Downloads/Mhirex</string>
     <string name="str_preview">VISTA PREVIA</string>
     <string name="str_timeline_empty">La línea de tiempo está vacía</string>
     <string name="str_import_video">Importar video</string>
@@ -40,7 +40,7 @@
     <string name="str_0">0%</string>
     <string name="str_color_filters">Filtros de color</string>
     <string name="str_loop">Bucle</string>
-    <string name="app_name">MhireX</string>
+    <string name="app_name">Mhirex</string>
     <string name="trim">Cortar</string>
     <string name="split">Dividir</string>
     <string name="str_0_00_0_00">0:00 / 0:00</string>
@@ -82,13 +82,13 @@
     <string name="str_settings">Ajustes</string>
     <string name="str_general">General</string>
     <string name="str_export_folder">Exportar carpeta</string>
-    <string name="str_default_movies_mhirex">Por defecto (Movies/MhireX)</string>
+    <string name="str_default_movies_mhirex">Por defecto (Movies/Mhirex)</string>
     <string name="str_check_for_updates">Comprobar Actualizaciones</string>
     <string name="str_manually_check_for_the_latest">Actualización manual</string>
     <string name="str_v1_0_beta4">v1.0-beta5</string>
     <string name="str_a_privacy_friendly_open_source">Un ediror de video, con privacidad, y de código abierto para android.\nExporta videos si marcas de agua localmente.</string>
     <string name="str_support_amp_feedback">Soporte y aportes</string>
-    <string name="str_mhirex_is_open_source_help">MhireX es open source. Ayudanos a mantenerlo en GitHub o reportar errores.</string>
+    <string name="str_mhirex_is_open_source_help">Mhirex es open source. Ayudanos a mantenerlo en GitHub o reportar errores.</string>
     <string name="str_star_on_github">Inicar en GitHub</string>
     <string name="str_report_a_bug">Reportar un error</string>
     <string name="str_sponsor_project">Sponsor Project</string>

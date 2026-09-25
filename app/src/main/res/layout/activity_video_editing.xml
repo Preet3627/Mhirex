@@ -157,7 +157,7 @@
                     android:scaleType="centerCrop"
                     android:background="@color/cinemaBlack" />
 
-                <com.mivio.editor.customviews.MaskedFrameLayout
+                <com.mhirex.editor.customviews.MaskedFrameLayout
                     android:id="@+id/mainVideoMaskContainer"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
@@ -178,50 +178,50 @@
                         android:background="@android:color/transparent"
                         app:shutter_background_color="@android:color/transparent"/>
 
-                    <com.mivio.editor.customviews.TransitionPreviewOverlayView
+                    <com.mhirex.editor.customviews.TransitionPreviewOverlayView
                         android:id="@+id/transitionPreviewOverlayView"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:visibility="gone"/>
-                </com.mivio.editor.customviews.MaskedFrameLayout>
+                </com.mhirex.editor.customviews.MaskedFrameLayout>
             </FrameLayout>
 
 
-            <com.mivio.editor.customviews.TextOverlayView
+            <com.mhirex.editor.customviews.TextOverlayView
                 android:id="@+id/textOverlayView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"/>
 
-            <com.mivio.editor.customviews.DraggableTextOverlayView
+            <com.mhirex.editor.customviews.DraggableTextOverlayView
                 android:id="@+id/draggableTextOverlay"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:visibility="gone" />
 
-            <com.mivio.editor.customviews.ImageOverlayView
+            <com.mhirex.editor.customviews.ImageOverlayView
                 android:id="@+id/imageOverlayView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"/>
 
-            <com.mivio.editor.customviews.DraggableImageOverlayView
+            <com.mhirex.editor.customviews.DraggableImageOverlayView
                 android:id="@+id/draggableImageOverlay"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:visibility="gone" />
 
-            <com.mivio.editor.customviews.CropOverlayView
+            <com.mhirex.editor.customviews.CropOverlayView
                 android:id="@+id/cropOverlayView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:visibility="gone" />
 
-            <com.mivio.editor.customviews.VideoMaskOverlayView
+            <com.mhirex.editor.customviews.VideoMaskOverlayView
                 android:id="@+id/videoMaskOverlayView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:visibility="gone" />
 
-            <com.mivio.editor.customviews.HandwritingCanvasView
+            <com.mhirex.editor.customviews.HandwritingCanvasView
                 android:id="@+id/handwritingCanvasView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -409,7 +409,7 @@
                         android:orientation="vertical"
                         android:clipChildren="false">
 
-                        <com.mivio.editor.customviews.TimeRulerView
+                        <com.mhirex.editor.customviews.TimeRulerView
                             android:id="@+id/timeRulerView"
                             android:layout_width="wrap_content"
                             android:layout_height="28dp"
@@ -493,7 +493,7 @@
                     android:padding="8dp"
                     app:tint="@color/colorOnPrimary" />
 
-                <com.mivio.editor.customviews.CustomVideoSeeker
+                <com.mhirex.editor.customviews.CustomVideoSeeker
                     android:id="@+id/customVideoSeeker"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
