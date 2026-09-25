@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Adaptive icon background for Mhirex.
+
+    The previous value was #FFFFFF, which was fine only because the old foreground was an opaque
+    black square carrying its own backdrop. The new brand mark is white, so a white background would
+    have made the launcher icon completely invisible. This is a dark violet-to-black radial, echoing
+    the app's own pink/violet About halo but far darker, so the white mark keeps a contrast ratio of
+    at least 14:1 even at the brightest point and stays legible at 48dp.
+
+    Kept as a shape rather than a flat <color> because the adaptive-icon background layer accepts any
+    drawable, and a pure flat fill reads as a placeholder next to the gradient used in-app.
+-->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <gradient
+        android:type="radial"
+        android:centerX="0.5"
+        android:centerY="0.42"
+        android:gradientRadius="72dp"
+        android:startColor="#2E1A3C"
+        android:centerColor="#161222"
+        android:endColor="#08080C" />
+</shape>

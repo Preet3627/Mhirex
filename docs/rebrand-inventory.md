@@ -58,7 +58,7 @@ Android resolves these by reflection, so a stale FQCN compiles cleanly and then 
 
 ---
 
-## 3. Brand strings — 8 keys × 17 locales (7 after the 0.16 string deletions)
+## 3. Brand strings — 8 keys × 18 locales (7 after the 0.16 string deletions)
 
 Source of truth: `res/values/strings.xml`. All 8 keys were present there; `str_help_translate` was
 since deleted, so 7 remain. The audit below is the pre-deletion state and is kept as the record of
@@ -75,7 +75,7 @@ what each locale inherited.
 | `str_help_translate` | `Translate LibreCuts` | **Deleted** with `str_contribute_translations_on_weblate`, `str_troubleshooting_amp_wiki_guide` and `str_if_you_encounter_any_export_is` in task 0.16 — all four were unreferenced after the About rewrite and all four pointed at LibreCuts destinations. Re-add with a Mhirex translation project |
 | `str_made_by_tharun_birla` | "Made by Tharun Birla" | **KEEP** — MIT attribution is mandatory. The additive `str_mhirex_based_on` line credits LibreCuts alongside it. |
 
-### Locale completeness audit (17 dirs)
+### Locale completeness audit (18 dirs)
 
 | Locale | `app_name` value | Notes |
 |---|---|---|
@@ -86,6 +86,7 @@ what each locale inherited.
 | `values-el` | *absent* | only 4 unrelated strings; falls back to default — will correctly resolve to `Mhirex` |
 | `values-es` | `libreCuts` ⚠️ | lowercase-l typo upstream; also missing 3 keys, falls back |
 | `values-et` | `LibreCuts` | all 8 present (7 now) |
+| `values-gu` | `Mhirex` | added in Mhirex (Gujarati); written directly against the Mhirex key set, so it never carried the LibreCuts brand |
 | `values-hi` | `LibreCuts` | all 8 present (7 now) |
 | `values-in` | `LibreCuts` | all 8 present (7 now) |
 | `values-it` | `LibreCuts` | all 8 present (7 now) |

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    First-launch "add your profile" dialog.
+
+    Separate from activity_settings_profile.xml on purpose. The Settings card is embedded in the tab
+    and must not carry a hero logo; this dialog is the one-off first-run prompt and is the only place
+    the brand mark belongs. The card itself is *included* rather than copied, so the prompt and the
+    Settings entry cannot drift apart on copy, behaviour or the sign-in button.
+
+    The logo is shown here rather than as the dialog's icon because the mark is a wide, detailed
+    image: Material's leading-icon slot is 24dp and would render it as an illegible smudge.
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:layout_width="88dp"
+        android:layout_height="88dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/bg_brand_logo_badge">
+
+        <!--
+            56dp mark inside the 88dp badge. Same reasoning as the About card: the mark is tightly
+            cropped, so the size here is chosen for optical balance against the ring, not to fill it.
+        -->
+        <ImageView
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:layout_gravity="center"
+            android:contentDescription="@string/app_name"
+            android:scaleType="fitCenter"
+            android:src="@drawable/brand_logo" />
+    </FrameLayout>
+
+    <!--
+        The include carries an id, so ViewBinding generates a typed ActivitySettingsProfileBinding
+        field for it, giving FirstLaunchSignInPrompt access to the card's children.
+    -->
+    <include
+        android:id="@+id/layoutProfile"
+        layout="@layout/activity_settings_profile" />
+
+</LinearLayout>

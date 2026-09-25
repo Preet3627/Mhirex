@@ -1,6 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+    Adaptive launcher icon. NOT CURRENTLY IN USE.
+
+    AndroidManifest.xml deliberately points android:icon at the flat raster @mipmap/logo, because
+    that is the icon Mhirex has always shipped and the launcher icon was reverted to it on request.
+    This file therefore does not resolve, and neither does the <monochrome> layer below, which means
+    Android 13+ themed icons do NOT work in the current build, despite a v1.0-beta8 changelog line
+    claiming they do.
+
+    Everything needed to switch is already prepared here, so enabling it is a one-line manifest change
+    (android:icon="@mipmap/ic_launcher"). The layers were built to be correct when that happens:
+
+      - Background was #FFFFFF, which would make the white brand mark invisible. It is now a dark
+        violet-to-black radial, echoing the in-app About halo but far darker.
+      - The foreground is the white brand mark pre-scaled to the 72/108 safe zone, because the
+        launcher masks away roughly the outer third of the canvas.
+      - The monochrome layer reuses that same padded asset. Android tints it with a single colour and
+        uses only its alpha, so a white-on-transparent silhouette is exactly the right shape for it.
+
+    To verify the change actually took effect, do not trust the build log. Run:
+      aapt2 dump badging <apk> | grep application-icon
+    Every density line must point at res/mipmap-anydpi-v26/ic_launcher.xml. If it still points at a
+    .png, the manifest was not changed.
+-->
 <adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
-    <background android:drawable="@color/ic_launcher_background"/>
-    <foreground android:drawable="@mipmap/logo"/>
-    <monochrome android:drawable="@mipmap/logo"/>
+    <background android:drawable="@drawable/ic_launcher_bg_mhirex"/>
+    <foreground android:drawable="@drawable/ic_launcher_mark"/>
+    <monochrome android:drawable="@drawable/ic_launcher_mark"/>
 </adaptive-icon>

@@ -1,0 +1,9 @@
+<ul>
+  <li>Added Gujarati (ગુજરાતી) translation. Mhirex now ships in 18 languages.</li>
+  <li>Fixed "No Google account is available on this device" during sign-in. Sign-in now uses Google's button flow, which shows the full account chooser and works even when the account's "Sign in with Google" prompts are turned off or the device has no pre-authorised account.</li>
+  <li>Fixed sign-in reporting a successful login as an unexpected credential type, which would have rejected every account.</li>
+  <li>Signing out now also clears Google's credential state, so switching accounts works.</li>
+  <li>Added an app icon to the first-launch sign-in prompt and the startup welcome screen, and refreshed the About screen logo. The home-screen app icon is unchanged.</li>
+  <li>Fixed the profile card showing an empty frame instead of initials when the cached avatar could not be decoded.</li>
+  <li>Added a link to the Mhirex website on the About screen.</li>
+</ul>

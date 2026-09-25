@@ -45,7 +45,7 @@ export GRADLE_OPTS="-Djava.net.preferIPv4Stack=true"
 | Coroutines | Used heavily but **not declared** — arrives transitively via `lifecycle-viewmodel-ktx` |
 | CI | `ci.yml`: Java 17, `assembleDebug`, `lintDebug`, `testDebugUnitTest`, APK + lint artifacts, PR/issue commenting. **No instrumented tests, no static analysis, no coverage** |
 | License | MIT (© 2024 Tharun Birla) |
-| i18n | 17 locales, Weblate-managed |
+| i18n | 18 locales, Weblate-managed |
 
 ### 0.3 Existing architecture
 
@@ -532,9 +532,9 @@ ProjectStore
 
 ### 4.1 Rebrand to Mhirex
 
-- **Existing:** `app_name` = "LibreCuts" (16 locales; `values-zh-rCN` = 自由剪辑). 41 `package com.tharunbirla.librecuts` declarations, 6 `R` imports, 7 brand strings × 17 locales. `str_made_by_tharun_birla`, `str_github_sponsors`, `str_sponsor_project`. Fastlane metadata, README, `.github/FUNDING.yml`, AboutLibraries config.
+- **Existing:** `app_name` = "LibreCuts" (16 locales; `values-zh-rCN` = 自由剪辑). 41 `package com.tharunbirla.librecuts` declarations, 6 `R` imports, 7 brand strings × 18 locales. `str_made_by_tharun_birla`, `str_github_sponsors`, `str_sponsor_project`. Fastlane metadata, README, `.github/FUNDING.yml`, AboutLibraries config.
 - **Required changes:**
-  1. `app_name` → `Mhirex` in **all 17 locales** (delete the zh translated brand).
+  1. `app_name` → `Mhirex` in **all locales** (delete the zh translated brand).
   2. `str_downloads_librecuts` → `Downloads/Mhirex`; same for Movies/Music/Pictures defaults.
   3. New strings for About/credits that **keep** Tharun Birla's MIT attribution and add Mhirex's.
   4. Package rename `com.tharunbirla.librecuts` → `com.mhirex.editor` for **both** `namespace` and `applicationId`. (Originally scoped to `namespace` only — see AD-2.)
@@ -545,7 +545,7 @@ ProjectStore
 - **Data model:** `EditRecipe` gains `schemaVersion`; legacy `.lcprj` mapped through `LegacyProjectMigrator`.
 - **UI:** new adaptive launcher icon, splash colour, About screen with dual attribution.
 - **Performance:** n/a.
-- **Testing:** JVM test asserting all 17 locales resolve `app_name` to "Mhirex"; test that `.lcprj` still loads.
+- **Testing:** JVM test asserting all locales resolve `app_name` to "Mhirex"; test that `.lcprj` still loads.
 - **Dependencies:** none.
 - **Risks:** ⚠️ **`applicationId` change orphans existing user data** and breaks upgrade from LibreCuts. **Revised decision (supersedes the original, see AD-2):** `applicationId` is now `com.mhirex.editor`, matching the `namespace`. Accepted consequences: (a) Mhirex installs as a **separate app** from LibreCuts — no upgrade path, so LibreCuts users must reinstall and their saved projects/settings are unreachable; (b) any prior LibreCuts install is *not* replaced, so both apps coexist; (c) the F-Droid/Obtainium/Play listings and Weblate project under `com.tharunbirla.librecuts` no longer track Mhirex and need new listings. Gained: a package id Mhirex actually owns, which is a **prerequisite for Play Store publication** — only the package owner can publish to it. If in-place LibreCuts upgrade is later judged more valuable than owning the id, a data-import migration must be built before switching back. This is recorded in §9.
 - **Acceptance:** app label reads Mhirex in all locales; no obsolete LibreCuts product-name string remains in user-visible UI, while the required upstream attribution is preserved; MIT attribution present in LICENSE + NOTICE + About; app builds and a LibreCuts `.lcprj` opens.
@@ -1029,7 +1029,7 @@ Incremental, buildable at every step. Each stage ships working software.
 
 | Stage | Content | Gate |
 |---|---|---|
-| **0 — Rebrand + P0 fixes** | App name → Mhirex in 17 locales; package/namespace → `com.mhirex.editor`; NOTICE/ASSETS.md; About screen with dual attribution; GPL-3.0 disclosure; delete dead code; declare coroutines explicitly; fix the "always true" branches; fix deprecated Intent/clip APIs. **Plus all six P0 defects (§0.9): P0-1 no-op export on API 29+, P0-2 audio-only-as-mp3, P0-3 speed+reverse duration corruption, P0-4 hardcoded `.mp4` temp extension, P0-5 font alias not path, P0-6 `IS_PENDING` on MediaStore.** Also P1-7 (ANR), P1-8 (cancel-as-failure), P1-9 (session leak), P1-11 (temp cleanup), P1-12 (global cancel), SEC-31 | Builds; all locales say Mhirex; legacy `.lcprj` still opens; **no-op save works on Android 10+**; text/subtitles render in export; no temp files leak on any failure path |
+| **0 — Rebrand + P0 fixes** | App name → Mhirex in all locales; package/namespace → `com.mhirex.editor`; NOTICE/ASSETS.md; About screen with dual attribution; GPL-3.0 disclosure; delete dead code; declare coroutines explicitly; fix the "always true" branches; fix deprecated Intent/clip APIs. **Plus all six P0 defects (§0.9): P0-1 no-op export on API 29+, P0-2 audio-only-as-mp3, P0-3 speed+reverse duration corruption, P0-4 hardcoded `.mp4` temp extension, P0-5 font alias not path, P0-6 `IS_PENDING` on MediaStore.** Also P1-7 (ANR), P1-8 (cancel-as-failure), P1-9 (session leak), P1-11 (temp cleanup), P1-12 (global cancel), SEC-31 | Builds; all locales say Mhirex; legacy `.lcprj` still opens; **no-op save works on Android 10+**; text/subtitles render in export; no temp files leak on any failure path |
 | **0.5 — Export quality** | P3-18 `+faststart`, P3-19 no-upscale guard, P3-17 unified rate control, P3-20 parameter-based retry, P3-21 correct progress total, P3-22 `LC-202` mapping, P3-26 warn on unknown transition | Exported MP4s stream progressively; 480p→2160p is refused or clamped; hardware and software exports documented and consistent |
 | **1 — Foundations** | `core/` primitives (Timebase, Rational, Result, Easing); `ui/` design system (Mhirex tokens, components); architecture test enforcing layer dependencies | Unit tests green; lint green |
 | **2 — Project v2** | `Project`/`Track`/`Clip`; `schemaVersion` + migrations; `ProjectStore` with atomic writes and recovery; `LegacyProjectMigrator` | Migrator fixture tests pass; crash-recovery tests pass |
@@ -1047,7 +1047,7 @@ Incremental, buildable at every step. Each stage ships working software.
 | **14 — Hardening** | Accessibility pass; error handling pass; performance tuning on physical mid-range hardware; Macrobenchmark | Accessibility scanner clean; no ANR; budgets met |
 | **15 — Release** | `ASSETS.md` complete; licence compliance audited; store metadata rebranded; changelog; F-Droid/Obtainium metadata | Legal checklist (§6) signed off |
 
-**Explicitly deferred:** AI tools (§4.23), `media3-transformer` export path, HEVC/HDR, multi-device sync, i18n expansion beyond the inherited 17 locales.
+**Explicitly deferred:** AI tools (§4.23), `media3-transformer` export path, HEVC/HDR, multi-device sync, i18n expansion beyond the inherited locales.
 
 ---
 

@@ -37,10 +37,15 @@
     -->
     <string name="str_signin_terms">Mhirex requests your name, email address and profile photo. Nothing is uploaded, synced or shared with us, and no part of the editor requires an account.</string>
 
-    <!-- Errors -->
+    <!--
+        Errors. str_signin_error_no_account is deliberately actionable rather than a dead end: this
+        is almost always a device that has no Google account added, or accounts that need to
+        reauthenticate, and the fix is on the device rather than in the app. Needs human review per
+        locale, not machine translation.
+    -->
     <string name="str_signin_error_generic">Sign-in failed. Please try again.</string>
-    <string name="str_signin_error_no_account">No Google account is available on this device.</string>
-    <string name="str_signin_error_unavailable">Google Sign-In is not available on this device.</string>
+    <string name="str_signin_error_no_account">No Google account is available on this device. Add or re-authenticate a Google account in Android Settings, then try again.</string>
+    <string name="str_signin_error_unavailable">Google Sign-In is not available on this device. It needs Google Play services, which this device may not have.</string>
     <string name="str_signin_error_interrupted">Sign-in was interrupted. Please try again.</string>
     <string name="str_signin_error_unexpected_credential">Sign-in returned an unexpected response.</string>
 

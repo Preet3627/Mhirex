@@ -119,6 +119,13 @@
     <string name="str_mhirex_based_on">Based on LibreCuts by Tharun Birla · MIT License</string>
     <string name="str_star_on_github">Star on GitHub</string>
     <string name="str_report_a_bug">Report a Bug</string>
+    <!--
+        Website link. The host itself is not shown: the app already says "Mhirex" everywhere, so
+        repeating mhirex.vercel.app in the button label would be noise. The URL itself lives in
+        Branding.WEBSITE_URL so it stays a single source of truth, which is why Branding exists.
+    -->
+    <string name="str_visit_website">Visit Website</string>
+    <string name="str_website_about">About Mhirex, features and downloads</string>
     <string name="str_sponsor_project">Sponsor Project</string>
     <string name="str_made_by_tharun_birla">Made by Tharun Birla</string>
     <string name="str_fade_in">Fade In</string>

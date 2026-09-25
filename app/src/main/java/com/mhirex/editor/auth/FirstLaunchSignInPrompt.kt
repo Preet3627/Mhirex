@@ -5,7 +5,7 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.mhirex.editor.R
-import com.mhirex.editor.databinding.ActivitySettingsProfileBinding
+import com.mhirex.editor.databinding.DialogSignInBinding
 import kotlinx.coroutines.CoroutineScope
 
 /**
@@ -43,10 +43,11 @@ object FirstLaunchSignInPrompt {
         // would re-show it forever.
         prefs.edit().putBoolean(KEY_PROMPT_SHOWN, true).apply()
 
-        // The dialog hosts a full profile card, so it inflates the same layout the Settings tab uses.
-        // One layout means the prompt and the settings entry cannot disagree about copy or behaviour.
-        val binding = ActivitySettingsProfileBinding.inflate(activity.layoutInflater)
-        val binder = ProfileBinder(activity, binding)
+        // The dialog is its own layout, dialog_sign_in.xml, so the brand mark appears above the card
+        // here but not in the Settings tab. The card itself is included rather than copied, so the
+        // prompt and the Settings entry cannot disagree about copy or behaviour.
+        val binding = DialogSignInBinding.inflate(activity.layoutInflater)
+        val binder = ProfileBinder(activity, binding.layoutProfile)
         binder.attach(scope)
 
         // The card inside a dialog already offers sign-in, so the dialog needs no extra buttons: the

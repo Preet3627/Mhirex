@@ -50,3 +50,8 @@ app/google-services*.json
 
 # Android Profiling
 *.hprof
+
+# Signed release APKs staged by tools/sign-release.sh. *.apk above already covers them, but the
+# directory is listed so `git status` stays quiet after a release build and nobody is tempted to
+# force-add a signed binary to a commit.
+dist/

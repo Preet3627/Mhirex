@@ -6,8 +6,10 @@ not treated as freely licensed merely because it is present in the repository.
 
 | Asset | Use | Provenance / licence status |
 |---|---|---|
-| `logo.png` | Mhirex launcher, About card, onboarding, README, and derived store graphics | Supplied for the Mhirex rebrand by the project owner. Confirm the owner's distribution terms before release. |
-| `app/src/main/res/mipmap-nodpi/logo.png` | Android launcher and in-app logo | Exact copy of the supplied `logo.png`; no third-party artwork added. |
+| `logo.png` | Android launcher icon source, and the source for the Play listing below | Supplied for the Mhirex rebrand by the project owner. Confirm the owner's distribution terms before release. |
+| `app/src/main/res/mipmap-nodpi/logo.png` | Android launcher icon (still the shipped home-screen icon) | Exact copy of the supplied `logo.png`; no third-party artwork added. |
+| `app/src/main/res/drawable-nodpi/brand_logo.png` | About card, startup welcome, and sign-in dialog | Current Mhirex mark, supplied by the project owner as a 1254 px RGBA and cropped to its alpha bounds at 512x511. Replaces `logo.png` in the in-app UI; the launcher icon above was deliberately left on the older mark. |
+| `src/images/logo_readme_light.png`, `src/images/logo_readme_dark.png` | README wordmark | Derived from the mark above by this project: alpha-bbox cropped, scaled to 62.5% of a 512 px canvas. The light variant adds a `#111114` rounded tile (from `values/colors.xml` `colorSurface`) because the mark is white on transparent and would be invisible on GitHub's white page. No third-party artwork added. |
 | `app/src/main/ic_launcher-playstore.png` | Play Store icon | Resized derivative of `logo.png`; no additional artwork. |
 | `fastlane/metadata/android/en-US/images/icon.png` | Play Store icon | 512 px resized derivative of `logo.png`; no additional artwork. |
 | `fastlane/metadata/android/en-US/images/featureGraphic.png` | Play feature graphic | Neutral background with a centered derivative of `logo.png`; created for this rebrand. |
@@ -16,7 +18,7 @@ not treated as freely licensed merely because it is present in the repository.
 | `app/src/main/res/raw/film.json` | Loading-screen Lottie animation | Upstream LibreCuts asset. Its exact separate licence/provenance has not been independently verified; retain the upstream MIT notice and audit before release. |
 | `app/src/main/res/drawable/filter_preview_*.jpg` | Filter picker previews | Origin and licence have not been established. **Release blocker:** regenerate or replace with project-owned artwork, or document the applicable licence and attribution. |
 | `app/src/main/res/drawable/trans_preview_*.webp` | Transition picker previews | Origin and licence have not been established. **Release blocker:** regenerate or replace with project-owned artwork, or document the applicable licence and attribution. |
-| `src/images/sc_*.png` and upstream badge images | README/store presentation | Upstream LibreCuts assets. Retain upstream attribution and verify their redistribution terms before release. |
+| `src/images/sc_*.png` and the remaining badge images | README/store presentation | Upstream LibreCuts assets. Retain upstream attribution and verify their redistribution terms before release. `badge_obtainium.png` and `badge_discord.png` were deleted with their README badges: both pointed at third-party/upstream destinations (an unaffiliated install redirect, and LibreCuts' own Discord) rather than anything Mhirex owns. |
 | `app/src/main/res/drawable-nodpi/ig_idea.jpg` | About screen and startup welcome profile photo | Public Instagram profile image for `@_fivetriple.8_`, used at the profile owner's request; image rights remain with the profile owner. |
 | `app/src/main/res/drawable-nodpi/ig_mehul.jpg` | About screen and startup welcome profile photo | Public Instagram profile image for `@il__mehul_patel__li`, used with the account owner's attribution; image rights remain with the profile owner. |
 | `app/src/main/res/drawable/ic_instagram_24.xml` | Instagram link badge | Original vector recreation of the familiar Instagram camera outline; no copied raster artwork. |

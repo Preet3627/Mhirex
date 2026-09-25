@@ -1,7 +1,27 @@
 # Mhirex
 
 <div align="center">
-  <img src="logo.png" alt="Mhirex logo" width="180"/>
+  <!--
+      Two variants of the same mark, swapped by the reader's GitHub colour scheme.
+
+      The mark itself is white on transparent, which is correct for the app (it always sits on a dark
+      surface) but would be invisible on GitHub's default white page. So the light variant carries a
+      dark tile for the mark to read against, and the dark variant stays transparent because white
+      already reads on GitHub's dark page. Measured contrast: 18.06:1 mark-on-tile, 18.85:1
+      tile-on-white-page, 18.33:1 mark-on-dark-page, against a 3:1 floor for graphics.
+
+      Both are 512x512 with the mark at 320px (62.5%, the launcher-icon safe zone) so the mark renders
+      at the same size from the shared width="180" in either theme.
+
+      Root logo.png is NOT used here. It is the older opaque black-square mark, and it is still the
+      source for the launcher icon and the Play listing, so overwriting it would change the shipped
+      icon. See ASSETS.md.
+  -->
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="src/images/logo_readme_dark.png" />
+    <source media="(prefers-color-scheme: light)" srcset="src/images/logo_readme_light.png" />
+    <img src="src/images/logo_readme_light.png" alt="Mhirex logo" width="180"/>
+  </picture>
   <br/>
   <br/>
   <br/>
@@ -12,6 +32,9 @@
   <a href="LICENSE">
     <img src="https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge" height="35" alt="License" />
   </a>
+  <a href="https://github.com/Preet3627/Mhirex/graphs/contributors">
+    <img src="https://img.shields.io/github/contributors/Preet3627/Mhirex?style=for-the-badge&label=Contributors&color=ff2a6d" height="35" alt="Contributors" />
+  </a>
   <br/>
   <br/>
   <a href="https://github.com/Preet3627/Mhirex/releases/latest">
@@ -20,15 +43,33 @@
   <!-- F-Droid badge removed: Mhirex's applicationId is com.mhirex.editor, so the existing
        com.tharunbirla.librecuts F-Droid listing tracks LibreCuts, not Mhirex. Re-add the badge
        once Mhirex has its own F-Droid metadata (f-droid.toml + build metadata under this id). -->
-  <a href="https://apps.obtainium.imranr.dev/redirect?r=obtainium://add/https://github.com/Preet3627/Mhirex">
-    <img src="src/images/badges/badge_obtainium.png" height="96" alt="Get it on Obtainium" />
-  </a>
-  <a href="https://discord.gg/gwr3nE7YW">
-    <img src="src/images/badges/badge_discord.png" height="96" alt="Join Discord" />
-  </a>
+  <!-- Obtainium badge removed: it is a third-party install redirect, and it deep-links through
+       apps.obtainium.imranr.dev with our repo URL in the query string. That sends every tap
+       through an unaffiliated host, which is the wrong default for a project asking people to
+       sideload a build. Install from GitHub Releases (above) instead, which is the copy we sign. -->
+  <!-- Discord badge removed: no Mhirex-owned Discord exists. discord.gg/gwr3nE7YW is LibreCuts'
+       invite, so the badge was sending readers to the upstream project's community. Branding.DISCORD_INVITE
+       still holds that URL and is likewise unused by the app; drop both together if Discord is
+       coming back under a Mhirex invite. -->
   <!-- Weblate badge removed: hosted.weblate.org/engage/librecuts renders "LibreCuts" and counts
        the upstream translation project, not Mhirex. See "Translations" below for how to help
        until Mhirex has a translation project of its own. -->
+
+  <a href="https://github.com/Preet3627/Mhirex/graphs/contributors">
+    <img src="https://contrib.rocks/image?repo=Preet3627/Mhirex" alt="Mhirex contributors" />
+  </a>
+  <br/>
+  <sub>
+    <!--
+        contrib.rocks draws from the GitHub contributors API for this repository, which today is
+        20 people who are all LibreCuts upstream contributors -- tharunbirla first, with 210
+        contributions. That is the honest history of this repository, and MIT attribution wants those
+        names visible, but it is not a list of Mhirex contributors and the README must not imply it
+        is. Mhirex's own work on top of the fork point is a small minority of the 279 commits
+        reachable from HEAD. Replace or drop this strip once that ratio changes.
+    -->
+    Contributed to Mhirex and its LibreCuts foundation &mdash; thank you.
+  </sub>
 </div>
 
 <br/>
@@ -156,7 +197,7 @@ Exports are published through Android MediaStore or a user-selected SAF folder; 
 
 ## 🌍 Translations
 
-Mhirex ships with 17 languages today. Those translations were inherited from the LibreCuts community when the project was forked, so some strings still carry upstream wording.
+Mhirex ships with 18 languages today. Gujarati was added in Mhirex; the rest were inherited from the LibreCuts community when the project was forked, so some strings still carry upstream wording.
 
 **Mhirex does not have its own translation project yet**, so there is no translation platform badge to link to — a LibreCuts one would count a different project and send contributors to the wrong place. Until Mhirex's own project exists:
 

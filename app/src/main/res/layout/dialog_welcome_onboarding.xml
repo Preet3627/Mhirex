@@ -54,12 +54,22 @@
                     android:background="@drawable/bg_about_logo_halo"
                     android:padding="10dp">
 
+                    <!--
+                        40dp, not match_parent. The previous logo was an opaque black square whose
+                        mark occupied 57% of its width, so it read as roughly 39dp inside this 68dp
+                        content box. brand_logo is a tightly cropped transparent mark, so
+                        match_parent would render it at the full 68dp and grow the visible logo by
+                        about 3x against the halo. Sized to the old mark's optical weight, the same
+                        reasoning as the About card.
+                    -->
                     <ImageView
                         android:id="@+id/ivOnboardingLogo"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center"
                         android:contentDescription="@string/app_name"
-                        android:src="@mipmap/logo" />
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/brand_logo" />
                 </FrameLayout>
 
                 <TextView

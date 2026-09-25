@@ -110,6 +110,20 @@ class ProfileBinder(
                     binding.ivProfilePhoto.setImageBitmap(bitmap)
                     binding.ivProfilePhoto.visibility = View.VISIBLE
                     binding.tvProfileInitials.visibility = View.GONE
+                } else if (!UserProfileStore.isSignedIn(context)) {
+                    // Signed out mid-decode: renderSignedOut() already hid the photo, and a stale
+                    // bitmap must never be attached now.
+                    binding.ivProfilePhoto.setImageDrawable(null)
+                } else {
+                    // Signed in, but the avatar could not be decoded. renderSignedIn() only made the
+                    // photo view visible because the file existed when the store checked, so without
+                    // this branch a truncated or corrupt cache entry would leave an empty frame over
+                    // the initials -- exactly what the fallback in renderSignedIn() exists to avoid.
+                    // AvatarCache.load() has already deleted the bad file, so the next render() will
+                    // see no cached photo and take the initials path directly.
+                    binding.ivProfilePhoto.setImageDrawable(null)
+                    binding.ivProfilePhoto.visibility = View.GONE
+                    binding.tvProfileInitials.visibility = View.VISIBLE
                 }
             }
         }

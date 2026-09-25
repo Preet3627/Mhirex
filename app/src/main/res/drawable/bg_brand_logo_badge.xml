@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Circular badge behind the brand mark.
+
+    brand_logo is a white mark on a fully transparent background (0% non-white pixels). The previous
+    logo shipped with its own black backdrop baked into the PNG; this badge replaces that baked-in
+    square so the mark keeps the same contrast it had before without carrying an opaque rectangle.
+
+    The fill is a near-black surface rather than transparent, so the white mark reads correctly no
+    matter which surface the dialog is drawn over. A 1dp outlineVariant stroke keeps the badge edge
+    visible against the Material dark dialog surface, which is only a few shades lighter than the
+    fill.
+-->
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="oval">
+    <solid android:color="@color/surfaceContainerLowest" />
+    <stroke
+        android:width="1dp"
+        android:color="@color/outlineVariant" />
+</shape>

@@ -73,6 +73,18 @@ object Branding {
 
     const val DISCORD_INVITE = "https://discord.gg/gwr3nE7YW"
 
+    /**
+     * Mhirex's public website.
+     *
+     * Served from Vercel, not from GitHub Pages, so it can exist without a `gh-pages` branch and
+     * without the app's release notes and source sitting in the same place. Kept as a bare host with
+     * no trailing slash so it composes with path segments the same way [REPO_URL] does.
+     *
+     * The site is a separate deployment and can go down or be replaced independently of a release, so
+     * nothing in the app should depend on it for core function. Every entry point is informational.
+     */
+    const val WEBSITE_URL = "https://mhirex.vercel.app"
+
     // ------------------------------------------------------------------- storage
 
     /**

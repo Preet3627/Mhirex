@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+    Round variant of the adaptive launcher icon. NOT CURRENTLY IN USE: see ic_launcher.xml, which
+    explains that the manifest points at the legacy raster and that themed icons are therefore
+    inactive in the current build.
+
+    The layers are identical to the square variant on purpose: Android applies the launcher's own
+    circular mask, so separate artwork here would only duplicate the same pixels.
+-->
 <adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
-    <background android:drawable="@color/ic_launcher_background"/>
-    <foreground android:drawable="@mipmap/logo"/>
-    <monochrome android:drawable="@mipmap/logo"/>
+    <background android:drawable="@drawable/ic_launcher_bg_mhirex"/>
+    <foreground android:drawable="@drawable/ic_launcher_mark"/>
+    <monochrome android:drawable="@drawable/ic_launcher_mark"/>
 </adaptive-icon>

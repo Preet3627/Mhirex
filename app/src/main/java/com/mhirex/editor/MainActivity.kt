@@ -277,6 +277,13 @@ class MainActivity : AppCompatActivity() {
         binding.btnReportBug.setBounceClickListener {
             openUrl(Branding.REPO_ISSUES)
         }
+        // The website is a separate Vercel deployment, so it is the one link here that can be down
+        // while the app itself works fine. openUrl only reports failure when no installed app can
+        // handle ACTION_VIEW at all; if the site is merely unreachable, the browser opens normally
+        // and shows its own error page, which is the right place for that message.
+        binding.btnWebsite.setBounceClickListener {
+            openUrl(Branding.WEBSITE_URL)
+        }
         binding.layoutIdeaInstagram.setBounceClickListener {
             openUrl(Branding.INSTAGRAM_IDEA_URL)
         }

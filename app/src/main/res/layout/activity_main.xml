@@ -644,12 +644,22 @@
                         android:background="@drawable/bg_about_logo_halo"
                         android:padding="13dp">
 
+                        <!--
+                            Fixed 46dp rather than match_parent: the previous logo was an opaque
+                            870px black square whose mark occupied 57% of its width, so it read as
+                            roughly 45dp inside this 78dp slot. brand_logo is a tightly cropped
+                            transparent mark, so match_parent would render it at the full 78dp and
+                            grow the visible logo by about 3.5x, pushing it out past the halo ring.
+                            Sizing it to the old mark's optical weight keeps the About card stable.
+                        -->
                         <ImageView
                             android:id="@+id/aboutHeroLogo"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
+                            android:layout_width="46dp"
+                            android:layout_height="46dp"
+                            android:layout_gravity="center"
                             android:contentDescription="@string/app_name"
-                            android:src="@mipmap/logo" />
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/brand_logo" />
                     </FrameLayout>
 
                     <TextView
@@ -944,6 +954,33 @@
                         app:icon="@drawable/ic_bug_24"
                         app:iconGravity="textStart"
                         app:iconTint="@color/vibrantCyan"
+                        app:strokeColor="#6685F6FF"
+                        app:strokeWidth="1dp" />
+
+                    <!--
+                        Third action in the support card, styled as an outline button like the bug
+                        report above so the two secondary actions read as a pair and "Star on GitHub"
+                        stays the single filled call to action. Ordered last on purpose: it is the most
+                        optional of the three, and the one most likely to be unreachable if the site
+                        is down.
+                    -->
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnWebsite"
+                        android:layout_width="match_parent"
+                        android:layout_height="54dp"
+                        android:layout_marginTop="10dp"
+                        android:backgroundTint="#331B2440"
+                        android:contentDescription="@string/str_website_about"
+                        android:fontFamily="sans-serif-medium"
+                        android:insetBottom="0dp"
+                        android:insetTop="0dp"
+                        android:text="@string/str_visit_website"
+                        android:textColor="@color/textColor"
+                        android:textSize="14sp"
+                        app:cornerRadius="16dp"
+                        app:icon="@drawable/ic_public_24"
+                        app:iconGravity="textStart"
+                        app:iconTint="@color/vibrantPink"
                         app:strokeColor="#6685F6FF"
                         app:strokeWidth="1dp" />
                 </LinearLayout>
