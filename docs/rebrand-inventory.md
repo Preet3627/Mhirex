@@ -58,9 +58,11 @@ Android resolves these by reflection, so a stale FQCN compiles cleanly and then 
 
 ---
 
-## 3. Brand strings — 8 keys × 17 locales
+## 3. Brand strings — 8 keys × 17 locales (7 after the 0.16 string deletions)
 
-Source of truth: `res/values/strings.xml`. All 8 keys are present there.
+Source of truth: `res/values/strings.xml`. All 8 keys were present there; `str_help_translate` was
+since deleted, so 7 remain. The audit below is the pre-deletion state and is kept as the record of
+what each locale inherited.
 
 | Key | Current value | Action |
 |---|---|---|
@@ -70,7 +72,7 @@ Source of truth: `res/values/strings.xml`. All 8 keys are present there.
 | `str_default_music_librecuts` | `Default (Music/LibreCuts)` | → `…/Mhirex`, key → `str_default_music_mhirex` |
 | `str_default_pictures_librecuts` | `Default (Pictures/LibreCuts)` | → `…/Mhirex`, key → `str_default_pictures_mhirex` |
 | `str_librecuts_is_open_source_help` | "LibreCuts is open source…" | rebrand, key → `str_mhirex_is_open_source_help` |
-| `str_help_translate` | `Translate LibreCuts` | rebrand to `Translate Mhirex`; key remains stable for now |
+| `str_help_translate` | `Translate LibreCuts` | **Deleted** with `str_contribute_translations_on_weblate`, `str_troubleshooting_amp_wiki_guide` and `str_if_you_encounter_any_export_is` in task 0.16 — all four were unreferenced after the About rewrite and all four pointed at LibreCuts destinations. Re-add with a Mhirex translation project |
 | `str_made_by_tharun_birla` | "Made by Tharun Birla" | **KEEP** — MIT attribution is mandatory. The additive `str_mhirex_based_on` line credits LibreCuts alongside it. |
 
 ### Locale completeness audit (17 dirs)
@@ -78,20 +80,20 @@ Source of truth: `res/values/strings.xml`. All 8 keys are present there.
 | Locale | `app_name` value | Notes |
 |---|---|---|
 | `values` (default) | `LibreCuts` | source of truth |
-| `values-ar` | `LibreCuts` | all 8 present |
-| `values-cs` | `LibreCuts` | all 8 present |
-| `values-de` | `LibreCuts` | all 8 present |
+| `values-ar` | `LibreCuts` | all 8 present (7 now) |
+| `values-cs` | `LibreCuts` | all 8 present (7 now) |
+| `values-de` | `LibreCuts` | all 8 present (7 now) |
 | `values-el` | *absent* | only 4 unrelated strings; falls back to default — will correctly resolve to `Mhirex` |
 | `values-es` | `libreCuts` ⚠️ | lowercase-l typo upstream; also missing 3 keys, falls back |
-| `values-et` | `LibreCuts` | all 8 present |
-| `values-hi` | `LibreCuts` | all 8 present |
-| `values-in` | `LibreCuts` | all 8 present |
-| `values-it` | `LibreCuts` | all 8 present |
-| `values-nl` | `LibreCuts` | all 8 present |
-| `values-pt-rBR` | `LibreCuts` | missing `str_help_translate`, falls back |
-| `values-ru` | `LibreCuts` | all 8 present |
-| `values-sk` | `LibreCuts` | all 8 present |
-| `values-ta` | `LibreCuts` | all 8 present |
+| `values-et` | `LibreCuts` | all 8 present (7 now) |
+| `values-hi` | `LibreCuts` | all 8 present (7 now) |
+| `values-in` | `LibreCuts` | all 8 present (7 now) |
+| `values-it` | `LibreCuts` | all 8 present (7 now) |
+| `values-nl` | `LibreCuts` | all 8 present (7 now) |
+| `values-pt-rBR` | `LibreCuts` | was missing `str_help_translate`; the key is deleted anyway |
+| `values-ru` | `LibreCuts` | all 8 present (7 now) |
+| `values-sk` | `LibreCuts` | all 8 present (7 now) |
+| `values-ta` | `LibreCuts` | all 8 present (7 now) |
 | `values-tr` | `LibreCuts` | missing 3 keys, falls back |
 | `values-zh-rCN` | `自由剪辑` ⚠️ | **translated brand** — must be replaced with the Latin `Mhirex` |
 

@@ -241,6 +241,15 @@
                     android:layout_marginBottom="12dp" />
 
                 <!-- App Language Setting -->
+                <!--
+                    Profile (Google Sign-In), shown above the General card. The include carries an
+                    id, so ViewBinding generates a typed ActivitySettingsProfileBinding field for
+                    it on ActivityMainBinding, giving ProfileBinder access to the card's children.
+                -->
+                <include
+                    android:id="@+id/layoutProfile"
+                    layout="@layout/activity_settings_profile" />
+
                 <LinearLayout
                     android:id="@+id/btnChangeLanguage"
                     android:layout_width="match_parent"

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Circular container for the profile avatar.
+
+    Two layers: a solid primary fill so the initials are always readable, with a clip applied by the
+    ShapeableImageView's shapeAppearanceOverlay in the layout. The tint is deliberately not
+    colorOnPrimary-dependent on the initials, so the avatar reads correctly in both themes.
+-->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape android:shape="oval">
+            <solid android:color="@color/colorPrimary" />
+        </shape>
+    </item>
+</layer-list>

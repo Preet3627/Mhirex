@@ -5,6 +5,16 @@ plugins {
 
 apply plugin: 'com.mikepenz.aboutlibraries.plugin'
 
+// Google Services / Firebase.
+//
+// Requires app/google-services.json to exist, which is gitignored and therefore absent from a clean
+// checkout. The plugin fails the build when the file is missing, so it is applied conditionally: CI
+// and any contributor without Firebase credentials still get a working build, and Sign-In reports a
+// clear "not configured" state at runtime instead of a build break.
+if (file('google-services.json').exists()) {
+    apply plugin: 'com.google.gms.google-services'
+}
+
 aboutLibraries {
     excludeFields = ["generated"]
 }
@@ -26,7 +36,7 @@ android {
         minSdk 26
         targetSdk 34
         versionCode project.hasProperty('versionCode') ? project.property('versionCode').toInteger() : 10
-        versionName "1.0-beta7"
+        versionName "1.0-beta8"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
@@ -101,6 +111,21 @@ dependencies {
     // behaviourally and only makes the existing contract explicit.
     implementation(platform("org.jetbrains.kotlinx:kotlinx-coroutines-bom:1.8.1"))
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android'
+
+    // Google Sign-In via Credential Manager.
+    //
+    // The legacy `play-services-auth` GoogleSignInClient API is deprecated; Credential Manager is the
+    // supported path and is what the AndroidX migration guide prescribes. `googleid` provides the
+    // Google identity provider that the credential manager resolves against.
+    //
+    // These need an OAuth 2.0 *web* client ID registered for com.mhirex.editor. A Firebase
+    // `google-services.json` alone is NOT sufficient: it carries only the API key and app ID, whereas
+    // the web client ID (`*.apps.googleusercontent.com`) is what actually authorises the ID token.
+    // The client ID is injected as a string resource so it can be swapped per build flavour without
+    // touching Kotlin -- see res/values/google_sign_in.xml.
+    implementation 'androidx.credentials:credentials:1.3.0'
+    implementation 'androidx.credentials:credentials-play-services-auth:1.3.0'
+    implementation 'com.google.android.libraries.identity.googleid:googleid:1.1.1'
 
     implementation 'com.google.android.material:material:1.9.0'
     implementation 'com.airbnb.android:lottie:3.4.0'

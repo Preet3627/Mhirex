@@ -35,6 +35,25 @@
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE_DATA_SYNC" />
 
+    <!--
+        Added for the Google Sign-In profile feature, and it is a meaningful change for this app:
+        Mhirex previously had NO network permission at all, which is a genuine privacy property,
+        the editor cannot phone home because it has no way to open a socket.
+
+        It is now used for exactly two things:
+          1. Credential Manager's Google account chooser, which is a system UI handoff.
+          2. Downloading the profile photo from lh3.googleusercontent.com, cached locally.
+
+        Video, audio and image processing are still entirely on-device via ffmpeg-kit; no project
+        media is ever sent over the network. The About screen's privacy claim should be read as
+        "your media never leaves the device", not "the app makes no network requests".
+
+        Trade-off worth stating: adding INTERNET means the guarantee is now enforced by review and
+        code inspection rather than by the absence of a permission. AuditTrail / Network Security
+        Config are not used here.
+    -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <!-- Remove network permission injected by ExoPlayer dependency -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" tools:node="remove" />
 

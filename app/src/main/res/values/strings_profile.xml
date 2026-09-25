@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Google Sign-In strings.
+
+    Kept in a separate file rather than appended to strings.xml so the whole sign-in surface is one
+    reviewable unit: these strings are the only place the feature becomes user-visible, and a rebrand
+    or privacy-review pass needs to find them together.
+
+    Only values/ is provided. The other 16 locales fall back to English, which is the app's existing
+    behaviour for any string not yet translated (lint's MissingTranslation is disabled for exactly this
+    reason). Translations must not be machine-generated for legal text; see str_signin_terms, which
+    needs a human to check the wording per jurisdiction.
+-->
+<resources>
+
+    <!-- Profile card, shown at the top of the Settings tab -->
+    <string name="str_profile_title">Profile</string>
+    <string name="str_profile_signed_out">Not signed in</string>
+    <string name="str_profile_signed_out_desc">Sign in to show your name and photo across the app.</string>
+    <string name="str_profile_local_only_desc">Stored only on this device. Mhirex has no server and never uploads your profile.</string>
+    <string name="str_sign_in_with_google">Sign in with Google</string>
+    <string name="str_sign_out">Sign out</string>
+
+    <!--
+        Deliberately avoids the word "required". The copy tells the user what is optional, because a
+        first-launch prompt that reads as mandatory is both inaccurate (nothing is gated) and a
+        Play Store policy risk.
+    -->
+    <string name="str_signin_optional_title">Add your profile</string>
+    <string name="str_signin_optional_body">Sign in with Google to show your name and photo in Mhirex. This is completely optional, and your profile stays on this device only.</string>
+    <string name="str_signin_not_now">Not now</string>
+
+    <!--
+        Terms blurb. Must state the local-only, no-upload behaviour explicitly: a user granting an
+        OAuth scope reasonably assumes their data reaches a server, so silence here would be
+        misleading. Requires human review per locale, not machine translation.
+    -->
+    <string name="str_signin_terms">Mhirex requests your name, email address and profile photo. Nothing is uploaded, synced or shared with us, and no part of the editor requires an account.</string>
+
+    <!-- Errors -->
+    <string name="str_signin_error_generic">Sign-in failed. Please try again.</string>
+    <string name="str_signin_error_no_account">No Google account is available on this device.</string>
+    <string name="str_signin_error_unavailable">Google Sign-In is not available on this device.</string>
+    <string name="str_signin_error_interrupted">Sign-in was interrupted. Please try again.</string>
+    <string name="str_signin_error_unexpected_credential">Sign-in returned an unexpected response.</string>
+
+    <!--
+        Shown when default_web_client_id is empty. This is a developer misconfiguration, not a user
+        error, so the copy points at the build rather than telling the user to retry.
+    -->
+    <string name="str_signin_not_configured">Sign-in is not available in this build.</string>
+
+    <string name="str_signin_success">Signed in as %1$s</string>
+    <string name="str_signout_success">Signed out</string>
+
+    <!-- Accessibility -->
+    <string name="str_profile_photo_desc">Profile photo of %1$s</string>
+    <string name="str_profile_avatar_placeholder_desc">Profile initials</string>
+
+</resources>

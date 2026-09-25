@@ -41,6 +41,13 @@ import java.net.URL
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+
+    /**
+     * Binds the Settings profile card. Held as a field rather than a local so [switchTab] can
+     * re-render it when the Settings tab becomes visible, picking up a profile change made in the
+     * first-launch dialog.
+     */
+    private lateinit var profileBinder: com.mhirex.editor.auth.ProfileBinder
     private var aboutAmbientAnimator: Animator? = null
     private val selectVideoLauncher =
         registerForActivityResult(ActivityResultContracts.OpenDocument()) { uri: Uri? ->
@@ -168,6 +175,18 @@ class MainActivity : AppCompatActivity() {
             switchTab(2)
         }
         
+        // Google Sign-In profile card, bound once and re-rendered on tab switch so a sign-in or
+        // sign-out performed in the first-launch dialog is reflected immediately.
+        //
+        // The include already has an id, so ViewBinding generates a typed
+        // ActivitySettingsProfileBinding field for it on ActivityMainBinding; the typed children
+        // (btnSignInWithGoogle, tvProfileName, ...) come along with it, so no bind() call is needed.
+        profileBinder = com.mhirex.editor.auth.ProfileBinder(this, binding.layoutProfile)
+            .also { it.attach(lifecycleScope) }
+
+        // Optional first-launch prompt. Shown at most once, and never blocks the editor.
+        com.mhirex.editor.auth.FirstLaunchSignInPrompt.maybeShow(this, lifecycleScope)
+
         // Setup Settings Actions
         binding.btnChangeExportFolder.setBounceClickListener {
             selectFolderLauncher.launch(null)
@@ -514,6 +533,9 @@ class MainActivity : AppCompatActivity() {
                 binding.tabSettings.background = activeBg
                 binding.ivSettings.setColorFilter(activeColor)
                 binding.tvSettingsLabel.setTextColor(activeColor)
+                // Re-render on entry so the card reflects a sign-in or sign-out performed elsewhere,
+                // e.g. in the first-launch dialog, without a cross-component invalidation channel.
+                if (::profileBinder.isInitialized) profileBinder.render()
             }
             2 -> {
                 binding.layoutAboutContent.visibility = View.VISIBLE

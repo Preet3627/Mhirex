@@ -162,7 +162,7 @@ Mhirex ships with 17 languages today. Those translations were inherited from the
 
 - Translate or correct strings by editing the relevant `app/src/main/res/values-<locale>/strings.xml` and opening a pull request.
 - Not sure which string needs work? Open an issue describing what reads wrong and in which language.
-- The in-app "Translate Mhirex" entry still points at the LibreCuts Weblate project, so **do not send Mhirex strings there** — pull requests are the route for now.
+- The app deliberately has no translation link at all for now: an entry labelled "Translate Mhirex" could only point at the LibreCuts project and send you to the wrong place. Pull requests are the route until Mhirex's own project exists.
 
 ## 🔧 Troubleshooting & Support
 

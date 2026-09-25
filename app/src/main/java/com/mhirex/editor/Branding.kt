@@ -37,12 +37,22 @@ object Branding {
      * Upstream project. These links intentionally continue to point at
      * LibreCuts — the MIT copyright notice and the sponsor/attribution links
      * must remain resolvable. See [REPO_URL] for the Mhirex fork.
+     *
+     * They are attribution, not support destinations: every link a *user* is
+     * expected to follow for help must point at [REPO_ISSUES] or
+     * [DISCORD_INVITE] instead. See the note on the removed wiki constant below.
      */
     const val UPSTREAM_REPO = "https://github.com/tharunbirla/LibreCuts"
     const val UPSTREAM_SPONSOR = "https://github.com/sponsors/tharunbirla"
     const val UPSTREAM_ISSUES = "$UPSTREAM_REPO/issues"
     const val UPSTREAM_RELEASES = "$UPSTREAM_REPO/releases/latest"
-    const val UPSTREAM_WIKI_TROUBLESHOOTING = "$UPSTREAM_REPO/wiki/Error-Codes-&-Troubleshooting"
+
+    // Deleted: UPSTREAM_WIKI_TROUBLESHOOTING = "$UPSTREAM_REPO/wiki/Error-Codes-&-Troubleshooting"
+    // The LibreCuts wiki documents LibreCuts, not Mhirex, and the two can drift as Mhirex's
+    // error handling changes. It was never wired to a UI entry (the About screen rewrite in
+    // task 0.16 dropped it), so removing the constant is a pure deletion. Troubleshooting now
+    // routes to REPO_NEW_ISSUE via ErrorDisplayActivity, which prefills the error code and log.
+    // Do not re-add this without an equivalent Mhirex-owned page to point at.
 
     /** Mhirex's GitHub project. */
     const val REPO_URL = "https://github.com/Preet3627/Mhirex"
@@ -54,8 +64,12 @@ object Branding {
     const val INSTAGRAM_IDEA_URL = "https://www.instagram.com/_fivetriple.8_/"
     const val INSTAGRAM_MEHUL_URL = "https://www.instagram.com/il__mehul_patel__li/"
 
-    /** Upstream translation community, retained for existing attribution. */
-    const val WEBLATE = "https://hosted.weblate.org/engage/librecuts/"
+    // No WEBLATE constant. Mhirex has no translation project of its own, and the inherited
+    // project is hosted.weblate.org/engage/librecuts — an entry labelled "Translate Mhirex"
+    // pointing there sends contributors into the upstream project, and the Weblate badge
+    // renders "LibreCuts". Translations are therefore pull-request-only for now, which is what
+    // the README says. Re-add a translation platform link together with the matching string,
+    // in one change, when Mhirex's own project exists.
 
     const val DISCORD_INVITE = "https://discord.gg/gwr3nE7YW"
 

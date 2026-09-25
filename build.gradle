@@ -6,6 +6,9 @@ buildscript {
     }
     dependencies {
         classpath 'com.mikepenz.aboutlibraries.plugin:aboutlibraries-plugin:11.2.3'
+        // Supplies the `google-services` plugin, which reads app/google-services.json and
+        // generates the Firebase/Google resource values at build time.
+        classpath 'com.google.gms:google-services:4.4.2'
     }
 }
 

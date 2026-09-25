@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Profile card for the Settings tab.
+
+    One card with two states, swapped in code by ProfileBinder, rather than two layouts. That keeps a
+    single source of truth for the signed-out copy: showing "Not signed in" and offering the button in
+    separate views is how the two drift apart and a stale "signed in" label survives a sign-out.
+
+    The avatar is a FrameLayout so the cached photo and the initials TextView stack in one 56dp circle
+    with no extra layout node; exactly one of the two is visible at a time.
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res.android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/layoutProfileCard"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_hero_bento_secondary"
+    android:elevation="4dp"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="14dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="@string/str_profile_title"
+        android:textColor="@color/textColor"
+        android:textSize="16sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <FrameLayout
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:background="@drawable/bg_avatar_circle">
+
+            <!--
+                Shown when an avatar was downloaded. Visibility is controlled in code; scaleType
+                centerCrop is required because Google's URLs vary in aspect ratio and an uncropped
+                photo would distort the circular frame.
+            -->
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/ivProfilePhoto"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="@null"
+                android:scaleType="centerCrop"
+                android:visibility="gone"
+                app:shapeAppearanceOverlay="@style/ProfileImageShapeAppearance" />
+
+            <!-- Fallback when there is no photo, or the download failed. -->
+            <TextView
+                android:id="@+id/tvProfileInitials"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="@string/str_profile_avatar_placeholder_desc"
+                android:fontFamily="sans-serif-medium"
+                android:gravity="center"
+                android:textColor="@color/colorOnPrimary"
+                android:textSize="20sp" />
+
+            <ImageView
+                android:id="@+id/ivProfileIconSignedOut"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="@null"
+                android:padding="14dp"
+                android:src="@drawable/ic_account_24"
+                android:visibility="gone"
+                app:tint="@color/colorOnPrimary" />
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="14dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvProfileName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:fontFamily="sans-serif-medium"
+                android:maxLines="1"
+                android:text="@string/str_profile_signed_out"
+                android:textColor="@color/textColor"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tvProfileEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@string/str_profile_signed_out_desc"
+                android:textColor="@color/iconSecondary"
+                android:textSize="12sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!--
+        Signed-in only. States plainly that the profile is local, because a user who has just granted
+        an OAuth scope otherwise has no way to tell whether their data left the device.
+    -->
+    <TextView
+        android:id="@+id/tvProfileLocalOnly"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:lineSpacingMultiplier="1.2"
+        android:text="@string/str_profile_local_only_desc"
+        android:textColor="@color/iconSecondary"
+        android:textSize="11sp"
+        android:visibility="gone" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnSignInWithGoogle"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="sans-serif-medium"
+        android:insetBottom="0dp"
+        android:insetTop="0dp"
+        android:text="@string/str_sign_in_with_google"
+        android:textSize="14sp"
+        app:cornerRadius="14dp"
+        app:icon="@drawable/ic_account_24"
+        app:iconGravity="textStart"
+        app:iconTint="@color/colorOnPrimary" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnSignOut"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="sans-serif-medium"
+        android:insetBottom="0dp"
+        android:insetTop="0dp"
+        android:text="@string/str_sign_out"
+        android:textColor="@color/textColor"
+        android:textSize="14sp"
+        android:visibility="gone"
+        app:backgroundTint="@android:color/transparent"
+        app:cornerRadius="14dp"
+        app:strokeColor="@color/outlineVariant"
+        app:strokeWidth="1dp" />
+
+    <ProgressBar
+        android:id="@+id/progressSignIn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="16dp"
+        android:indeterminateTint="@color/colorPrimary"
+        android:visibility="gone" />
+
+</LinearLayout>

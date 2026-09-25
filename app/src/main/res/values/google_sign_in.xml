@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Google Sign-In configuration.
+
+    This OAuth 2.0 "web" client ID is what Google authenticates the user against. It is distinct from
+    the Firebase API key in google-services.json: the key identifies the Firebase project, whereas
+    this credential authorises the ID token. Credential Manager needs a server client ID, and only
+    a client of type "Web" (client_type 3) works; an "Android" client type does not.
+
+    It matches `client[].oauth_client[0].client_id` in app/google-services.json. Keep the two in sync:
+    rotating one without the other makes sign-in fail at runtime with a configuration error while the
+    build still succeeds, so there is no compile-time guard for this pairing.
+
+    google-services.json is gitignored, so this value is the one place the credential is recorded in
+    the repository. That is intentional and safe: an OAuth client ID is public by design. Its security
+    comes from the SHA-1 signing fingerprint and server-side verification of the ID token, not from
+    concealing the identifier. The Firebase API key is the same; it ships inside every release APK.
+
+    @see res/values/google_sign_in.xml, com.mhirex.editor.auth.GoogleSignInManager
+-->
+<resources>
+    <string name="default_web_client_id" translatable="false">444731751675-28prvlfdjuhshvn0shmebbpb02e03not.apps.googleusercontent.com</string>
+</resources>
