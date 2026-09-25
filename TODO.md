@@ -198,6 +198,7 @@ export GRADLE_OPTS="-Djava.net.preferIPv4Stack=true"                            
   * [ ] No temp files leak on induced failure
   * [ ] Verify on API 29 / 33 / 34 (only the `android-36.1` image is installed locally)
   * [ ] `ASSETS.md` complete
+  * **`v1.0-beta8` was cut and published on 2026-09-25 with the items above still open.** The tag pins `92f7707`; CI signed and published `Mhirex-{arm64-v8a,armeabi-v7a,x86_64}.apk`. The unchecked items below therefore shipped as **disclosed gaps in the release notes**, not as silent omissions: legacy `.lcprj` loading, text/subtitle render parity through a real export, temp-file cleanup on failure, and API 29/33/34 coverage. If any of them turns out to be user-visible, the honest fix is a follow-up release, not a docs edit.
   * **Blockers:**
   1. **GitHub repository is live at [`Preet3627/Mhirex`](https://github.com/Preet3627/Mhirex).** `Branding.REPO_URL`, issue links, README download links and the in-app Star action now target the new repository. `Branding.WEBLATE` is **gone** rather than repointed — it had no call site, and the only URL it could hold was the upstream LibreCuts project. Translations are pull-request-only until Mhirex has its own platform.
   2. **`filter_preview_*.jpg` and `trans_preview_*.webp` have no documented provenance.** Shipping them without a licence record is a release blocker; this is an audit task, not a code task.
