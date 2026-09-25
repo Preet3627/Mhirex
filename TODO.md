@@ -22,7 +22,7 @@ export GRADLE_OPTS="-Djava.net.preferIPv4Stack=true"                            
 * [x] **0.1 Inventory and freeze the rebrand surface**
   * [x] Record the 41 `package com.tharunbirla.librecuts` declarations (all `.kt`/`.java`) → `docs/rebrand-inventory.md` §1
   * [x] Record the 6 `com.tharunbirla.librecuts.R` imports → §1
-  * [x] Record the 7 brand strings in `values/strings.xml` × 17 locales → §3
+  * [x] Record the 7 brand strings in `values/strings.xml` × 18 locales → §3
   * [x] Record the `values-zh-rCN` translated brand (自由剪辑) that must be replaced with the Latin "Mhirex" → §3
   * [x] Record `fastlane/metadata/**`, `README.md`, `.github/FUNDING.yml`, `res/raw/film.json` → §6, §7
   * [x] Confirm `LICENSE` MIT notice and decide the exact `NOTICE` wording → §8 (wording decided; `NOTICE` file not yet written)
@@ -161,7 +161,7 @@ export GRADLE_OPTS="-Djava.net.preferIPv4Stack=true"                            
   * [x] Fix the "Condition is always `true`" at `VideoEditingViewModel.kt:1348` — `outputDuration` is provably non-null on the merge path, so the null check was dead. Simplified to an unconditional append, behaviour unchanged
   * [ ] **P1-14 — do NOT "fix" the third one blindly.** The always-true guard at `VideoEditingActivity.kt:8282` is not noise: the dead `else` branch (57 lines) is the **only** handler for mask keyframing on merged clips, and an earlier `?: return` makes it unreachable. Deleting it would cement a real bug; making it reachable is a behaviour change whose correctness is unverified. Recorded in `PLAN.md` §0.9 as P1-14; needs a device test of merge-clip masking first
   * [x] Add the explicit `kotlinx-coroutines` dependency to `app/build.gradle` via the 1.8.1 BOM (the version already resolving transitively, so no behaviour change) — with a comment explaining why "it happens to be there transitively" was load-bearing
-  * [ ] Add `app_name` assertion test across all 17 locales (a single-locale runtime assertion exists in `ExampleInstrumentedTest`; the per-locale sweep does not)
+  * [ ] Add `app_name` assertion test across all 18 locales (a single-locale runtime assertion exists in `ExampleInstrumentedTest`; the per-locale sweep does not)
   * [ ] Build + run tests
 
 * [ ] **0.16 Branding assets and documentation**
@@ -213,6 +213,7 @@ export GRADLE_OPTS="-Djava.net.preferIPv4Stack=true"                            
     3. The first `MediaPublisher` rewiring left two duplicate closing braces, truncating the `VideoEditingActivity` class body and producing 1322 cascading errors. **Rule adopted: after replacing a block that ends mid-function, re-read the following lines — do not trust the brace balance implied by the old text.**
   - `Branding.PREFS_NAME` is intentionally still `"librecuts_prefs"`. **The original justification is now void:** with `applicationId = com.mhirex.editor` there is no LibreCuts data to preserve and no upgrade path, so the name is kept only as a frozen identifier and MIT provenance. The `LC-1xx` error codes are kept for a still-valid reason: they are cited in the upstream troubleshooting wiki, so renaming them would break those references.
   - **Emulator setup for future phases:** a local AVD (its on-disk name predates the rebrand and is not an app identifier) exists — API 36, `google_apis_playstore`, arm64-v8a, 3 GB RAM / 4 cores. Build with JDK 17 and `GRADLE_OPTS=-Djava.net.preferIPv4Stack=true`, then `ANDROID_SERIAL=emulator-5554 ./gradlew :app:connectedDebugAndroidTest`. Note that `connectedDebugAndroidTest` **uninstalls the app afterwards**, so reinstall the ABI-matched APK (`app-arm64-v8a-debug.apk`) before any manual `adb shell am start`.
+  - **`v1.0-beta8` is published as a GitHub pre-release** (tag `v1.0-beta8` -> commit `92f7707`, three ABI APKs). Release notes are tracked at `docs/releases/v1.0-beta8.md` and are also the GitHub release body. Verified after publication, not inferred from the green workflow: each downloaded APK passes `apksigner verify` under signature schemes v2 and v3, and all three carry the release certificate `SHA-256 09:31:97:DF:31:26:E7:E0:4E:12:0F:F2:27:24:18:8F:5A:87:95:7F:42:E5:C1:20:30:22:A5:E1:85:46:BB:6F` (matches `mhirex-release.jks`). Identity is `com.mhirex.editor` / `1.0-beta8` / label `Mhirex` / minSdk 26 / targetSdk 34, and the OAuth web client ID baked into `resources.arsc` matches `res/values/google_sign_in.xml`. The release was published as a full release with an **empty body** and has been corrected to a pre-release with the notes attached; blockers 2, 3, 4 and 5 above remain open and are stated in those notes.
   - **JDK 17 is mandatory for `assembleRelease`, not a preference.** On JDK 25 (the machine default, `/Library/Java/JavaVirtualMachines/jdk-25.jdk`) the release build compiles, dexes and packages all three ABI APKs, then dies on `:app:lintVitalAnalyzeRelease` with a useless error whose only clue is the Java version string: `> 25.0.2`, followed by `Failed to stop service ...LintClassLoaderBuildService`. That is a lint/AGP 8.7.1 incompatibility, **not** a lint finding — the same build under `/opt/homebrew/opt/openjdk@17` passes with zero findings. It cost ~11 minutes to surface. **Build releases with `JAVA_HOME=/opt/homebrew/opt/openjdk@17/libexec/openjdk.jdk/Contents/Home`.** CI is unaffected (the workflow pins temurin 17). Also note that a failed lint run can leave the task looking `UP-TO-DATE` on the next invocation, so confirm a release build with `--rerun-tasks` rather than trusting a second plain run.
 
 ---
@@ -1247,6 +1248,6 @@ export GRADLE_OPTS="-Djava.net.preferIPv4Stack=true"                            
 | AI tools | Not the product identity; mid-range devices cannot afford it (AD-15) |
 | HEVC / HDR | Platform support is inconsistent; not required by any feature |
 | Multi-device sync | Out of scope; the app is local-only and private by design |
-| Additional locales | Inherit the existing 17; expand on community demand |
+| Additional locales | Inherit the existing 18; expand on community demand |
 | Bundled music | Copyright (AD-14) |
 | Third-party sticker art | Licensing; system emoji + user-supplied instead |
