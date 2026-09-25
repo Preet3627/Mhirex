@@ -1,0 +1,1413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mhirex — Free, Private &amp; Easy Video Editor for Android</title>
+  <meta name="description" content="Mhirex is a free, open-source video editor for Android prioritizing privacy, speed, and clean exports. No watermarks, no subscriptions, limitless creativity." />
+  
+  <!-- Favicon: white mark on a dark rounded tile, transparent corners.
+       The mark alone is white on transparent, which is correct in the app but
+       invisible on a light-mode tab bar; the dark tile makes it legible on
+       light and dark browser chrome alike. Multi-size .ico + PNGs so nothing
+       has to downscale one oversized bitmap. -->
+  <link rel="icon" type="image/x-icon" sizes="48x48" href="assets/favicon.ico" />
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16.png" />
+  <link rel="icon" type="image/png" sizes="64x64" href="assets/favicon.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png" />
+  
+  <!-- Fonts (English + Gujarati + Devanagari/Hindi) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;600;700;800&family=Noto+Sans+Gujarati:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+  
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Ambient Lights Background -->
+  <div class="aura-background">
+    <div class="aura-orb orb-primary"></div>
+    <div class="aura-orb orb-secondary"></div>
+    <div class="aura-orb orb-tertiary"></div>
+    <div class="grid-overlay"></div>
+  </div>
+
+  <!-- Navigation Bar -->
+  <header class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#" class="brand-group">
+        <div class="logo-wrapper">
+          <img src="assets/logo.png" alt="Mhirex Logo" class="brand-logo" />
+          <!--
+            The pulsing gradient glow behind this logo (.logo-pulse) was removed on request. The
+            element and its .logo-pulse / @keyframes pulseLogo rules are gone rather than hidden, so
+            there is no dead CSS left behind. The mark is white on transparent, so it still reads
+            against the navbar without the glow.
+          -->
+        </div>
+        <div class="brand-meta">
+          <span class="brand-title">Mhirex</span>
+          <span class="badge-version">v1.0-beta10</span>
+        </div>
+      </a>
+
+      <nav class="nav-menu" id="navMenu">
+        <a href="#features" class="nav-link" data-i18n="nav_features">Features</a>
+        <a href="#creators" class="nav-link highlight-link" data-i18n="nav_founder">
+          <span class="link-sparkle">✨</span> Creators
+        </a>
+        <a href="#screenshots" class="nav-link" data-i18n="nav_showcase">Showcase</a>
+        <a href="#comparison" class="nav-link" data-i18n="nav_comparison">Compare</a>
+        <a href="#roadmap" class="nav-link" data-i18n="nav_roadmap">Roadmap</a>
+        <a href="#community" class="nav-link" data-i18n="nav_community">Community</a>
+
+        <!--
+          Mobile-only action slot. Empty on desktop (display:none) and filled at
+          runtime by script.js, which moves the header's language switcher, GitHub
+          and Download buttons down here at <=768px.
+
+          The header bar cannot fit them on a phone: brand + switcher + button +
+          burger measured 633px of content inside a 380px bar, and the Hindi and
+          Gujarati labels are wider than the English ones, so the bar overflowed
+          the viewport and made the whole page scroll sideways. Relocating the
+          buttons instead of shrinking them keeps every control reachable (and
+          keeps the desktop header exactly as it was) at any label length.
+        -->
+        <div class="nav-menu-actions" id="navMenuActions"></div>
+      </nav>
+
+      <div class="nav-actions">
+        <!-- Language Switcher (EN / GU / HI) -->
+        <div class="lang-switcher" id="langSwitcher" title="Switch Language / ભાષા બદલો / भाषा बदलें">
+          <svg class="lang-icon" viewBox="0 0 24 24" width="16" height="16">
+            <path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+          </svg>
+          <button class="lang-btn active" data-lang="en">EN</button>
+          <span class="lang-divider">|</span>
+          <button class="lang-btn" data-lang="gu">ગુજરાતી</button>
+          <span class="lang-divider">|</span>
+          <button class="lang-btn" data-lang="hi">हिन्दी</button>
+        </div>
+
+        <a href="https://github.com/Preet3627/Mhirex" target="_blank" rel="noopener noreferrer" class="btn btn-secondary nav-github" title="Star on GitHub">
+          <svg class="icon-svg" viewBox="0 0 24 24" width="20" height="20">
+            <path fill="currentColor" d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+          </svg>
+          <span class="btn-text" data-i18n="nav_github">GitHub</span>
+        </a>
+        <a href="/api/apk" class="btn btn-primary nav-download js-direct-apk-btn">
+          <span data-i18n="nav_get_apk">Download Free</span>
+          <svg class="icon-arrow" viewBox="0 0 24 24" width="16" height="16">
+            <path fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H8M17 7V16" />
+          </svg>
+        </a>
+        <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle navigation menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <main>
+    <section class="hero-section">
+      <div class="hero-container">
+        <!-- Floating Pill -->
+        <div class="pill-badge-wrapper fade-in-up">
+          <div class="pill-badge">
+            <span class="aura-dot"></span>
+            <span class="pill-text" data-i18n="hero_pill">100% Free • No Watermarks • No Sign-Up Needed</span>
+          </div>
+        </div>
+
+        <h1 class="hero-title fade-in-up delay-1">
+          <span data-i18n="hero_title_1">Video Editing Made Simple.</span><br />
+          <span class="gradient-text" data-i18n="hero_title_2">Zero Limits.</span>
+        </h1>
+
+        <p class="hero-subtitle fade-in-up delay-2" data-i18n="hero_subtitle">
+          Say goodbye to expensive subscriptions, watermark logos, and slow exports. <strong>Mhirex</strong> is a fast, easy-to-use video editor for Android that lets you create clean, professional videos right on your phone.
+        </p>
+
+        <!-- Call to Action Buttons -->
+        <div class="hero-cta-group fade-in-up delay-3">
+          <div class="hero-dl-block">
+            <a href="/api/apk" class="btn btn-hero-primary js-direct-apk-btn" id="heroDownloadApk">
+              <svg class="icon-svg" viewBox="0 0 24 24" width="22" height="22">
+                <path fill="currentColor" d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM17 13l-5 5-5-5h3V9h4v4h3z"/>
+              </svg>
+              <div class="btn-hero-text">
+                <span class="btn-subtext" data-i18n="hero_dl_sub">Direct Download • Safe &amp; Fast</span>
+                <span class="btn-maintext" data-i18n="hero_dl_main">Download Free App (APK)</span>
+              </div>
+              <div class="btn-glow"></div>
+            </a>
+            <div class="download-meta-info">
+              <span class="meta-tag">⚡ <span class="js-release-version">v1.0-beta10</span></span>
+              <span class="meta-tag">📱 Android 8.0+</span>
+              <span class="meta-tag">📦 <span class="js-apk-size">~51.7 MB</span> (arm64)</span>
+              <a href="https://github.com/Preet3627/Mhirex/releases" target="_blank" rel="noopener noreferrer" class="meta-link">All Architectures &rsaquo;</a>
+            </div>
+          </div>
+
+          <!--
+            Obtainium and Discord hero buttons removed (2026-09-25), to match the app and README.
+
+            Obtainium deep-linked through apps.obtainium.imranr.dev with our repo URL in the query
+            string, so every tap went through a host nobody on this project controls. Discord pointed
+            at discord.gg/gwr3nE7YW, which is LibreCuts' invite, not a Mhirex community. The direct
+            APK button above is the install path we sign and can actually vouch for, so it now stands
+            alone rather than competing with two redirects we do not control.
+          -->
+        </div>
+
+        <!-- Interactive Hero Showcase Frame -->
+        <div class="hero-mockup-wrapper fade-in-up delay-4">
+          <div class="mockup-aura-ring"></div>
+          
+          <!-- Floating Feature Badges -->
+          <div class="floating-badge badge-top-left">
+            <span class="badge-icon">⚡</span>
+            <span class="badge-text" data-i18n="badge_gpu">Super-Fast HD Export</span>
+          </div>
+
+          <div class="floating-badge badge-top-right">
+            <span class="badge-icon">🛡️</span>
+            <span class="badge-text" data-i18n="badge_privacy">100% Private &amp; Offline</span>
+          </div>
+
+          <div class="floating-badge badge-bottom-left">
+            <span class="badge-icon">🚫</span>
+            <span class="badge-text" data-i18n="badge_nowatermark">Zero Watermarks Ever</span>
+          </div>
+
+          <div class="floating-badge badge-bottom-right">
+            <span class="badge-icon">✨</span>
+            <span class="badge-text" data-i18n="badge_lcprj">Save &amp; Edit Anytime</span>
+          </div>
+
+          <!-- Phone Device Frame -->
+          <div class="device-frame" id="heroDevice">
+            <div class="device-notch"></div>
+            <div class="device-screen">
+              <img src="assets/sc_2.png" alt="Mhirex Video Editor UI" class="screen-image" id="heroMockupImg" />
+              <div class="screen-glass-glare"></div>
+            </div>
+            <div class="device-reflection"></div>
+          </div>
+        </div>
+
+        <!-- Quick Stats Counter -->
+        <div class="hero-stats-row fade-in-up delay-5">
+          <div class="stat-card">
+            <span class="stat-value" data-i18n="stat_1_val">0%</span>
+            <span class="stat-label" data-i18n="stat_1_lbl">No Watermarks Ever</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-card">
+            <span class="stat-value" data-i18n="stat_2_val">$0.00</span>
+            <span class="stat-label" data-i18n="stat_2_lbl">Completely Free, Forever</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-card">
+            <span class="stat-value" data-i18n="stat_3_val">100%</span>
+            <span class="stat-label" data-i18n="stat_3_lbl">Works Offline on Phone</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-card">
+            <span class="stat-value" data-i18n="stat_4_val">Full HD</span>
+            <span class="stat-label" data-i18n="stat_4_lbl">Smooth &amp; Crisp Exports</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CREATORS SPOTLIGHT SECTION -->
+    <section class="founder-section" id="creators">
+      <div class="section-container">
+        <div class="section-header">
+          <span class="section-kicker" data-i18n="founder_kicker">THE STORY &amp; CREATORS</span>
+          <h2 class="section-title" data-i18n="founder_title">Meet The Creators</h2>
+          <p class="section-subtitle" data-i18n="founder_subtitle">
+            Built by creators who were tired of overpriced editing apps and ads. Mhirex is made for anyone who wants to make great videos without restrictions.
+          </p>
+        </div>
+
+        <div class="creators-cards-grid">
+          <!-- Card 1: app idea — _fivetriple.8_ (see README "Project origin") -->
+          <div class="founder-spotlight-card">
+            <div class="founder-spotlight-inner">
+              <div class="founder-avatar-col">
+                <div class="ig-avatar-aura-wrapper">
+                  <div class="ig-gradient-ring"></div>
+                  <div class="avatar-photo-frame">
+                    <img src="assets/founder_fivetriple8.jpg" alt="_fivetriple.8_ Instagram Profile Picture" class="founder-photo" />
+                  </div>
+                  <div class="founder-verified-badge" title="Origin Of The Idea" data-i18n-title="founder_verified_title">
+                    <svg viewBox="0 0 24 24" width="22" height="22">
+                      <path fill="#00c853" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                    </svg>
+                  </div>
+                </div>
+
+                <!-- Instagram Follow Button -->
+                <a href="https://www.instagram.com/_fivetriple.8_/" target="_blank" rel="noopener noreferrer" class="btn-instagram-profile" title="Visit @_fivetriple.8_ on Instagram">
+                  <svg class="ig-icon-svg" viewBox="0 0 24 24" width="24" height="24">
+                    <path fill="currentColor" d="M7.8,2h8.4C19.4,2 22,4.6 22,7.8v8.4c0,3.2 -2.6,5.8 -5.8,5.8H7.8C4.6,22 2,19.4 2,16.2V7.8C2,4.6 4.6,2 7.8,2zM16.2,4C8.6,4 8,4.6 8,7.8v8.4c0,3.2 0.6,3.8 3.8,3.8h8.4c3.2,0 3.8,-0.6 3.8,-3.8V7.8C20,4.6 19.4,4 16.2,4zM12,6.6a5.4,5.4 0,1 0,0 10.8A5.4,5.4 0,0 0,12 6.6zM12,8.4a3.6,3.6 0,1 1,0 7.2A3.6,3.6 0,0 1,12 8.4zM17.8,5.4a1.2,1.2 0,1 0,0 2.4A1.2,1.2 0,0 0,17.8 5.4z"/>
+                  </svg>
+                  <div class="ig-cta-content">
+                    <span class="ig-cta-small" data-i18n="founder_follow_ig">Follow on Instagram</span>
+                    <span class="ig-cta-handle">@_fivetriple.8_</span>
+                  </div>
+                  <svg class="ig-arrow" viewBox="0 0 24 24" width="18" height="18">
+                    <path fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M12 5l7 7-7 7" />
+                  </svg>
+                </a>
+              </div>
+
+              <div class="founder-info-col">
+                <div class="founder-tags-row">
+                  <span class="founder-role-badge" data-i18n="founder_role">App Idea</span>
+                  <span class="founder-aura-tag" data-i18n="founder_badge">💡 Original Idea</span>
+                </div>
+
+                <h3 class="founder-name">_fivetriple.8_</h3>
+                <p class="founder-handle-link">
+                  <a href="https://www.instagram.com/_fivetriple.8_/" target="_blank" rel="noopener noreferrer">
+                    instagram.com/_fivetriple.8_
+                  </a>
+                </p>
+
+                <blockquote class="founder-quote" data-i18n="founder_quote">
+                  "I just wanted to cut videos on my phone without installing anything from a store. Everything else got in the way."
+                </blockquote>
+
+                <p class="founder-story" data-i18n="founder_story_1">
+                  Mhirex started as a personal tool, built by <strong>Preet Patel</strong> for <strong>_fivetriple.8_</strong>, who wanted to cut videos on his phone without installing anything from a store. It is now maintained as a public project.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 2: Developer Preet Patel (_preert_) -->
+          <div class="founder-spotlight-card developer-card">
+            <div class="founder-spotlight-inner">
+              <div class="founder-avatar-col">
+                <div class="ig-avatar-aura-wrapper">
+                  <div class="ig-gradient-ring"></div>
+                  <div class="avatar-photo-frame">
+                    <img src="assets/preet_instagram.jpg" alt="Preet Patel Instagram Profile Picture" class="founder-photo" />
+                  </div>
+                  <div class="founder-verified-badge" title="Lead Developer" data-i18n-title="preet_verified_title">
+                    <svg viewBox="0 0 24 24" width="22" height="22">
+                      <path fill="#00c853" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                    </svg>
+                  </div>
+                </div>
+
+                <!-- Preet Instagram Follow Button -->
+                <a href="https://www.instagram.com/_preert_/" target="_blank" rel="noopener noreferrer" class="btn-instagram-profile" title="Visit @_preert_ on Instagram">
+                  <svg class="ig-icon-svg" viewBox="0 0 24 24" width="24" height="24">
+                    <path fill="currentColor" d="M7.8,2h8.4C19.4,2 22,4.6 22,7.8v8.4c0,3.2 -2.6,5.8 -5.8,5.8H7.8C4.6,22 2,19.4 2,16.2V7.8C2,4.6 4.6,2 7.8,2zM16.2,4C8.6,4 8,4.6 8,7.8v8.4c0,3.2 0.6,3.8 3.8,3.8h8.4c3.2,0 3.8,-0.6 3.8,-3.8V7.8C20,4.6 19.4,4 16.2,4zM12,6.6a5.4,5.4 0,1 0,0 10.8A5.4,5.4 0,0 0,12 6.6zM12,8.4a3.6,3.6 0,1 1,0 7.2A3.6,3.6 0,0 1,12 8.4zM17.8,5.4a1.2,1.2 0,1 0,0 2.4A1.2,1.2 0,0 0,17.8 5.4z"/>
+                  </svg>
+                  <div class="ig-cta-content">
+                    <span class="ig-cta-small" data-i18n="founder_follow_ig">Follow on Instagram</span>
+                    <span class="ig-cta-handle">@_preert_</span>
+                  </div>
+                  <svg class="ig-arrow" viewBox="0 0 24 24" width="18" height="18">
+                    <path fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M12 5l7 7-7 7" />
+                  </svg>
+                </a>
+              </div>
+
+              <div class="founder-info-col">
+                <div class="founder-tags-row">
+                  <span class="founder-role-badge badge-developer" data-i18n="preet_role">Lead Developer</span>
+                  <span class="founder-aura-tag badge-tech" data-i18n="preet_badge">💻 Creator of Mhirex</span>
+                </div>
+
+                <h3 class="founder-name">Preet Patel</h3>
+                <p class="founder-handle-link">
+                  <a href="https://www.instagram.com/_preert_/" target="_blank" rel="noopener noreferrer">
+                    instagram.com/_preert_
+                  </a>
+                  <span class="handle-sep">•</span>
+                  <a href="https://github.com/Preet3627" target="_blank" rel="noopener noreferrer">
+                    github.com/Preet3627
+                  </a>
+                </p>
+
+                <blockquote class="founder-quote" data-i18n="preet_bio">
+                  Architected and engineered Mhirex to deliver fast, watermark-free, on-device video rendering with zero data tracking for Android users everywhere.
+                </blockquote>
+
+                <div class="creator-quick-links">
+                  <a href="https://www.instagram.com/_preert_/" target="_blank" rel="noopener noreferrer" class="btn-creator-sub ig">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                      <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                    </svg>
+                    <span>Instagram @_preert_</span>
+                  </a>
+                  <a href="https://github.com/Preet3627" target="_blank" rel="noopener noreferrer" class="btn-creator-sub gh">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                      <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+                    </svg>
+                    <span>GitHub @Preet3627</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contributor Mehul Patel Bar -->
+        <div class="contributor-bar-wrapper">
+          <div class="contributor-highlight">
+            <img src="assets/mehul.jpg" alt="Mehul Patel" class="team-member-img" />
+            <div class="team-member-info">
+              <span class="tm-name">Mehul Patel</span>
+              <span class="tm-role" data-i18n="tm_mehul_role">Project Contributor</span>
+            </div>
+            <a href="https://www.instagram.com/il__mehul_patel__li/" target="_blank" rel="noopener noreferrer" class="tm-link tm-ig-link">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+              </svg>
+              <span>@il__mehul_patel__li</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CORE FEATURES SECTION (Bento Grid) -->
+    <section class="features-section" id="features">
+      <div class="section-container">
+        <div class="section-header">
+          <span class="section-kicker" data-i18n="feat_kicker">SIMPLE &amp; POWERFUL</span>
+          <h2 class="section-title" data-i18n="feat_title">Everything You Need to Make Great Videos</h2>
+          <p class="section-subtitle" data-i18n="feat_subtitle">
+            No confusing menus. Clean tools designed so anyone can edit videos in minutes.
+          </p>
+        </div>
+
+        <div class="bento-grid">
+          <!-- Card 1: Fast HD Export -->
+          <div class="bento-card bento-span-2">
+            <div class="bento-glow"></div>
+            <div class="bento-icon-wrapper">
+              <svg viewBox="0 0 24 24" width="32" height="32">
+                <path fill="#a29bfe" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
+                <path fill="#6c5ce7" d="M7 2v2h1v2h2V4h4v2h2V4h1V2H7zm10 20v-2h-1v-2h-2v2h-4v-2H8v2H7v2h10zM2 7v10h2v1h2v-1h12v1h2v-1h2V7h-2V6h-2v1H6V6H4v1H2z"/>
+              </svg>
+            </div>
+            <h3 class="bento-title" data-i18n="bento_1_title">Fast High-Definition Export</h3>
+            <p class="bento-description" data-i18n="bento_1_desc">
+              Save your finished videos in seconds in crisp 1080p Full HD. Exports smoothly without lagging or heating up your phone.
+            </p>
+            <div class="bento-tag-list">
+              <span class="bento-pill" data-i18n="bento_1_tag1">Instant Export</span>
+              <span class="bento-pill" data-i18n="bento_1_tag2">1080p Crisp Video</span>
+              <span class="bento-pill" data-i18n="bento_1_tag3">No Quality Loss</span>
+            </div>
+          </div>
+
+          <!-- Card 2: 100% Private & Safe -->
+          <div class="bento-card">
+            <div class="bento-glow"></div>
+            <div class="bento-icon-wrapper">
+              <svg viewBox="0 0 24 24" width="32" height="32">
+                <path fill="#00cec9" d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/>
+              </svg>
+            </div>
+            <h3 class="bento-title" data-i18n="bento_2_title">100% Private &amp; Safe</h3>
+            <p class="bento-description" data-i18n="bento_2_desc">
+              Your photos and videos never leave your phone. No cloud uploads, no account required, and completely offline.
+            </p>
+            <span class="bento-aura-badge" data-i18n="bento_2_badge">🔒 Completely Private</span>
+          </div>
+
+          <!-- Card 3: Text, Stickers & Green Screen -->
+          <div class="bento-card">
+            <div class="bento-glow"></div>
+            <div class="bento-icon-wrapper">
+              <svg viewBox="0 0 24 24" width="32" height="32">
+                <path fill="#fd79a8" d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14zm-5.04-6.71l-2.75 3.54-1.96-2.36L6.5 17h11l-3.54-4.71z"/>
+              </svg>
+            </div>
+            <h3 class="bento-title" data-i18n="bento_3_title">Text, Stickers &amp; Green Screen</h3>
+            <p class="bento-description" data-i18n="bento_3_desc">
+              Add custom text, animated GIFs, pictures, and video layers. Easily remove green screen backgrounds with a single tap.
+            </p>
+            <div class="bento-tag-list">
+              <span class="bento-pill" data-i18n="bento_3_tag1">Green Screen</span>
+              <span class="bento-pill" data-i18n="bento_3_tag2">Stickers &amp; GIFs</span>
+              <span class="bento-pill" data-i18n="bento_3_tag3">Smooth Transitions</span>
+            </div>
+          </div>
+
+          <!-- Card 4: Audio Studio & Extraction -->
+          <div class="bento-card">
+            <div class="bento-glow"></div>
+            <div class="bento-icon-wrapper">
+              <svg viewBox="0 0 24 24" width="32" height="32">
+                <path fill="#ffeaa7" d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>
+              </svg>
+            </div>
+            <h3 class="bento-title" data-i18n="bento_4_title">Music, Voiceover &amp; Audio Boost</h3>
+            <p class="bento-description" data-i18n="bento_4_desc">
+              Add your favorite songs, record clear voiceovers, boost quiet audio up to 200%, or save sound clips directly as MP3 audio files.
+            </p>
+            <span class="bento-aura-badge" data-i18n="bento_4_badge">🎵 Easy Audio</span>
+          </div>
+
+          <!-- Card 5: Subtitle Master & Custom Fonts -->
+          <div class="bento-card bento-span-2">
+            <div class="bento-glow"></div>
+            <div class="bento-icon-wrapper">
+              <svg viewBox="0 0 24 24" width="32" height="32">
+                <path fill="#55efc4" d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zM4 12h4v2H4v-2zm14 6H4v-2h14v2zm2-4h-4v-2h4v2zm0-4H4V6h16v4z"/>
+              </svg>
+            </div>
+            <h3 class="bento-title" data-i18n="bento_5_title">Captions &amp; Custom Text Fonts</h3>
+            <p class="bento-description" data-i18n="bento_5_desc">
+              Add subtitles to your reels with ease. Drag and place text anywhere on screen with your finger, and pick your favorite stylish fonts.
+            </p>
+            <div class="bento-tag-list">
+              <span class="bento-pill" data-i18n="bento_5_tag1">Drag &amp; Drop Captions</span>
+              <span class="bento-pill" data-i18n="bento_5_tag2">Stylish Fonts</span>
+              <span class="bento-pill" data-i18n="bento_5_tag3">Doodle &amp; Drawing</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SCREENSHOTS SHOWCASE -->
+    <section class="screenshots-section" id="screenshots">
+      <div class="section-container">
+        <div class="section-header">
+          <span class="section-kicker" data-i18n="sc_kicker">SIMPLE INTERFACE</span>
+          <h2 class="section-title" data-i18n="sc_title">Clean, Easy to Use on Any Phone</h2>
+          <p class="section-subtitle" data-i18n="sc_subtitle">
+            Designed with big buttons and easy touch controls so you can edit comfortably with your thumbs.
+          </p>
+        </div>
+
+        <!-- Interactive Screen Switcher Tabs -->
+        <div class="screenshot-tabs">
+          <button class="screen-tab active" data-img="assets/sc_1.png" data-tab="1">
+            <span data-i18n="tab_1">01. Home</span>
+          </button>
+          <button class="screen-tab" data-img="assets/sc_2.png" data-tab="2">
+            <span data-i18n="tab_2">02. Editor</span>
+          </button>
+          <button class="screen-tab" data-img="assets/sc_3.png" data-tab="3">
+            <span data-i18n="tab_3">03. Audio Studio</span>
+          </button>
+          <button class="screen-tab" data-img="assets/sc_4.png" data-tab="4">
+            <span data-i18n="tab_4">04. Timeline</span>
+          </button>
+        </div>
+
+        <!-- Showcase Viewer -->
+        <div class="showcase-viewer">
+          <div class="showcase-info">
+            <h3 id="showcaseTitle" class="showcase-title" data-i18n="sc_title_1">Simple Home Screen</h3>
+            <p id="showcaseDesc" class="showcase-desc" data-i18n="sc_desc_1">
+              Open past projects in one tap, pick your video clips quickly, and start editing right away.
+            </p>
+            <div class="showcase-chips">
+              <span class="chip">✨ Material 3 Design</span>
+              <span class="chip">🚀 Instant Start</span>
+              <span class="chip">📁 One-Tap Save</span>
+            </div>
+          </div>
+
+          <div class="showcase-display">
+            <div class="showcase-phone">
+              <div class="showcase-notch"></div>
+              <img id="showcaseImage" src="assets/sc_1.png" alt="Mhirex App Showcase" class="showcase-img" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- COMPARISON SECTION -->
+    <section class="comparison-section" id="comparison">
+      <div class="section-container">
+        <div class="section-header">
+          <span class="section-kicker" data-i18n="comp_kicker">HONEST COMPARISON</span>
+          <h2 class="section-title" data-i18n="comp_title">Why Creators Choose Mhirex</h2>
+          <p class="section-subtitle" data-i18n="comp_subtitle">
+            See how Mhirex compares to typical paid video editing apps from app stores.
+          </p>
+        </div>
+
+        <div class="table-responsive">
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th data-i18n="th_feature">What You Get</th>
+                <th class="col-mhirex">
+                  <div class="th-brand">
+                    <img src="assets/logo.png" alt="Mhirex" width="24" height="24" />
+                    <span>Mhirex</span>
+                    <span class="aura-badge-tiny">100% Free</span>
+                  </div>
+                </th>
+                <th data-i18n="th_other">Typical Paid Editing Apps</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="feature-name" data-i18n="row_1_name">Export Watermark</td>
+                <td class="td-mhirex"><span class="badge-status-good" data-i18n="row_1_mhirex">✓ Clean video, zero watermarks</span></td>
+                <td class="td-other"><span class="badge-status-bad" data-i18n="row_1_other">✗ Huge logo stamped on your video</span></td>
+              </tr>
+              <tr>
+                <td class="feature-name" data-i18n="row_2_name">Price &amp; Fees</td>
+                <td class="td-mhirex"><span class="badge-status-good" data-i18n="row_2_mhirex">✓ 100% Free Forever</span></td>
+                <td class="td-other"><span class="badge-status-bad" data-i18n="row_2_other">✗ $9.99/month or $59.99/year fee</span></td>
+              </tr>
+              <tr>
+                <td class="feature-name" data-i18n="row_3_name">Privacy &amp; Data Safety</td>
+                <td class="td-mhirex"><span class="badge-status-good" data-i18n="row_3_mhirex">✓ Your videos stay on your phone</span></td>
+                <td class="td-other"><span class="badge-status-bad" data-i18n="row_3_other">✗ Collects data, ads, cloud tracking</span></td>
+              </tr>
+              <tr>
+                <td class="feature-name" data-i18n="row_4_name">Sign-Up / Login</td>
+                <td class="td-mhirex"><span class="badge-status-good" data-i18n="row_4_mhirex">✓ No account needed. Open &amp; edit</span></td>
+                <td class="td-other"><span class="badge-status-bad" data-i18n="row_4_other">✗ Forced sign-in &amp; phone number</span></td>
+              </tr>
+              <tr>
+                <td class="feature-name" data-i18n="row_5_name">Video Quality</td>
+                <td class="td-mhirex"><span class="badge-status-good" data-i18n="row_5_mhirex">✓ Full 1080p HD, high quality</span></td>
+                <td class="td-other"><span class="badge-status-bad" data-i18n="row_5_other">✗ Blurry 720p unless you pay</span></td>
+              </tr>
+              <tr>
+                <td class="feature-name" data-i18n="row_6_name">Save Your Projects</td>
+                <td class="td-mhirex"><span class="badge-status-good" data-i18n="row_6_mhirex">✓ Save &amp; continue anytime</span></td>
+                <td class="td-other"><span class="badge-status-bad" data-i18n="row_6_other">✗ Locked behind accounts</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ROADMAP SECTION -->
+    <section class="roadmap-section" id="roadmap">
+      <div class="section-container">
+        <div class="section-header">
+          <span class="section-kicker" data-i18n="rm_kicker">COMING SOON</span>
+          <h2 class="section-title" data-i18n="rm_title">Exciting New Features Ahead</h2>
+          <p class="section-subtitle" data-i18n="rm_subtitle">
+            We are constantly making Mhirex better. Here is what is coming in future updates:
+          </p>
+        </div>
+
+        <div class="roadmap-grid">
+          <div class="roadmap-card">
+            <div class="roadmap-status in-progress" data-i18n="rm_status_wip">Coming Soon</div>
+            <h4 class="rm-title" data-i18n="rm_1_title">Multi-Track Editing</h4>
+            <p class="rm-desc" data-i18n="rm_1_desc">Stack multiple videos, audio tracks, and effects on top of each other with smooth pinch-to-zoom.</p>
+          </div>
+
+          <div class="roadmap-card">
+            <div class="roadmap-status in-progress" data-i18n="rm_status_wip">Coming Soon</div>
+            <h4 class="rm-title" data-i18n="rm_2_title">Instant Live Preview</h4>
+            <p class="rm-desc" data-i18n="rm_2_desc">Super-smooth preview playback while scrubbing without any stutter or wait time.</p>
+          </div>
+
+          <div class="roadmap-card">
+            <div class="roadmap-status planned" data-i18n="rm_status_plan">Planned</div>
+            <h4 class="rm-title" data-i18n="rm_3_title">Beat Sync &amp; Auto-Cut</h4>
+            <p class="rm-desc" data-i18n="rm_3_desc">Automatically match your video cuts and transitions to the rhythm of your music.</p>
+          </div>
+
+          <div class="roadmap-card">
+            <div class="roadmap-status planned" data-i18n="rm_status_plan">Planned</div>
+            <h4 class="rm-title" data-i18n="rm_4_title">Reels &amp; Shorts Presets</h4>
+            <p class="rm-desc" data-i18n="rm_4_desc">One-tap export sizes designed specifically for Instagram Reels, YouTube Shorts, and TikTok.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DOWNLOAD & COMMUNITY CTA -->
+    <section class="download-cta-section">
+      <div class="section-container">
+        <div class="cta-banner-card">
+          <div class="cta-banner-glow"></div>
+          <div class="cta-banner-content">
+            <span class="cta-badge" data-i18n="cta_badge">100% FREE FOR EVERYONE</span>
+            <h2 class="cta-headline" data-i18n="cta_title">Ready to Start Creating?</h2>
+            <p class="cta-subtext" data-i18n="cta_subtitle">
+              Join creators editing videos with complete freedom. Download the free Android app now — no sign-up needed.
+            </p>
+            <div class="cta-buttons">
+              <a href="/api/apk" class="btn btn-hero-primary js-direct-apk-btn">
+                <span data-i18n="cta_btn_apk">Download Free App (APK)</span>
+                <svg class="icon-arrow" viewBox="0 0 24 24" width="16" height="16">
+                  <path fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H8M17 7V16" />
+                </svg>
+              </a>
+              <a href="https://github.com/Preet3627/Mhirex" target="_blank" rel="noopener noreferrer" class="btn btn-hero-secondary">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                  <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+                </svg>
+                <span data-i18n="cta_btn_github">Star on GitHub</span>
+              </a>
+              <a href="https://www.instagram.com/_fivetriple.8_/" target="_blank" rel="noopener noreferrer" class="btn btn-hero-secondary btn-ig-accent">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                </svg>
+                <span data-i18n="cta_btn_founder">App Idea @_fivetriple.8_</span>
+              </a>
+              <a href="https://www.instagram.com/_preert_/" target="_blank" rel="noopener noreferrer" class="btn btn-hero-secondary btn-ig-accent">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                </svg>
+                <span data-i18n="cta_btn_preet">Developer @_preert_</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+    <!-- Community: contributors + supported languages -->
+    <section class="community-section" id="community">
+      <div class="section-header fade-in-up">
+        <span class="section-badge" data-i18n="community_badge">Community</span>
+        <h2 class="section-title" data-i18n="community_title">Built in the open</h2>
+        <p class="section-subtitle" data-i18n="community_subtitle">
+          Mhirex is free and open source. Every person below has a commit in this repository.
+        </p>
+      </div>
+
+      <!--
+        Two marquee rows running in opposite directions.
+
+        Each row holds the same 20 contributors twice, in two .marquee-set halves, and the track
+        translates by exactly -50% of its own width. Because the halves are identical, the moment the
+        animation wraps is indistinguishable from the start, so the loop has no visible seam and no
+        gap. The gap lives inside each .marquee-set (gap + padding-right) rather than on the track,
+        which is what keeps the two halves exactly equal in width; a gap on the track would make -50%
+        overshoot by half a gap and jump on every loop.
+
+        The second half of every row is aria-hidden so a screen reader hears 20 names, not 40.
+        Direction is set by data-dir and flipped with animation-direction, so both rows share one
+        keyframe set and one duration and cannot drift apart.
+      -->
+      <div class="marquee" data-dir="left">
+        <div class="marquee-track">
+          <div class="marquee-set">
+          <a class="marquee-item" href="https://github.com/tharunbirla" target="_blank" rel="noopener noreferrer" title="@tharunbirla &middot; 210 commits">
+            <span class="marquee-avatar" aria-hidden="true">
+              <span class="marquee-initial">T</span>
+              <img src="https://github.com/tharunbirla.png?size=96" alt="" width="56" height="56" loading="lazy" onerror="this.remove()"/>
+            </span>
+            <span class="marquee-name">@tharunbirla</span>
+          </a>
+          <a class="marquee-item" href="https://github.com/Keyaku" target="_blank" rel="noopener noreferrer" title="@Keyaku &middot; 5 commits">
+            <span class="marquee-avatar" aria-hidden="true">
+              <span class="marquee-initial">K</span>
+              <img src="https://github.com/Keyaku.png?size=96" alt="" width="56" height="56" loading="lazy" onerror="this.remove()"/>
+            </span>
+            <span class="marquee-name">@Keyaku</span>
+          </a>
+          <a class="marquee-item" href="https://github.com/CptEpicBox" target="_blank" rel="noopener noreferrer" title="@CptEpicBox &middot; 5 commits">
+            <span class="marquee-avatar" aria-hidden="true">
+              <span class="marquee-initial">C</span>
+              <img src="https://github.com/CptEpicBox.png?size=96" alt="" width="56" height="56" loading="lazy" onerror="this.remove()"/>
+            </span>
+            <span class="marquee-name">@CptEpicBox</span>
+          </a>
+          <a class="marquee-item" href="https://github.com/padi-sk" target="_blank" rel="noopener noreferrer" title="@padi-sk &middot; 5 commits">
+            <span class="marquee-avatar" aria-hidden="true">
+              <span class="marquee-initial">P</span>
+              <img src="https://github.com/padi-sk.png?size=96" alt="" width="56" height="56" loading="lazy" onerror="this.remove()"/>
+            </span>
+            <span class="marquee-name">@padi-sk</span>
+          </a>
+          <a class="marquee-item" href="https://github.com/Agroqirax" target="_blank" rel="noopener noreferrer" title="@Agroqirax &middot; 3 commits">
+            <span class="marquee-avatar" aria-hidden="true">
+              <span class="marquee-initial">A</span>
+              <img src="https://github.com/Agroqirax.png?size=96" alt="" width="56" height="56" loading="lazy" onerror="this.remove()"/>
+            </span>
+            <span class="marquee-name">@Agroqirax</span>
+          </a>
+          <a class="marquee-item" href="https://github.com/JonatasVi" target="_blank" rel="noopener noreferrer" title="@JonatasVi &middot; 3 commits">
+            <span class="marquee-avatar" aria-hidden="true">
+              <span class="marquee-initial">J</span>
+              <img src="https://github.com/JonatasVi.png?size=96" alt="" width="56" height="56" loading="lazy" onerror="this.remove()"/>
+            </span>
+            <span class="marquee-name">@JonatasVi</span>
+          </a>
+          <a class="marquee-item" href="https://github.com/mirk0dex" target="_blank" rel="noopener noreferrer" title="@mirk0dex &middot; 3 commits">
+            <span class="marquee-avatar" aria-hidden="true">
+              <span class="marquee-initial">M</span>
+              <img src="https://github.com/mirk0dex.png?size=96" alt="" width="56" height="56" loading="lazy" onerror="this.remove()"/>
+            </span>
+            <span class="marquee-name">@mirk0dex</span>
+          </a>
+          <a class="marquee-item" href="https://github.com/PulsarFX" target="_blank" rel="noopener noreferrer" title="@PulsarFX &middot; 3 commits">
+            <span class="marquee-avatar" aria-hidden="true">
+              <span class="marquee-initial">P</span>
+              <img src="https://github.com/PulsarFX.png?size=96" alt="" width="56" height="56" loading="lazy" onerror="this.remove()"/>
+            </span>
+            <span class="marquee-name">@PulsarFX</span>
+          </a>
+          <a class="marquee-item" href="https://github.com/JanJirkal" target="_blank" rel="noopener noreferrer" title="@JanJirkal &middot; 2 commits">
+            <span class="marquee-avatar" aria-hidden="true">
+              <span class="marquee-initial">J</span>
+              <img src="https://github.com/JanJirkal.png?size=96" alt="" width="56" height="56" loading="lazy" onerror="this.remove()"/>
+            </span>
+            <span class="marquee-name">@JanJirkal</span>
+          </a>
+          <a class="marquee-item" href="https://github.com/lefterispar" target="_blank" rel="noopener noreferrer" title="@lefterispar &middot; 2 commits">
+            <span class="marquee-avatar" aria-hidden="true">
+              <span class="marquee-initial">L</span>
+              <img src="https://github.com/lefterispar.png?size=96" alt="" width="56" height="56" loading="lazy" onerror="this.remove()"/>
+            </span>
+            <span class="marquee-name">@lefterispar</span>
+          </a>
+          <a class="marquee-item" href="https://github.com/mvanhorn" target="_blank" rel="noopener noreferrer" title="@mvanhorn &middot; 2 commits">
+            <span class="marquee-avatar" aria-hidden="true">
+              <span class="marquee-initial">M</span>
+              <img src="https://github.com/mvanhorn.png?size=96" alt="" width="56" height="56" loading="lazy" onerror="this.remove()"/>
+            </span>
+            <span class="marquee-name">@mvanhorn</span>
+          </a>
+          <a class="marquee-item" href="https://github.com/m3gamichi" target="_blank" rel="noopener noreferrer" title="@m3gamichi &middot; 2 commits">
+            <span class="marquee-avatar" aria-hidden="true">
+              <span class="marquee-initial">M</span>
+              <img src="https://github.com/m3gamichi.png?size=96" alt="" width="56" height="56" loading="lazy" onerror="this.remove()"/>
+            </span>
+            <span class="marquee-name">@m3gamichi</span>
+          </a>
+          <a class="marquee-item" href="https://github.com/Sup-25498" target="_blank" rel="noopener noreferrer" title="@Sup-25498 &middot; 2 commits">
+            <span class="marquee-avatar" aria-hidden="true">
+              <span class="marquee-initial">S</span>
+              <img src="https://github.com/Sup-25498.png?size=96" alt="" width="56" height="56" loading="lazy" onerror="this.remove()"/>
+            </span>
+            <span class="marquee-name">@Sup-25498</span>
+          </a>
+          <a class="marquee-item" href="https://github.com/tarekzidani379-ux" target="_blank" rel="noopener noreferrer" title="@tarekzidani379-ux &middot; 2 commits">
+            <span class="marquee-avatar" aria-hidden="true">
+              <span class="marquee-initial">T</span>
+              <img src="https://github.com/tarekzidani379-ux.png?size=96" alt="" width="56" height="56" loading="lazy" onerror="this.remove()"/>
+            </span>
+            <span class="marquee-name">@tarekzidani379-ux</span>
+          </a>
+          <a class="marquee-item" href="https://github.com/vr-romero" target="_blank" rel="noopener noreferrer" title="@vr-romero &middot; 2 commits">
+            <span class="marquee-avatar" aria-hidden="true">
+              <span class="marquee-initial">V</span>
+              <img src="https://github.com/vr-romero.png?size=96" alt="" width="56" height="56" loading="lazy" onerror="this.remove()"/>
+            </span>
+            <span class="marquee-name">@vr-romero</span>
+          </a>
+          <a class="marquee-item" href="https://github.com/VOIDLite" target="_blank" rel="noopener noreferrer" title="@VOIDLite &middot; 2 commits">
+            <span class="marquee-avatar" aria-hidden="true">
+              <span class="marquee-initial">V</span>
+              <img src="https://github.com/VOIDLite.png?size=96" alt="" width="56" height="56" loading="lazy" onerror="this.remove()"/>
+            </span>
+            <span class="marquee-name">@VOIDLite</span>
+          </a>
+          <a class="marquee-item" href="https://github.com/weblate" target="_blank" rel="noopener noreferrer" title="@weblate &middot; 1 commit">
+            <span class="marquee-avatar" aria-hidden="true">
+              <span class="marquee-initial">W</span>
+              <img src="https://github.com/weblate.png?size=96" alt="" width="56" height="56" loading="lazy" onerror="this.remove()"/>
+            </span>
+            <span class="marquee-name">@weblate</span>
+          </a>
+          <a class="marquee-item" href="https://github.com/HugoGB14" target="_blank" rel="noopener noreferrer" title="@HugoGB14 &middot; 1 commit">
+            <span class="marquee-avatar" aria-hidden="true">
+              <span class="marquee-initial">H</span>
+              <img src="https://github.com/HugoGB14.png?size=96" alt="" width="56" height="56" loading="lazy" onerror="this.remove()"/>
+            </span>
+            <span class="marquee-name">@HugoGB14</span>
+          </a>
+          <a class="marquee-item" href="https://github.com/N1ck120" target="_blank" rel="noopener noreferrer" title="@N1ck120 &middot; 1 commit">
+            <span class="marquee-avatar" aria-hidden="true">
+              <span class="marquee-initial">N</span>
+              <img src="https://github.com/N1ck120.png?size=96" alt="" width="56" height="56" loading="lazy" onerror="this.remove()"/>
+            </span>
+            <span class="marquee-name">@N1ck120</span>
+          </a>
+          <a class="marquee-item" href="https://github.com/santafesino" target="_blank" rel="noopener noreferrer" title="@santafesino &middot; 1 commit">
+            <span class="marquee-avatar" aria-hidden="true">
+              <span class="marquee-initial">S</span>
+              <img src="https://github.com/santafesino.png?size=96" alt="" width="56" height="56" loading="lazy" onerror="this.remove()"/>
+            </span>
+            <span class="marquee-name">@santafesino</span>
+          </a>
+          </div>
+          <div class="marquee-set" aria-hidden="true">
+          <a class="marquee-item" aria-hidden="true" href="https://github.com/tharunbirla" target="_blank" rel="noopener noreferrer" title="@tharunbirla &middot; 210 commits">
+            <span class="marquee-avatar" aria-hidden="true">
+              <span class="marquee-initial">T</span>
+              <img src="https://github.com/tharunbirla.png?size=96" alt="" width="56" height="56" loading="lazy" onerror="this.remove()"/>
+            </span>
+            <span class="marquee-name" aria-hidden="true">@tharunbirla</span>
+          </a>
+          <a class="marquee-item" aria-hidden="true" href="https://github.com/Keyaku" target="_blank" rel="noopener noreferrer" title="@Keyaku &middot; 5 commits">
+            <span class="marquee-avatar" aria-hidden="true">
+              <span class="marquee-initial">K</span>
+              <img src="https://github.com/Keyaku.png?size=96" alt="" width="56" height="56" loading="lazy" onerror="this.remove()"/>
+            </span>
+            <span class="marquee-name" aria-hidden="true">@Keyaku</span>
+          </a>
+          <a class="marquee-item" aria-hidden="true" href="https://github.com/CptEpicBox" target="_blank" rel="noopener noreferrer" title="@CptEpicBox &middot; 5 commits">
+            <span class="marquee-avatar" aria-hidden="true">
+              <span class="marquee-initial">C</span>
+              <img src="https://github.com/CptEpicBox.png?size=96" alt="" width="56" height="56" loading="lazy" onerror="this.remove()"/>
+            </span>
+            <span class="marquee-name" aria-hidden="true">@CptEpicBox</span>
+          </a>
+          <a class="marquee-item" aria-hidden="true" href="https://github.com/padi-sk" target="_blank" rel="noopener noreferrer" title="@padi-sk &middot; 5 commits">
+            <span class="marquee-avatar" aria-hidden="true">
+              <span class="marquee-initial">P</span>
+              <img src="https://github.com/padi-sk.png?size=96" alt="" width="56" height="56" loading="lazy" onerror="this.remove()"/>
+            </span>
+            <span class="marquee-name" aria-hidden="true">@padi-sk</span>
+          </a>
+          <a class="marquee-item" aria-hidden="true" href="https://github.com/Agroqirax" target="_blank" rel="noopener noreferrer" title="@Agroqirax &middot; 3 commits">
+            <span class="marquee-avatar" aria-hidden="true">
+              <span class="marquee-initial">A</span>
+              <img src="https://github.com/Agroqirax.png?size=96" alt="" width="56" height="56" loading="lazy" onerror="this.remove()"/>
+            </span>
+            <span class="marquee-name" aria-hidden="true">@Agroqirax</span>
+          </a>
+          <a class="marquee-item" aria-hidden="true" href="https://github.com/JonatasVi" target="_blank" rel="noopener noreferrer" title="@JonatasVi &middot; 3 commits">
+            <span class="marquee-avatar" aria-hidden="true">
+              <span class="marquee-initial">J</span>
+              <img src="https://github.com/JonatasVi.png?size=96" alt="" width="56" height="56" loading="lazy" onerror="this.remove()"/>
+            </span>
+            <span class="marquee-name" aria-hidden="true">@JonatasVi</span>
+          </a>
+          <a class="marquee-item" aria-hidden="true" href="https://github.com/mirk0dex" target="_blank" rel="noopener noreferrer" title="@mirk0dex &middot; 3 commits">
+            <span class="marquee-avatar" aria-hidden="true">
+              <span class="marquee-initial">M</span>
+              <img src="https://github.com/mirk0dex.png?size=96" alt="" width="56" height="56" loading="lazy" onerror="this.remove()"/>
+            </span>
+            <span class="marquee-name" aria-hidden="true">@mirk0dex</span>
+          </a>
+          <a class="marquee-item" aria-hidden="true" href="https://github.com/PulsarFX" target="_blank" rel="noopener noreferrer" title="@PulsarFX &middot; 3 commits">
+            <span class="marquee-avatar" aria-hidden="true">
+              <span class="marquee-initial">P</span>
+              <img src="https://github.com/PulsarFX.png?size=96" alt="" width="56" height="56" loading="lazy" onerror="this.remove()"/>
+            </span>
+            <span class="marquee-name" aria-hidden="true">@PulsarFX</span>
+          </a>
+          <a class="marquee-item" aria-hidden="true" href="https://github.com/JanJirkal" target="_blank" rel="noopener noreferrer" title="@JanJirkal &middot; 2 commits">
+            <span class="marquee-avatar" aria-hidden="true">
+              <span class="marquee-initial">J</span>
+              <img src="https://github.com/JanJirkal.png?size=96" alt="" width="56" height="56" loading="lazy" onerror="this.remove()"/>
+            </span>
+            <span class="marquee-name" aria-hidden="true">@JanJirkal</span>
+          </a>
+          <a class="marquee-item" aria-hidden="true" href="https://github.com/lefterispar" target="_blank" rel="noopener noreferrer" title="@lefterispar &middot; 2 commits">
+            <span class="marquee-avatar" aria-hidden="true">
+              <span class="marquee-initial">L</span>
+              <img src="https://github.com/lefterispar.png?size=96" alt="" width="56" height="56" loading="lazy" onerror="this.remove()"/>
+            </span>
+            <span class="marquee-name" aria-hidden="true">@lefterispar</span>
+          </a>
+          <a class="marquee-item" aria-hidden="true" href="https://github.com/mvanhorn" target="_blank" rel="noopener noreferrer" title="@mvanhorn &middot; 2 commits">
+            <span class="marquee-avatar" aria-hidden="true">
+              <span class="marquee-initial">M</span>
+              <img src="https://github.com/mvanhorn.png?size=96" alt="" width="56" height="56" loading="lazy" onerror="this.remove()"/>
+            </span>
+            <span class="marquee-name" aria-hidden="true">@mvanhorn</span>
+          </a>
+          <a class="marquee-item" aria-hidden="true" href="https://github.com/m3gamichi" target="_blank" rel="noopener noreferrer" title="@m3gamichi &middot; 2 commits">
+            <span class="marquee-avatar" aria-hidden="true">
+              <span class="marquee-initial">M</span>
+              <img src="https://github.com/m3gamichi.png?size=96" alt="" width="56" height="56" loading="lazy" onerror="this.remove()"/>
+            </span>
+            <span class="marquee-name" aria-hidden="true">@m3gamichi</span>
+          </a>
+          <a class="marquee-item" aria-hidden="true" href="https://github.com/Sup-25498" target="_blank" rel="noopener noreferrer" title="@Sup-25498 &middot; 2 commits">
+            <span class="marquee-avatar" aria-hidden="true">
+              <span class="marquee-initial">S</span>
+              <img src="https://github.com/Sup-25498.png?size=96" alt="" width="56" height="56" loading="lazy" onerror="this.remove()"/>
+            </span>
+            <span class="marquee-name" aria-hidden="true">@Sup-25498</span>
+          </a>
+          <a class="marquee-item" aria-hidden="true" href="https://github.com/tarekzidani379-ux" target="_blank" rel="noopener noreferrer" title="@tarekzidani379-ux &middot; 2 commits">
+            <span class="marquee-avatar" aria-hidden="true">
+              <span class="marquee-initial">T</span>
+              <img src="https://github.com/tarekzidani379-ux.png?size=96" alt="" width="56" height="56" loading="lazy" onerror="this.remove()"/>
+            </span>
+            <span class="marquee-name" aria-hidden="true">@tarekzidani379-ux</span>
+          </a>
+          <a class="marquee-item" aria-hidden="true" href="https://github.com/vr-romero" target="_blank" rel="noopener noreferrer" title="@vr-romero &middot; 2 commits">
+            <span class="marquee-avatar" aria-hidden="true">
+              <span class="marquee-initial">V</span>
+              <img src="https://github.com/vr-romero.png?size=96" alt="" width="56" height="56" loading="lazy" onerror="this.remove()"/>
+            </span>
+            <span class="marquee-name" aria-hidden="true">@vr-romero</span>
+          </a>
+          <a class="marquee-item" aria-hidden="true" href="https://github.com/VOIDLite" target="_blank" rel="noopener noreferrer" title="@VOIDLite &middot; 2 commits">
+            <span class="marquee-avatar" aria-hidden="true">
+              <span class="marquee-initial">V</span>
+              <img src="https://github.com/VOIDLite.png?size=96" alt="" width="56" height="56" loading="lazy" onerror="this.remove()"/>
+            </span>
+            <span class="marquee-name" aria-hidden="true">@VOIDLite</span>
+          </a>
+          <a class="marquee-item" aria-hidden="true" href="https://github.com/weblate" target="_blank" rel="noopener noreferrer" title="@weblate &middot; 1 commit">
+            <span class="marquee-avatar" aria-hidden="true">
+              <span class="marquee-initial">W</span>
+              <img src="https://github.com/weblate.png?size=96" alt="" width="56" height="56" loading="lazy" onerror="this.remove()"/>
+            </span>
+            <span class="marquee-name" aria-hidden="true">@weblate</span>
+          </a>
+          <a class="marquee-item" aria-hidden="true" href="https://github.com/HugoGB14" target="_blank" rel="noopener noreferrer" title="@HugoGB14 &middot; 1 commit">
+            <span class="marquee-avatar" aria-hidden="true">
+              <span class="marquee-initial">H</span>
+              <img src="https://github.com/HugoGB14.png?size=96" alt="" width="56" height="56" loading="lazy" onerror="this.remove()"/>
+            </span>
+            <span class="marquee-name" aria-hidden="true">@HugoGB14</span>
+          </a>
+          <a class="marquee-item" aria-hidden="true" href="https://github.com/N1ck120" target="_blank" rel="noopener noreferrer" title="@N1ck120 &middot; 1 commit">
+            <span class="marquee-avatar" aria-hidden="true">
+              <span class="marquee-initial">N</span>
+              <img src="https://github.com/N1ck120.png?size=96" alt="" width="56" height="56" loading="lazy" onerror="this.remove()"/>
+            </span>
+            <span class="marquee-name" aria-hidden="true">@N1ck120</span>
+          </a>
+          <a class="marquee-item" aria-hidden="true" href="https://github.com/santafesino" target="_blank" rel="noopener noreferrer" title="@santafesino &middot; 1 commit">
+            <span class="marquee-avatar" aria-hidden="true">
+              <span class="marquee-initial">S</span>
+              <img src="https://github.com/santafesino.png?size=96" alt="" width="56" height="56" loading="lazy" onerror="this.remove()"/>
+            </span>
+            <span class="marquee-name" aria-hidden="true">@santafesino</span>
+          </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="marquee" data-dir="right">
+        <div class="marquee-track">
+          <div class="marquee-set">
+          <a class="marquee-item" href="https://github.com/tharunbirla" target="_blank" rel="noopener noreferrer" title="@tharunbirla &middot; 210 commits">
+            <span class="marquee-avatar" aria-hidden="true">
+              <span class="marquee-initial">T</span>
+              <img src="https://github.com/tharunbirla.png?size=96" alt="" width="56" height="56" loading="lazy" onerror="this.remove()"/>
+            </span>
+            <span class="marquee-name">@tharunbirla</span>
+          </a>
+          <a class="marquee-item" href="https://github.com/Keyaku" target="_blank" rel="noopener noreferrer" title="@Keyaku &middot; 5 commits">
+            <span class="marquee-avatar" aria-hidden="true">
+              <span class="marquee-initial">K</span>
+              <img src="https://github.com/Keyaku.png?size=96" alt="" width="56" height="56" loading="lazy" onerror="this.remove()"/>
+            </span>
+            <span class="marquee-name">@Keyaku</span>
+          </a>
+          <a class="marquee-item" href="https://github.com/CptEpicBox" target="_blank" rel="noopener noreferrer" title="@CptEpicBox &middot; 5 commits">
+            <span class="marquee-avatar" aria-hidden="true">
+              <span class="marquee-initial">C</span>
+              <img src="https://github.com/CptEpicBox.png?size=96" alt="" width="56" height="56" loading="lazy" onerror="this.remove()"/>
+            </span>
+            <span class="marquee-name">@CptEpicBox</span>
+          </a>
+          <a class="marquee-item" href="https://github.com/padi-sk" target="_blank" rel="noopener noreferrer" title="@padi-sk &middot; 5 commits">
+            <span class="marquee-avatar" aria-hidden="true">
+              <span class="marquee-initial">P</span>
+              <img src="https://github.com/padi-sk.png?size=96" alt="" width="56" height="56" loading="lazy" onerror="this.remove()"/>
+            </span>
+            <span class="marquee-name">@padi-sk</span>
+          </a>
+          <a class="marquee-item" href="https://github.com/Agroqirax" target="_blank" rel="noopener noreferrer" title="@Agroqirax &middot; 3 commits">
+            <span class="marquee-avatar" aria-hidden="true">
+              <span class="marquee-initial">A</span>
+              <img src="https://github.com/Agroqirax.png?size=96" alt="" width="56" height="56" loading="lazy" onerror="this.remove()"/>
+            </span>
+            <span class="marquee-name">@Agroqirax</span>
+          </a>
+          <a class="marquee-item" href="https://github.com/JonatasVi" target="_blank" rel="noopener noreferrer" title="@JonatasVi &middot; 3 commits">
+            <span class="marquee-avatar" aria-hidden="true">
+              <span class="marquee-initial">J</span>
+              <img src="https://github.com/JonatasVi.png?size=96" alt="" width="56" height="56" loading="lazy" onerror="this.remove()"/>
+            </span>
+            <span class="marquee-name">@JonatasVi</span>
+          </a>
+          <a class="marquee-item" href="https://github.com/mirk0dex" target="_blank" rel="noopener noreferrer" title="@mirk0dex &middot; 3 commits">
+            <span class="marquee-avatar" aria-hidden="true">
+              <span class="marquee-initial">M</span>
+              <img src="https://github.com/mirk0dex.png?size=96" alt="" width="56" height="56" loading="lazy" onerror="this.remove()"/>
+            </span>
+            <span class="marquee-name">@mirk0dex</span>
+          </a>
+          <a class="marquee-item" href="https://github.com/PulsarFX" target="_blank" rel="noopener noreferrer" title="@PulsarFX &middot; 3 commits">
+            <span class="marquee-avatar" aria-hidden="true">
+              <span class="marquee-initial">P</span>
+              <img src="https://github.com/PulsarFX.png?size=96" alt="" width="56" height="56" loading="lazy" onerror="this.remove()"/>
+            </span>
+            <span class="marquee-name">@PulsarFX</span>
+          </a>
+          <a class="marquee-item" href="https://github.com/JanJirkal" target="_blank" rel="noopener noreferrer" title="@JanJirkal &middot; 2 commits">
+            <span class="marquee-avatar" aria-hidden="true">
+              <span class="marquee-initial">J</span>
+              <img src="https://github.com/JanJirkal.png?size=96" alt="" width="56" height="56" loading="lazy" onerror="this.remove()"/>
+            </span>
+            <span class="marquee-name">@JanJirkal</span>
+          </a>
+          <a class="marquee-item" href="https://github.com/lefterispar" target="_blank" rel="noopener noreferrer" title="@lefterispar &middot; 2 commits">
+            <span class="marquee-avatar" aria-hidden="true">
+              <span class="marquee-initial">L</span>
+              <img src="https://github.com/lefterispar.png?size=96" alt="" width="56" height="56" loading="lazy" onerror="this.remove()"/>
+            </span>
+            <span class="marquee-name">@lefterispar</span>
+          </a>
+          <a class="marquee-item" href="https://github.com/mvanhorn" target="_blank" rel="noopener noreferrer" title="@mvanhorn &middot; 2 commits">
+            <span class="marquee-avatar" aria-hidden="true">
+              <span class="marquee-initial">M</span>
+              <img src="https://github.com/mvanhorn.png?size=96" alt="" width="56" height="56" loading="lazy" onerror="this.remove()"/>
+            </span>
+            <span class="marquee-name">@mvanhorn</span>
+          </a>
+          <a class="marquee-item" href="https://github.com/m3gamichi" target="_blank" rel="noopener noreferrer" title="@m3gamichi &middot; 2 commits">
+            <span class="marquee-avatar" aria-hidden="true">
+              <span class="marquee-initial">M</span>
+              <img src="https://github.com/m3gamichi.png?size=96" alt="" width="56" height="56" loading="lazy" onerror="this.remove()"/>
+            </span>
+            <span class="marquee-name">@m3gamichi</span>
+          </a>
+          <a class="marquee-item" href="https://github.com/Sup-25498" target="_blank" rel="noopener noreferrer" title="@Sup-25498 &middot; 2 commits">
+            <span class="marquee-avatar" aria-hidden="true">
+              <span class="marquee-initial">S</span>
+              <img src="https://github.com/Sup-25498.png?size=96" alt="" width="56" height="56" loading="lazy" onerror="this.remove()"/>
+            </span>
+            <span class="marquee-name">@Sup-25498</span>
+          </a>
+          <a class="marquee-item" href="https://github.com/tarekzidani379-ux" target="_blank" rel="noopener noreferrer" title="@tarekzidani379-ux &middot; 2 commits">
+            <span class="marquee-avatar" aria-hidden="true">
+              <span class="marquee-initial">T</span>
+              <img src="https://github.com/tarekzidani379-ux.png?size=96" alt="" width="56" height="56" loading="lazy" onerror="this.remove()"/>
+            </span>
+            <span class="marquee-name">@tarekzidani379-ux</span>
+          </a>
+          <a class="marquee-item" href="https://github.com/vr-romero" target="_blank" rel="noopener noreferrer" title="@vr-romero &middot; 2 commits">
+            <span class="marquee-avatar" aria-hidden="true">
+              <span class="marquee-initial">V</span>
+              <img src="https://github.com/vr-romero.png?size=96" alt="" width="56" height="56" loading="lazy" onerror="this.remove()"/>
+            </span>
+            <span class="marquee-name">@vr-romero</span>
+          </a>
+          <a class="marquee-item" href="https://github.com/VOIDLite" target="_blank" rel="noopener noreferrer" title="@VOIDLite &middot; 2 commits">
+            <span class="marquee-avatar" aria-hidden="true">
+              <span class="marquee-initial">V</span>
+              <img src="https://github.com/VOIDLite.png?size=96" alt="" width="56" height="56" loading="lazy" onerror="this.remove()"/>
+            </span>
+            <span class="marquee-name">@VOIDLite</span>
+          </a>
+          <a class="marquee-item" href="https://github.com/weblate" target="_blank" rel="noopener noreferrer" title="@weblate &middot; 1 commit">
+            <span class="marquee-avatar" aria-hidden="true">
+              <span class="marquee-initial">W</span>
+              <img src="https://github.com/weblate.png?size=96" alt="" width="56" height="56" loading="lazy" onerror="this.remove()"/>
+            </span>
+            <span class="marquee-name">@weblate</span>
+          </a>
+          <a class="marquee-item" href="https://github.com/HugoGB14" target="_blank" rel="noopener noreferrer" title="@HugoGB14 &middot; 1 commit">
+            <span class="marquee-avatar" aria-hidden="true">
+              <span class="marquee-initial">H</span>
+              <img src="https://github.com/HugoGB14.png?size=96" alt="" width="56" height="56" loading="lazy" onerror="this.remove()"/>
+            </span>
+            <span class="marquee-name">@HugoGB14</span>
+          </a>
+          <a class="marquee-item" href="https://github.com/N1ck120" target="_blank" rel="noopener noreferrer" title="@N1ck120 &middot; 1 commit">
+            <span class="marquee-avatar" aria-hidden="true">
+              <span class="marquee-initial">N</span>
+              <img src="https://github.com/N1ck120.png?size=96" alt="" width="56" height="56" loading="lazy" onerror="this.remove()"/>
+            </span>
+            <span class="marquee-name">@N1ck120</span>
+          </a>
+          <a class="marquee-item" href="https://github.com/santafesino" target="_blank" rel="noopener noreferrer" title="@santafesino &middot; 1 commit">
+            <span class="marquee-avatar" aria-hidden="true">
+              <span class="marquee-initial">S</span>
+              <img src="https://github.com/santafesino.png?size=96" alt="" width="56" height="56" loading="lazy" onerror="this.remove()"/>
+            </span>
+            <span class="marquee-name">@santafesino</span>
+          </a>
+          </div>
+          <div class="marquee-set" aria-hidden="true">
+          <a class="marquee-item" aria-hidden="true" href="https://github.com/tharunbirla" target="_blank" rel="noopener noreferrer" title="@tharunbirla &middot; 210 commits">
+            <span class="marquee-avatar" aria-hidden="true">
+              <span class="marquee-initial">T</span>
+              <img src="https://github.com/tharunbirla.png?size=96" alt="" width="56" height="56" loading="lazy" onerror="this.remove()"/>
+            </span>
+            <span class="marquee-name" aria-hidden="true">@tharunbirla</span>
+          </a>
+          <a class="marquee-item" aria-hidden="true" href="https://github.com/Keyaku" target="_blank" rel="noopener noreferrer" title="@Keyaku &middot; 5 commits">
+            <span class="marquee-avatar" aria-hidden="true">
+              <span class="marquee-initial">K</span>
+              <img src="https://github.com/Keyaku.png?size=96" alt="" width="56" height="56" loading="lazy" onerror="this.remove()"/>
+            </span>
+            <span class="marquee-name" aria-hidden="true">@Keyaku</span>
+          </a>
+          <a class="marquee-item" aria-hidden="true" href="https://github.com/CptEpicBox" target="_blank" rel="noopener noreferrer" title="@CptEpicBox &middot; 5 commits">
+            <span class="marquee-avatar" aria-hidden="true">
+              <span class="marquee-initial">C</span>
+              <img src="https://github.com/CptEpicBox.png?size=96" alt="" width="56" height="56" loading="lazy" onerror="this.remove()"/>
+            </span>
+            <span class="marquee-name" aria-hidden="true">@CptEpicBox</span>
+          </a>
+          <a class="marquee-item" aria-hidden="true" href="https://github.com/padi-sk" target="_blank" rel="noopener noreferrer" title="@padi-sk &middot; 5 commits">
+            <span class="marquee-avatar" aria-hidden="true">
+              <span class="marquee-initial">P</span>
+              <img src="https://github.com/padi-sk.png?size=96" alt="" width="56" height="56" loading="lazy" onerror="this.remove()"/>
+            </span>
+            <span class="marquee-name" aria-hidden="true">@padi-sk</span>
+          </a>
+          <a class="marquee-item" aria-hidden="true" href="https://github.com/Agroqirax" target="_blank" rel="noopener noreferrer" title="@Agroqirax &middot; 3 commits">
+            <span class="marquee-avatar" aria-hidden="true">
+              <span class="marquee-initial">A</span>
+              <img src="https://github.com/Agroqirax.png?size=96" alt="" width="56" height="56" loading="lazy" onerror="this.remove()"/>
+            </span>
+            <span class="marquee-name" aria-hidden="true">@Agroqirax</span>
+          </a>
+          <a class="marquee-item" aria-hidden="true" href="https://github.com/JonatasVi" target="_blank" rel="noopener noreferrer" title="@JonatasVi &middot; 3 commits">
+            <span class="marquee-avatar" aria-hidden="true">
+              <span class="marquee-initial">J</span>
+              <img src="https://github.com/JonatasVi.png?size=96" alt="" width="56" height="56" loading="lazy" onerror="this.remove()"/>
+            </span>
+            <span class="marquee-name" aria-hidden="true">@JonatasVi</span>
+          </a>
+          <a class="marquee-item" aria-hidden="true" href="https://github.com/mirk0dex" target="_blank" rel="noopener noreferrer" title="@mirk0dex &middot; 3 commits">
+            <span class="marquee-avatar" aria-hidden="true">
+              <span class="marquee-initial">M</span>
+              <img src="https://github.com/mirk0dex.png?size=96" alt="" width="56" height="56" loading="lazy" onerror="this.remove()"/>
+            </span>
+            <span class="marquee-name" aria-hidden="true">@mirk0dex</span>
+          </a>
+          <a class="marquee-item" aria-hidden="true" href="https://github.com/PulsarFX" target="_blank" rel="noopener noreferrer" title="@PulsarFX &middot; 3 commits">
+            <span class="marquee-avatar" aria-hidden="true">
+              <span class="marquee-initial">P</span>
+              <img src="https://github.com/PulsarFX.png?size=96" alt="" width="56" height="56" loading="lazy" onerror="this.remove()"/>
+            </span>
+            <span class="marquee-name" aria-hidden="true">@PulsarFX</span>
+          </a>
+          <a class="marquee-item" aria-hidden="true" href="https://github.com/JanJirkal" target="_blank" rel="noopener noreferrer" title="@JanJirkal &middot; 2 commits">
+            <span class="marquee-avatar" aria-hidden="true">
+              <span class="marquee-initial">J</span>
+              <img src="https://github.com/JanJirkal.png?size=96" alt="" width="56" height="56" loading="lazy" onerror="this.remove()"/>
+            </span>
+            <span class="marquee-name" aria-hidden="true">@JanJirkal</span>
+          </a>
+          <a class="marquee-item" aria-hidden="true" href="https://github.com/lefterispar" target="_blank" rel="noopener noreferrer" title="@lefterispar &middot; 2 commits">
+            <span class="marquee-avatar" aria-hidden="true">
+              <span class="marquee-initial">L</span>
+              <img src="https://github.com/lefterispar.png?size=96" alt="" width="56" height="56" loading="lazy" onerror="this.remove()"/>
+            </span>
+            <span class="marquee-name" aria-hidden="true">@lefterispar</span>
+          </a>
+          <a class="marquee-item" aria-hidden="true" href="https://github.com/mvanhorn" target="_blank" rel="noopener noreferrer" title="@mvanhorn &middot; 2 commits">
+            <span class="marquee-avatar" aria-hidden="true">
+              <span class="marquee-initial">M</span>
+              <img src="https://github.com/mvanhorn.png?size=96" alt="" width="56" height="56" loading="lazy" onerror="this.remove()"/>
+            </span>
+            <span class="marquee-name" aria-hidden="true">@mvanhorn</span>
+          </a>
+          <a class="marquee-item" aria-hidden="true" href="https://github.com/m3gamichi" target="_blank" rel="noopener noreferrer" title="@m3gamichi &middot; 2 commits">
+            <span class="marquee-avatar" aria-hidden="true">
+              <span class="marquee-initial">M</span>
+              <img src="https://github.com/m3gamichi.png?size=96" alt="" width="56" height="56" loading="lazy" onerror="this.remove()"/>
+            </span>
+            <span class="marquee-name" aria-hidden="true">@m3gamichi</span>
+          </a>
+          <a class="marquee-item" aria-hidden="true" href="https://github.com/Sup-25498" target="_blank" rel="noopener noreferrer" title="@Sup-25498 &middot; 2 commits">
+            <span class="marquee-avatar" aria-hidden="true">
+              <span class="marquee-initial">S</span>
+              <img src="https://github.com/Sup-25498.png?size=96" alt="" width="56" height="56" loading="lazy" onerror="this.remove()"/>
+            </span>
+            <span class="marquee-name" aria-hidden="true">@Sup-25498</span>
+          </a>
+          <a class="marquee-item" aria-hidden="true" href="https://github.com/tarekzidani379-ux" target="_blank" rel="noopener noreferrer" title="@tarekzidani379-ux &middot; 2 commits">
+            <span class="marquee-avatar" aria-hidden="true">
+              <span class="marquee-initial">T</span>
+              <img src="https://github.com/tarekzidani379-ux.png?size=96" alt="" width="56" height="56" loading="lazy" onerror="this.remove()"/>
+            </span>
+            <span class="marquee-name" aria-hidden="true">@tarekzidani379-ux</span>
+          </a>
+          <a class="marquee-item" aria-hidden="true" href="https://github.com/vr-romero" target="_blank" rel="noopener noreferrer" title="@vr-romero &middot; 2 commits">
+            <span class="marquee-avatar" aria-hidden="true">
+              <span class="marquee-initial">V</span>
+              <img src="https://github.com/vr-romero.png?size=96" alt="" width="56" height="56" loading="lazy" onerror="this.remove()"/>
+            </span>
+            <span class="marquee-name" aria-hidden="true">@vr-romero</span>
+          </a>
+          <a class="marquee-item" aria-hidden="true" href="https://github.com/VOIDLite" target="_blank" rel="noopener noreferrer" title="@VOIDLite &middot; 2 commits">
+            <span class="marquee-avatar" aria-hidden="true">
+              <span class="marquee-initial">V</span>
+              <img src="https://github.com/VOIDLite.png?size=96" alt="" width="56" height="56" loading="lazy" onerror="this.remove()"/>
+            </span>
+            <span class="marquee-name" aria-hidden="true">@VOIDLite</span>
+          </a>
+          <a class="marquee-item" aria-hidden="true" href="https://github.com/weblate" target="_blank" rel="noopener noreferrer" title="@weblate &middot; 1 commit">
+            <span class="marquee-avatar" aria-hidden="true">
+              <span class="marquee-initial">W</span>
+              <img src="https://github.com/weblate.png?size=96" alt="" width="56" height="56" loading="lazy" onerror="this.remove()"/>
+            </span>
+            <span class="marquee-name" aria-hidden="true">@weblate</span>
+          </a>
+          <a class="marquee-item" aria-hidden="true" href="https://github.com/HugoGB14" target="_blank" rel="noopener noreferrer" title="@HugoGB14 &middot; 1 commit">
+            <span class="marquee-avatar" aria-hidden="true">
+              <span class="marquee-initial">H</span>
+              <img src="https://github.com/HugoGB14.png?size=96" alt="" width="56" height="56" loading="lazy" onerror="this.remove()"/>
+            </span>
+            <span class="marquee-name" aria-hidden="true">@HugoGB14</span>
+          </a>
+          <a class="marquee-item" aria-hidden="true" href="https://github.com/N1ck120" target="_blank" rel="noopener noreferrer" title="@N1ck120 &middot; 1 commit">
+            <span class="marquee-avatar" aria-hidden="true">
+              <span class="marquee-initial">N</span>
+              <img src="https://github.com/N1ck120.png?size=96" alt="" width="56" height="56" loading="lazy" onerror="this.remove()"/>
+            </span>
+            <span class="marquee-name" aria-hidden="true">@N1ck120</span>
+          </a>
+          <a class="marquee-item" aria-hidden="true" href="https://github.com/santafesino" target="_blank" rel="noopener noreferrer" title="@santafesino &middot; 1 commit">
+            <span class="marquee-avatar" aria-hidden="true">
+              <span class="marquee-initial">S</span>
+              <img src="https://github.com/santafesino.png?size=96" alt="" width="56" height="56" loading="lazy" onerror="this.remove()"/>
+            </span>
+            <span class="marquee-name" aria-hidden="true">@santafesino</span>
+          </a>
+          </div>
+        </div>
+      </div>
+
+      <p class="marquee-note" data-i18n="community_contrib_note">
+        Mhirex began as a fork of LibreCuts, so most of these names are the upstream project's
+        contributors, whose work Mhirex is built on and whom the MIT licence requires us to credit.
+      </p>
+
+      <div class="languages-block">
+        <h3 class="languages-title" data-i18n="community_lang_title">Available in 18 languages</h3>
+        <!-- Same seamless two-half loop as the contributor rows above, so the language chips
+             scroll instead of sitting still. The second set is a verbatim copy of the first:
+             the track animates by -50% of its own width, so the two halves must match exactly
+             or the loop visibly jumps at the wrap point. It is hidden from assistive tech
+             because the chips are decoration here, and a screen reader should not be made to
+             read all 18 languages twice. -->
+        <div class="marquee marquee-langs" data-dir="left">
+          <div class="marquee-track">
+            <ul class="language-list marquee-set">
+                <li class="lang-chip"><span class="lang-native">English</span><span class="lang-english">en</span></li>
+                <li class="lang-chip"><span class="lang-native">العربية</span><span class="lang-english">ar</span></li>
+                <li class="lang-chip"><span class="lang-native">Čeština</span><span class="lang-english">cs</span></li>
+                <li class="lang-chip"><span class="lang-native">Deutsch</span><span class="lang-english">de</span></li>
+                <li class="lang-chip"><span class="lang-native">Ελληνικά</span><span class="lang-english">el</span></li>
+                <li class="lang-chip"><span class="lang-native">Español</span><span class="lang-english">es</span></li>
+                <li class="lang-chip"><span class="lang-native">Eesti</span><span class="lang-english">et</span></li>
+                <li class="lang-chip"><span class="lang-native">ગુજરાતી</span><span class="lang-english">gu</span></li>
+                <li class="lang-chip"><span class="lang-native">हिन्दी</span><span class="lang-english">hi</span></li>
+                <li class="lang-chip"><span class="lang-native">Bahasa Indonesia</span><span class="lang-english">in</span></li>
+                <li class="lang-chip"><span class="lang-native">Italiano</span><span class="lang-english">it</span></li>
+                <li class="lang-chip"><span class="lang-native">Nederlands</span><span class="lang-english">nl</span></li>
+                <li class="lang-chip"><span class="lang-native">Português (Brasil)</span><span class="lang-english">pt-rBR</span></li>
+                <li class="lang-chip"><span class="lang-native">Русский</span><span class="lang-english">ru</span></li>
+                <li class="lang-chip"><span class="lang-native">Slovenčina</span><span class="lang-english">sk</span></li>
+                <li class="lang-chip"><span class="lang-native">தமிழ்</span><span class="lang-english">ta</span></li>
+                <li class="lang-chip"><span class="lang-native">Türkçe</span><span class="lang-english">tr</span></li>
+                <li class="lang-chip"><span class="lang-native">简体中文</span><span class="lang-english">zh-rCN</span></li>
+            </ul>
+            <ul class="language-list marquee-set" aria-hidden="true">
+                <li class="lang-chip"><span class="lang-native">English</span><span class="lang-english">en</span></li>
+                <li class="lang-chip"><span class="lang-native">العربية</span><span class="lang-english">ar</span></li>
+                <li class="lang-chip"><span class="lang-native">Čeština</span><span class="lang-english">cs</span></li>
+                <li class="lang-chip"><span class="lang-native">Deutsch</span><span class="lang-english">de</span></li>
+                <li class="lang-chip"><span class="lang-native">Ελληνικά</span><span class="lang-english">el</span></li>
+                <li class="lang-chip"><span class="lang-native">Español</span><span class="lang-english">es</span></li>
+                <li class="lang-chip"><span class="lang-native">Eesti</span><span class="lang-english">et</span></li>
+                <li class="lang-chip"><span class="lang-native">ગુજરાતી</span><span class="lang-english">gu</span></li>
+                <li class="lang-chip"><span class="lang-native">हिन्दी</span><span class="lang-english">hi</span></li>
+                <li class="lang-chip"><span class="lang-native">Bahasa Indonesia</span><span class="lang-english">in</span></li>
+                <li class="lang-chip"><span class="lang-native">Italiano</span><span class="lang-english">it</span></li>
+                <li class="lang-chip"><span class="lang-native">Nederlands</span><span class="lang-english">nl</span></li>
+                <li class="lang-chip"><span class="lang-native">Português (Brasil)</span><span class="lang-english">pt-rBR</span></li>
+                <li class="lang-chip"><span class="lang-native">Русский</span><span class="lang-english">ru</span></li>
+                <li class="lang-chip"><span class="lang-native">Slovenčina</span><span class="lang-english">sk</span></li>
+                <li class="lang-chip"><span class="lang-native">தமிழ்</span><span class="lang-english">ta</span></li>
+                <li class="lang-chip"><span class="lang-native">Türkçe</span><span class="lang-english">tr</span></li>
+                <li class="lang-chip"><span class="lang-native">简体中文</span><span class="lang-english">zh-rCN</span></li>
+            </ul>
+          </div>
+        </div>
+        <p class="languages-note" data-i18n="community_lang_note">
+          The Google sign-in profile added in v1.0-beta8 is not translated yet, so those few strings
+          fall back to English in every language.
+        </p>
+      </div>
+    </section>
+
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="footer-logo-row">
+            <img src="assets/logo.png" alt="Mhirex" class="footer-logo" />
+            <span class="footer-title">Mhirex</span>
+          </div>
+          <p class="footer-tagline" data-i18n="footer_tagline">
+            Free, private, and simple video editor for Android. Made with passion for creators.
+          </p>
+        </div>
+
+        <div class="footer-nav-col">
+          <span class="footer-heading" data-i18n="footer_head_people">Creators &amp; Team</span>
+          <a href="https://www.instagram.com/_fivetriple.8_/" target="_blank" rel="noopener noreferrer" class="footer-link ig-link-color">
+            <span class="ig-symbol">📷</span> <span data-i18n="footer_founder">App Idea @_fivetriple.8_</span>
+          </a>
+          <a href="https://www.instagram.com/_preert_/" target="_blank" rel="noopener noreferrer" class="footer-link ig-link-color">
+            <span class="ig-symbol">📷</span> <span data-i18n="footer_preet_ig">Preet Patel (@_preert_)</span>
+          </a>
+          <a href="https://github.com/Preet3627" target="_blank" rel="noopener noreferrer" class="footer-link" data-i18n="footer_preet">
+            Preet Patel (GitHub)
+          </a>
+          <a href="https://www.instagram.com/il__mehul_patel__li/" target="_blank" rel="noopener noreferrer" class="footer-link" data-i18n="footer_mehul">
+            Mehul Patel (Contributor)
+          </a>
+        </div>
+
+        <div class="footer-nav-col">
+          <span class="footer-heading" data-i18n="footer_head_comm">Community &amp; Code</span>
+          <a href="https://github.com/Preet3627/Mhirex" target="_blank" rel="noopener noreferrer" class="footer-link" data-i18n="footer_repo">GitHub Repository</a>
+          <a href="https://github.com/Preet3627/Mhirex/releases" target="_blank" rel="noopener noreferrer" class="footer-link" data-i18n="footer_releases">Releases &amp; Updates</a>
+          <!-- Footer Discord link removed with the hero Discord button: same upstream invite, and
+               the column already offers GitHub Repository, Releases and Report a Bug as the
+               project-owned destinations. -->
+          <a href="https://github.com/Preet3627/Mhirex/issues" target="_blank" rel="noopener noreferrer" class="footer-link" data-i18n="footer_issues">Report a Bug</a>
+        </div>
+
+        <div class="footer-nav-col">
+          <span class="footer-heading" data-i18n="footer_head_lic">Licensing</span>
+          <span class="footer-notice" data-i18n="footer_lic_1">Free and Open Source (MIT License).</span>
+          <span class="footer-notice" data-i18n="footer_lic_2">Based on LibreCuts by Tharun Birla.</span>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p class="footer-copy" data-i18n="footer_copy">
+          &copy; 2026 Mhirex. Built for creators.
+        </p>
+        <div class="footer-pills">
+          <span class="footer-pill" data-i18n="footer_pill_android">Works on Android 8+</span>
+          <span class="footer-pill" data-i18n="footer_pill_gpl">100% Open Source</span>
+          <span class="footer-pill" data-i18n="footer_pill_zeroads">No Ads Ever</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="translations.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
