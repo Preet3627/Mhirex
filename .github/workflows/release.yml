@@ -86,3 +86,7 @@ jobs:
         with:
           files: release-artifacts/*.apk
           body_path: docs/releases/${{ github.ref_name }}.md
+          # Every tag so far is a beta, and the action defaults this to false, which would publish
+          # the build as a full release and contradict its own notes. Flip to false when a stable
+          # tag is cut.
+          prerelease: true
