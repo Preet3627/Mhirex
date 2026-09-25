@@ -54,4 +54,16 @@
 
     <color name="sliderHalo">#1A1A20</color>
 
+    <!-- About / onboarding glass palette -->
+    <color name="aboutCanvasStart">#05040B</color>
+    <color name="aboutCanvasEnd">#120718</color>
+    <color name="glassSurface">#B3121021</color>
+    <color name="glassSurfaceStrong">#D9161227</color>
+    <color name="glassBorder">#59B59CFF</color>
+    <color name="glassHighlight">#80FF6FD8</color>
+    <color name="vibrantPink">#FF3D9A</color>
+    <color name="vibrantPurple">#9B6DFF</color>
+    <color name="vibrantCyan">#43E8FF</color>
+    <color name="vibrantOrange">#FF9B51</color>
+
 </resources>

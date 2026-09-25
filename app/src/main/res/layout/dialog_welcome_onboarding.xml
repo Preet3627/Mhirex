@@ -1,273 +1,380 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
     android:background="@android:color/transparent">
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:scrollbars="none"
         android:layout_marginHorizontal="16dp"
-        android:layout_marginVertical="24dp">
+        android:layout_marginVertical="20dp"
+        android:fillViewport="true"
+        android:overScrollMode="never"
+        android:scrollbars="none">
 
-        <LinearLayout
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:background="@drawable/bg_bottom_nav_floating"
-            android:padding="24dp"
-            android:elevation="12dp">
+            android:layout_height="wrap_content">
 
-            <!-- App Logo and Title header -->
+            <View
+                android:id="@+id/onboardingOrbOne"
+                android:layout_width="220dp"
+                android:layout_height="220dp"
+                android:layout_gravity="top|end"
+                android:layout_marginTop="-85dp"
+                android:layout_marginEnd="-75dp"
+                android:background="@drawable/bg_about_orb_pink"
+                android:importantForAccessibility="no" />
+
+            <View
+                android:id="@+id/onboardingOrbTwo"
+                android:layout_width="260dp"
+                android:layout_height="260dp"
+                android:layout_gravity="bottom|start"
+                android:layout_marginStart="-140dp"
+                android:layout_marginBottom="120dp"
+                android:background="@drawable/bg_about_orb_cyan"
+                android:importantForAccessibility="no" />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/bg_onboarding_glass"
+                android:elevation="14dp"
                 android:orientation="vertical"
-                android:gravity="center"
-                android:layout_marginBottom="20dp">
+                android:padding="22dp">
 
-                <ImageView
-                    android:id="@+id/ivOnboardingLogo"
-                    android:layout_width="72dp"
-                    android:layout_height="72dp"
-                    android:src="@mipmap/ic_launcher"
-                    android:contentDescription="LibreCuts App Icon" />
+                <FrameLayout
+                    android:layout_width="88dp"
+                    android:layout_height="88dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="2dp"
+                    android:background="@drawable/bg_about_logo_halo"
+                    android:padding="10dp">
+
+                    <ImageView
+                        android:id="@+id/ivOnboardingLogo"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:contentDescription="@string/app_name"
+                        android:src="@mipmap/logo" />
+                </FrameLayout>
 
                 <TextView
-                    android:id="@+id/tvOnboardingTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/app_name"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/bg_glass_pill"
+                    android:fontFamily="sans-serif-medium"
+                    android:letterSpacing="0.1"
+                    android:paddingHorizontal="12dp"
+                    android:paddingVertical="5dp"
+                    android:text="@string/str_onboarding_kicker"
+                    android:textColor="@color/vibrantCyan"
+                    android:textSize="9sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="12dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:gravity="center"
+                    android:text="@string/str_onboarding_welcome_title"
                     android:textColor="@color/textColor"
-                    android:textSize="24sp"
-                    android:layout_marginTop="8dp"
-                    android:fontFamily="sans-serif-medium" />
+                    android:textSize="23sp" />
 
                 <TextView
                     android:id="@+id/tvOnboardingVersion"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="5dp"
+                    android:fontFamily="sans-serif-medium"
                     android:text="@string/str_version_1_0"
-                    android:textColor="@color/inactiveTool"
-                    android:textSize="12sp"
-                    android:fontFamily="sans-serif" />
+                    android:textColor="@color/vibrantPink"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="9dp"
+                    android:gravity="center"
+                    android:lineSpacingMultiplier="1.2"
+                    android:text="@string/str_onboarding_welcome_body"
+                    android:textColor="@color/iconSecondary"
+                    android:textSize="13sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/str_free_open_source_limitless"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="14sp"
-                    android:layout_marginTop="4dp"
-                    android:fontFamily="sans-serif-medium" />
-            </LinearLayout>
+                    android:layout_marginTop="22dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:letterSpacing="0.12"
+                    android:text="@string/str_about_people_title"
+                    android:textColor="@color/textColor"
+                    android:textSize="12sp" />
 
-            <!-- Links list -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/str_community_amp_support"
-                android:textColor="@color/inactiveTool"
-                android:textSize="10sp"
-                android:layout_marginBottom="8dp"
-                android:fontFamily="sans-serif-medium" />
-
-            <!-- Link: Star on GitHub -->
-            <LinearLayout
-                android:id="@+id/layoutStarGithub"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="12dp"
-                android:background="@drawable/bg_aspect_ratio_item"
-                android:clickable="true"
-                android:focusable="true"
-                android:foreground="?attr/selectableItemBackground"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:padding="12dp">
-
-                <ImageView
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
-                    android:src="@drawable/ic_github_24"
-                    app:tint="@color/textColor" />
-
+                <!-- App idea and profile picture -->
                 <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_marginStart="12dp"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/str_star_on_github"
-                        android:textColor="@color/textColor"
-                        android:textSize="14sp"
-                        android:fontFamily="sans-serif-medium" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/str_show_your_appreciation_by_star"
-                        android:textColor="@color/inactiveTool"
-                        android:textSize="11sp" />
-                </LinearLayout>
-            </LinearLayout>
-
-            <!-- Link: GitHub Sponsor -->
-            <LinearLayout
-                android:id="@+id/layoutSponsorGithub"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="12dp"
-                android:background="@drawable/bg_aspect_ratio_item"
-                android:clickable="true"
-                android:focusable="true"
-                android:foreground="?attr/selectableItemBackground"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:padding="12dp">
-
-                <ImageView
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
-                    android:src="@drawable/ic_heart_24"
-                    app:tint="#E91E63" />
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_marginStart="12dp"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/str_github_sponsors"
-                        android:textColor="@color/textColor"
-                        android:textSize="14sp"
-                        android:fontFamily="sans-serif-medium" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/str_support_our_open_source_develo"
-                        android:textColor="@color/inactiveTool"
-                        android:textSize="11sp" />
-                </LinearLayout>
-            </LinearLayout>
-
-            <!-- Link: Discord -->
-            <LinearLayout
-                android:id="@+id/layoutDiscord"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                android:background="@drawable/bg_aspect_ratio_item"
-                android:clickable="true"
-                android:focusable="true"
-                android:foreground="?attr/selectableItemBackground"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:padding="12dp">
-
-                <ImageView
-                    android:layout_width="32dp"
-                    android:layout_height="32dp"
-                    android:src="@drawable/ic_discord_24"
-                    app:tint="@color/colorSecondary" />
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_marginStart="12dp"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/str_discord_server"
-                        android:textColor="@color/textColor"
-                        android:textSize="14sp"
-                        android:fontFamily="sans-serif-medium" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/str_join_us_for_app_updates_and_co"
-                        android:textColor="@color/inactiveTool"
-                        android:textSize="11sp" />
-                </LinearLayout>
-            </LinearLayout>
-
-            <!-- Troubleshooting section -->
-            <LinearLayout
-                android:id="@+id/layoutTroubleshooting"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:background="@drawable/bg_aspect_ratio_item"
-                android:backgroundTint="#1AFFFFFF"
-                android:clickable="true"
-                android:focusable="true"
-                android:foreground="?attr/selectableItemBackground"
-                android:padding="12dp"
-                android:layout_marginBottom="24dp">
-
-                <LinearLayout
+                    android:id="@+id/layoutIdeaInstagram"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
+                    android:layout_marginTop="9dp"
+                    android:background="@drawable/bg_onboarding_link_glass"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?attr/selectableItemBackground"
                     android:gravity="center_vertical"
-                    android:layout_marginBottom="4dp">
+                    android:minHeight="86dp"
+                    android:orientation="horizontal"
+                    android:padding="12dp">
+
+                    <FrameLayout
+                        android:layout_width="52dp"
+                        android:layout_height="52dp">
+
+                        <com.google.android.material.imageview.ShapeableImageView
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:layout_gravity="top|start"
+                            android:contentDescription="@string/str_about_idea_photo"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/ig_idea"
+                            app:shapeAppearanceOverlay="@style/ProfileImageShapeAppearance"
+                            app:strokeColor="@color/vibrantPink"
+                            app:strokeWidth="2dp" />
+
+                        <ImageView
+                            android:layout_width="19dp"
+                            android:layout_height="19dp"
+                            android:layout_gravity="bottom|end"
+                            android:background="@drawable/bg_instagram_badge"
+                            android:contentDescription="@null"
+                            android:padding="3dp"
+                            android:src="@drawable/ic_instagram_24" />
+                    </FrameLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="11dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="sans-serif-medium"
+                            android:letterSpacing="0.07"
+                            android:text="@string/str_about_idea_label"
+                            android:textColor="@color/vibrantPink"
+                            android:textSize="9sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:fontFamily="sans-serif-medium"
+                            android:text="@string/str_about_idea_handle"
+                            android:textColor="@color/textColor"
+                            android:textSize="15sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/str_onboarding_tap_to_visit"
+                            android:textColor="@color/iconSecondary"
+                            android:textSize="10sp" />
+                    </LinearLayout>
 
                     <ImageView
-                        android:layout_width="16dp"
-                        android:layout_height="16dp"
-                        android:src="@drawable/ic_info_24"
-                        app:tint="@color/colorSecondary" />
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:contentDescription="@string/str_about_open_instagram"
+                        android:src="@drawable/ic_chevron_right_24"
+                        app:tint="@color/vibrantCyan" />
+                </LinearLayout>
+
+                <!-- Additional Instagram profile -->
+                <LinearLayout
+                    android:id="@+id/layoutMehulInstagram"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="9dp"
+                    android:background="@drawable/bg_onboarding_link_glass"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:gravity="center_vertical"
+                    android:minHeight="82dp"
+                    android:orientation="horizontal"
+                    android:padding="12dp">
+
+                    <FrameLayout
+                        android:layout_width="52dp"
+                        android:layout_height="52dp">
+
+                        <com.google.android.material.imageview.ShapeableImageView
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:layout_gravity="top|start"
+                            android:contentDescription="@string/str_about_mehul_photo"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/ig_mehul"
+                            app:shapeAppearanceOverlay="@style/ProfileImageShapeAppearance"
+                            app:strokeColor="@color/vibrantPurple"
+                            app:strokeWidth="2dp" />
+
+                        <ImageView
+                            android:layout_width="19dp"
+                            android:layout_height="19dp"
+                            android:layout_gravity="bottom|end"
+                            android:background="@drawable/bg_instagram_badge"
+                            android:contentDescription="@null"
+                            android:padding="3dp"
+                            android:src="@drawable/ic_instagram_24" />
+                    </FrameLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="11dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="sans-serif-medium"
+                            android:letterSpacing="0.07"
+                            android:text="@string/str_about_mehul_label"
+                            android:textColor="@color/vibrantPurple"
+                            android:textSize="9sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:fontFamily="sans-serif-medium"
+                            android:text="@string/str_about_mehul_handle"
+                            android:textColor="@color/textColor"
+                            android:textSize="13sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/str_onboarding_tap_to_visit"
+                            android:textColor="@color/iconSecondary"
+                            android:textSize="10sp" />
+                    </LinearLayout>
+
+                    <ImageView
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:contentDescription="@string/str_about_open_instagram"
+                        android:src="@drawable/ic_chevron_right_24"
+                        app:tint="@color/vibrantCyan" />
+                </LinearLayout>
+
+                <!-- New GitHub repository link -->
+                <LinearLayout
+                    android:id="@+id/layoutStarGithub"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="9dp"
+                    android:background="@drawable/bg_github_glass"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:gravity="center_vertical"
+                    android:minHeight="74dp"
+                    android:orientation="horizontal"
+                    android:padding="12dp">
+
+                    <ImageView
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:background="@drawable/bg_glass_pill"
+                        android:contentDescription="@null"
+                        android:padding="7dp"
+                        android:src="@drawable/ic_github_24"
+                        app:tint="@color/textColor" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="11dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="sans-serif-medium"
+                            android:text="@string/str_onboarding_star_title"
+                            android:textColor="@color/textColor"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:text="@string/str_onboarding_star_body"
+                            android:textColor="@color/iconSecondary"
+                            android:textSize="10sp" />
+                    </LinearLayout>
+
+                    <ImageView
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:contentDescription="@string/str_onboarding_star_title"
+                        android:src="@drawable/ic_star_24"
+                        app:tint="@color/vibrantPink" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/btnOnboardingGetStarted"
+                    android:layout_width="match_parent"
+                    android:layout_height="54dp"
+                    android:layout_marginTop="18dp"
+                    android:background="@drawable/bg_onboarding_start"
+                    android:clickable="true"
+                    android:elevation="5dp"
+                    android:focusable="true"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:gravity="center"
+                    android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="6dp"
-                        android:text="@string/str_troubleshooting_amp_wiki_guide"
-                        android:textColor="@color/textColor"
-                        android:textSize="12sp"
-                        android:fontFamily="sans-serif-medium" />
+                        android:fontFamily="sans-serif-medium"
+                        android:text="@string/str_onboarding_start_creating"
+                        android:textColor="@color/colorOnPrimary"
+                        android:textSize="15sp" />
+
+                    <ImageView
+                        android:layout_width="19dp"
+                        android:layout_height="19dp"
+                        android:layout_marginStart="8dp"
+                        android:contentDescription="@null"
+                        android:src="@drawable/ic_arrow_up_right_24"
+                        app:tint="@color/colorOnPrimary" />
                 </LinearLayout>
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/str_if_you_encounter_any_export_is"
-                    android:textColor="@color/inactiveTool"
-                    android:textSize="11sp"
-                    android:lineSpacingMultiplier="1.1" />
+                    android:layout_marginTop="16dp"
+                    android:gravity="center"
+                    android:text="@string/str_mhirex_based_on"
+                    android:textColor="@color/iconSecondary"
+                    android:textSize="10sp" />
             </LinearLayout>
-
-            <!-- Done/Dismiss button -->
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnOnboardingGetStarted"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:text="@string/str_get_started"
-                android:textColor="@color/onPrimaryContainer"
-                android:textSize="14sp"
-                android:fontFamily="sans-serif-medium"
-                android:backgroundTint="@color/colorPrimary"
-                app:cornerRadius="24dp"
-                android:insetTop="0dp"
-                android:insetBottom="0dp"
-                android:elevation="0dp" />
-
-        </LinearLayout>
+        </FrameLayout>
     </ScrollView>
-</LinearLayout>
+</FrameLayout>

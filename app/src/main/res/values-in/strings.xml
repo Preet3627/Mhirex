@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="str_loop">Ulangi</string>
-    <string name="app_name">LibreCuts</string>
+    <string name="app_name">MhireX</string>
     <string name="trim">Potong</string>
     <string name="split">Pisah</string>
     <string name="export">Ekspor</string>
@@ -18,7 +18,7 @@
     <string name="str_low_quality_fastest">Kualitas Rendah (Tercepat)</string>
     <string name="str_smallest_file_size_fastest_exp">Ukuran file paling kecil, ekspor tercepat</string>
     <string name="str_export_location">Lokasi Ekspor</string>
-    <string name="str_downloads_librecuts">Downloads/LibreCuts</string>
+    <string name="str_downloads_mhirex">Downloads/MhireX</string>
     <string name="str_preview">PRATINJAU</string>
     <string name="str_0_00_0_00">0:00 / 0:00</string>
     <string name="str_timeline_empty">Timeline Kosong</string>
@@ -82,13 +82,13 @@
     <string name="str_settings">Pengaturan</string>
     <string name="str_general">Umum</string>
     <string name="str_export_folder">Folder Ekspor</string>
-    <string name="str_default_movies_librecuts">Default (Movies/LibreCuts)</string>
+    <string name="str_default_movies_mhirex">Default (Movies/MhireX)</string>
     <string name="str_check_for_updates">Cek Pembaruan</string>
     <string name="str_manually_check_for_the_latest">Cek manual versi terbaru</string>
     <string name="str_v1_0_beta4">v1.0-beta5</string>
     <string name="str_a_privacy_friendly_open_source">Editor video open source yang ramah privasi untuk Android.\nEkspor video tanpa watermark secara lokal.</string>
     <string name="str_support_amp_feedback">Dukungan &amp; Masukan</string>
-    <string name="str_librecuts_is_open_source_help">LibreCuts adalah open source. Bantu kami berkembang dengan memberi bintang di GitHub atau laporkan bug.</string>
+    <string name="str_mhirex_is_open_source_help">MhireX adalah open source. Bantu kami berkembang dengan memberi bintang di GitHub atau laporkan bug.</string>
     <string name="str_star_on_github">Beri Bintang di GitHub</string>
     <string name="str_report_a_bug">Laporkan Bug</string>
     <string name="str_sponsor_project">Sponsor Proyek</string>
@@ -151,13 +151,13 @@
     <string name="str_video_export_folder">Folder Ekspor Video</string>
     <string name="str_audio_export_folder">Folder Ekspor Audio</string>
     <string name="str_snapshot_export_folder">Folder Ekspor Snapshot</string>
-    <string name="str_default_music_librecuts">Default (Music/LibreCuts)</string>
-    <string name="str_default_pictures_librecuts">Default (Pictures/LibreCuts)</string>
+    <string name="str_default_music_mhirex">Default (Music/MhireX)</string>
+    <string name="str_default_pictures_mhirex">Default (Pictures/MhireX)</string>
     <string name="str_app_language">Bahasa Aplikasi</string>
     <string name="str_system_default">Default Sistem</string>
     <string name="str_opacity">Opasitas</string>
     <string name="str_reset">Reset</string>
-    <string name="str_help_translate">Terjemahkan LibreCuts</string>
+    <string name="str_help_translate">Terjemahkan MhireX</string>
     <string name="str_contribute_translations_on_weblate">Kontribusi terjemahan di Weblate</string>
     <string name="str_fullscreen_editor">Editor Layar Penuh</string>
     <string name="str_fullscreen_editor_desc">Sembunyikan status bar dan navigation bar saat mengedit</string>

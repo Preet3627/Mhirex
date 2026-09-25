@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="str_loop">Döngü</string>
-    <string name="app_name">LibreCuts</string>
+    <string name="app_name">MhireX</string>
     <string name="split">Böl</string>
     <string name="export">Kaydet</string>
     <string name="delete">Sil</string>
@@ -46,7 +46,7 @@
     <string name="str_duplicate">Kopyala</string>
     <string name="str_upload_subtitle_file">Altyazı Dosyası Yükle</string>
     <string name="done">Tamamlandı</string>
-    <string name="str_downloads_librecuts">Downloads/LibreCuts</string>
+    <string name="str_downloads_mhirex">Downloads/MhireX</string>
     <string name="str_adjust">Ayarla</string>
     <string name="str_supports_standard_srt_formatte">Standart SRT biçimli dosyaları destekler</string>
     <string name="str_subtitles_srt">subtitles.srt</string>
@@ -82,13 +82,13 @@
     <string name="str_settings">Ayarlar</string>
     <string name="str_general">Genel</string>
     <string name="str_export_folder">Dışa Aktarma Klasörü</string>
-    <string name="str_default_movies_librecuts">Default (Movies/LibreCuts)</string>
+    <string name="str_default_movies_mhirex">Default (Movies/MhireX)</string>
     <string name="str_check_for_updates">Güncellemeleri Kontrol Et</string>
     <string name="str_manually_check_for_the_latest">En son sürümü el ile kontrol edin</string>
     <string name="str_v1_0_beta4">v1.0-beta5</string>
     <string name="str_a_privacy_friendly_open_source">Android için gizlilik dostu, açık kaynak bir video düzenleyici. Filigransız videoları yerel olarak dışa aktarın.</string>
     <string name="str_support_amp_feedback">Destek ve Geri Bildirim</string>
-    <string name="str_librecuts_is_open_source_help">LibreCuts açık kaynaklıdır. GitHub\'da projeye yıldız vererek veya hata bildirerek geliştirmemize yardımcı olun.</string>
+    <string name="str_mhirex_is_open_source_help">MhireX açık kaynaklıdır. GitHub\'da projeye yıldız vererek veya hata bildirerek geliştirmemize yardımcı olun.</string>
     <string name="str_star_on_github">GitHub\'da Yıldız Ver</string>
     <string name="str_report_a_bug">Hata Bildir</string>
     <string name="str_sponsor_project">Sponsor Ol</string>

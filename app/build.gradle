@@ -10,7 +10,7 @@ aboutLibraries {
 }
 
 android {
-    namespace 'com.tharunbirla.librecuts'
+    namespace 'com.mivio.editor'
     compileSdk 34
 
     androidResources {
@@ -88,6 +88,20 @@ dependencies {
     implementation 'com.google.android.exoplayer:exoplayer-core:2.19.1'
     implementation 'com.google.android.exoplayer:exoplayer-ui:2.19.1'
     implementation("com.antonkarpenko:ffmpeg-kit-full-gpl:2.1.0")
+
+    // Declared explicitly rather than inherited transitively.
+    //
+    // Coroutines reached this module only by accident, via androidx.lifecycle. The app leans on it
+    // heavily (Dispatchers, CoroutineScope, Job, withContext, CancellationException) across the
+    // editor, the export service and the proxy service, so "some other library happens to bring it
+    // in" is load-bearing and fragile: bump lifecycle off coroutines, or have ffmpeg-kit stop
+    // depending on it, and compilation breaks for a reason unrelated to the code that changed.
+    //
+    // 1.8.1 is the version already resolving today, so pinning it explicitly is a no-op
+    // behaviourally and only makes the existing contract explicit.
+    implementation(platform("org.jetbrains.kotlinx:kotlinx-coroutines-bom:1.8.1"))
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android'
+
     implementation 'com.google.android.material:material:1.9.0'
     implementation 'com.airbnb.android:lottie:3.4.0'
     implementation "com.mikepenz:aboutlibraries-core:11.2.3"

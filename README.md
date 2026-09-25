@@ -1,25 +1,26 @@
-# LibreCuts
+# MhireX
 
 <div align="center">
-  <img src="src/images/featureGraphic.png" alt="LibreCuts Banner" width="100%"/>
+  <img src="logo.png" alt="MhireX logo" width="180"/>
+  <br/>
   <br/>
   <br/>
 
-  <a href="https://github.com/sponsors/tharunbirla">
-    <img src="https://img.shields.io/badge/Sponsor_LibreCuts-ea4aaa?style=for-the-badge&logo=githubsponsors&logoColor=white" height="35" alt="Sponsor tharunbirla" />
+  <a href="https://github.com/Preet3627/Mhirex">
+    <img src="https://img.shields.io/badge/Star_MhireX-ea4aaa?style=for-the-badge&logo=github&logoColor=white" height="35" alt="Star MhireX on GitHub" />
   </a>
   <a href="LICENSE">
     <img src="https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge" height="35" alt="License" />
   </a>
   <br/>
   <br/>
-  <a href="https://github.com/tharunbirla/LibreCuts/releases/latest">
+  <a href="https://github.com/Preet3627/Mhirex/releases/latest">
     <img src="src/images/badges/badge_github.png" alt="Get it on GitHub" height="96" />
   </a>
   <a href="https://f-droid.org/packages/com.tharunbirla.librecuts/">
     <img src="src/images/badges/badge_fdroid.png" alt="Get it on F-Droid" height="96" />
   </a>
-  <a href="https://apps.obtainium.imranr.dev/redirect?r=obtainium://add/https://github.com/tharunbirla/LibreCuts">
+  <a href="https://apps.obtainium.imranr.dev/redirect?r=obtainium://add/https://github.com/Preet3627/Mhirex">
     <img src="src/images/badges/badge_obtainium.png" height="96" alt="Get it on Obtainium" />
   </a>
   <a href="https://discord.gg/gwr3nE7YW">
@@ -32,7 +33,9 @@
 
 <br/>
 
-**LibreCuts** is a free, open-source video editor for Android that prioritizes simplicity, efficiency, and privacy. Built for seamless performance, it empowers creators to easily select, edit, and export watermark-free videos locally on their device.
+**MhireX** is a free, open-source video editor for Android that prioritizes simplicity, efficiency, and privacy. Built for seamless performance, it empowers creators to easily select, edit, and export watermark-free videos locally on their device.
+
+The app idea comes from [@_fivetriple.8_](https://www.instagram.com/_fivetriple.8_/). It was developed just for him by **Preet Patel**, with [@il__mehul_patel__li](https://www.instagram.com/il__mehul_patel__li/) also connected to the project. MhireX is based on LibreCuts by Tharun Birla and retains the upstream MIT license and attribution. See [`NOTICE`](NOTICE) and [`ASSETS.md`](ASSETS.md) for third-party and release notices.
 
 ---
 
@@ -92,17 +95,15 @@ Help resist this gatekeeping and support the movement at [keepandroidopen.org](h
   </table>
 </div>
 
-## 💖 Support LibreCuts
+## 💖 Support MhireX
 
-LibreCuts is built with passion and provided to the community for free. If this app has helped you create amazing videos, consider supporting its continued development! Your sponsorship helps keep the project alive and growing.
+MhireX is a personal project built with passion and provided for free. If it helped you create something amazing, please star the new repository and follow the people behind the app.
 
 <div align="center">
   <br/>
-  <a href="https://github.com/sponsors/tharunbirla"><img src="https://img.shields.io/badge/sponsor-30363D?style=for-the-badge&logo=GitHub-Sponsors&logoColor=%23EA4AAA" alt="GitHub Sponsors" /></a>
+  <a href="https://github.com/Preet3627/Mhirex"><img src="https://img.shields.io/github/stars/Preet3627/Mhirex?style=for-the-badge&logo=github&logoColor=white" alt="Star MhireX on GitHub" /></a>
   &nbsp;&nbsp;
-  <a href="https://www.patreon.com/tharunbirla"><img src="https://img.shields.io/badge/Patreon-F96854?style=for-the-badge&logo=patreon&logoColor=white" alt="Patreon" /></a>
-  &nbsp;&nbsp;
-  <a href="https://ko-fi.com/tharunbirla"><img src="https://img.shields.io/badge/Ko--fi-F16061?style=for-the-badge&logo=ko-fi&logoColor=white" alt="Ko-Fi" /></a>
+  <a href="https://www.instagram.com/_fivetriple.8_/"><img src="https://img.shields.io/badge/Instagram-%40_fivetriple.8_-E4405F?style=for-the-badge&logo=instagram&logoColor=white" alt="App idea on Instagram" /></a>
   <br/>
   <br/>
 </div>
@@ -118,7 +119,7 @@ LibreCuts is built with passion and provided to the community for free. If this 
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/tharunbirla/LibreCuts.git
+   git clone https://github.com/Preet3627/Mhirex.git
    ```
 2. **Open the project in Android Studio**:
    - Launch Android Studio and select "Open an existing Android Studio project."
@@ -131,12 +132,14 @@ LibreCuts is built with passion and provided to the community for free. If this 
 
 ## 🔒 Permissions
 
-LibreCuts requires the following permissions to function properly:
+MhireX uses the following permissions to function properly:
 
-- **READ_EXTERNAL_STORAGE**: To read videos from the device.
-- **WRITE_EXTERNAL_STORAGE**: (For older Android versions) To save edited videos.
-- **POST_NOTIFICATIONS**: To show notifications related to video editing.
 - **READ_MEDIA_AUDIO/VIDEO/IMAGES**: For accessing media files on devices running Android 13 (API level 33) and above.
+- **READ_EXTERNAL_STORAGE**: To read media on older Android versions.
+- **POST_NOTIFICATIONS**: To show export and proxy-generation notifications.
+- **RECORD_AUDIO**: To record voice-over audio.
+
+Exports are published through Android MediaStore or a user-selected SAF folder; the app does not request legacy public-directory write access.
 
 ## 🔧 Troubleshooting & Support
 

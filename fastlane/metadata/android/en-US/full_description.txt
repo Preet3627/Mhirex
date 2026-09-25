@@ -1,6 +1,8 @@
-<p>LibreCuts is a free and open-source video editor for Android focused on simplicity, performance, and privacy. Edit and export watermark free videos entirely on your device.</p>
+<p><b>MhireX</b> is a free and open-source video editor for Android focused on simplicity, performance, and privacy. Edit and export watermark-free videos entirely on your device.</p>
 
-<p><b>Note:</b> LibreCuts is currently in beta. You may encounter bugs, instability, or incomplete features as development continues.</p>
+<p>MhireX is based on LibreCuts by Tharun Birla. The upstream MIT license and attribution are retained.</p>
+
+<p><b>Note:</b> MhireX is currently in beta. You may encounter bugs, instability, or incomplete features as development continues.</p>
 
 <p><b>Features</b></p>
 

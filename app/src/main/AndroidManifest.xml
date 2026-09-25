@@ -13,9 +13,24 @@
     <!-- For Android 12 and below -->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"
         android:maxSdkVersion="32" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
-        android:maxSdkVersion="28" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
+
+    <!--
+        SEC-31: WRITE_EXTERNAL_STORAGE removed (was android:maxSdkVersion="28").
+
+        Nothing writes to a public directory any more:
+          * video/audio publishing goes through MediaPublisher (MediaStore + IS_PENDING) or a
+            user-granted SAF tree URI;
+          * the frame snapshot was the last holdout — its `API < Q` branch wrote via
+            FileOutputStream into getExternalStoragePublicDirectory(DIRECTORY_PICTURES), and routing
+            it through MediaPublisher removed that branch;
+          * every remaining FileOutputStream (handwriting drawings, freeze frames, imported fonts)
+            targets cacheDir or filesDir;
+          * the residual getExternalStoragePublicDirectory calls only *navigate* for the read-only
+            file browser and media picker, which READ_EXTERNAL_STORAGE / READ_MEDIA_* already covers.
+
+        Verified by grep, not assumed — re-check this if a new public-directory write is added.
+    -->
     
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE_DATA_SYNC" />
@@ -24,13 +39,13 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" tools:node="remove" />
 
     <application
-        android:name=".LibreCutsApplication"
+        android:name=".MhireXApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/logo"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:targetApi="31">
@@ -59,9 +74,26 @@
             </intent-filter>
         </activity>
 
+        <!--
+            SEC-33: was exported="true" with no permission guard.
+
+            Every real caller is in-app and uses an explicit Intent
+            (MainActivity.kt:554, ProjectImportActivity.kt:543), and this activity has no
+            <intent-filter>, so no implicit launch from another app can reach it either.
+
+            Exported was therefore pure attack surface, not capability: any app on the device
+            could launch the editor against a content:// URI it holds no grant for. That is also
+            what made P0-7 remotely triggerable — the editor hard-crashed in onCreate when the
+            VIDEO_URI extra was absent, so a one-line malicious intent was a denial of service
+            against MhireX.
+
+            If an external entry point is ever wanted (e.g. "Edit with MhireX" from a file
+            manager), add the <intent-filter> AND a signature-level permission in the same
+            change. Do not restore exported="true" on its own.
+        -->
         <activity
             android:name=".VideoEditingActivity"
-            android:exported="true"
+            android:exported="false"
             android:theme="@style/Editor"
             android:configChanges="orientation|screenSize|screenLayout|keyboardHidden|smallestScreenSize"
             android:windowSoftInputMode="adjustResize" />

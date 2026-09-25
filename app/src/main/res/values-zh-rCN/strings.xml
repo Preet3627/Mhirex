@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="str_loop">循环</string>
-    <string name="app_name">自由剪辑</string>
+    <string name="app_name">MhireX</string>
     <string name="trim">修剪</string>
     <string name="split">分割</string>
     <string name="export">导出</string>
@@ -18,7 +18,7 @@
     <string name="str_low_quality_fastest">低画质（最快）</string>
     <string name="str_smallest_file_size_fastest_exp">文件体积最小，导出速度最快</string>
     <string name="str_export_location">导出位置</string>
-    <string name="str_downloads_librecuts">下载/LibreCuts</string>
+    <string name="str_downloads_mhirex">下载/MhireX</string>
     <string name="str_preview">预览</string>
     <string name="str_timeline_empty">时间线为空</string>
     <string name="str_import_video">Import Video</string>
@@ -81,13 +81,13 @@
     <string name="str_settings">设置</string>
     <string name="str_general">常规</string>
     <string name="str_export_folder">导出文件夹</string>
-    <string name="str_default_movies_librecuts">默认（影片/LibreCuts）</string>
+    <string name="str_default_movies_mhirex">默认（影片/MhireX）</string>
     <string name="str_check_for_updates">检查更新</string>
     <string name="str_manually_check_for_the_latest">手动检查最新版本</string>
     <string name="str_v1_0_beta4">v1.0-beta5</string>
     <string name="str_a_privacy_friendly_open_source">一款注重隐私的 Android 开源视频编辑器。\n在本地导出无水印视频。</string>
     <string name="str_support_amp_feedback">支持与反馈</string>
-    <string name="str_librecuts_is_open_source_help">LibreCuts 是开源项目。请在 GitHub 上为项目加星或报告错误，帮助我们改进。</string>
+    <string name="str_mhirex_is_open_source_help">MhireX 是开源项目。请在 GitHub 上为项目加星或报告错误，帮助我们改进。</string>
     <string name="str_star_on_github">在 GitHub 上加星支持</string>
     <string name="str_report_a_bug">报告错误</string>
     <string name="str_sponsor_project">赞助项目</string>
@@ -150,13 +150,13 @@
     <string name="str_video_export_folder">视频导出文件夹</string>
     <string name="str_audio_export_folder">音频导出文件夹</string>
     <string name="str_snapshot_export_folder">快照导出文件夹</string>
-    <string name="str_default_music_librecuts">默认（音乐/LibreCuts）</string>
-    <string name="str_default_pictures_librecuts">默认（图片/LibreCuts）</string>
+    <string name="str_default_music_mhirex">默认（音乐/MhireX）</string>
+    <string name="str_default_pictures_mhirex">默认（图片/MhireX）</string>
     <string name="str_app_language">应用语言</string>
     <string name="str_system_default">系统默认</string>
     <string name="str_opacity">不透明度</string>
     <string name="str_reset">重置</string>
-    <string name="str_help_translate">翻译 LibreCuts</string>
+    <string name="str_help_translate">翻译 MhireX</string>
     <string name="str_contribute_translations_on_weblate">在 Weblate 上贡献翻译</string>
     <string name="str_fullscreen_editor">全屏编辑器</string>
     <string name="str_fullscreen_editor_desc">编辑时隐藏状态栏和导航栏</string>
