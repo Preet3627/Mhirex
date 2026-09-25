@@ -32,6 +32,21 @@ jobs:
           distribution: temurin
           java-version: '17'
       - uses: gradle/actions/setup-gradle@v6
+      - name: Write google-services.json for the Sign-In build
+        env:
+          GOOGLE_SERVICES_JSON: ${{ secrets.GOOGLE_SERVICES_JSON }}
+        run: |
+          # The file is gitignored, so a clean checkout never has it and the Google Services
+          # plugin is skipped, which leaves Credential Manager with no client ID to authorise an
+          # ID token against. The app still runs in that state ("not configured"), but Sign-In
+          # cannot work, so inject the config from a secret when one is present.
+          if [ -n "$GOOGLE_SERVICES_JSON" ]; then
+            printf '%s' "$GOOGLE_SERVICES_JSON" > app/google-services.json
+            echo "Wrote app/google-services.json from secret"
+          else
+            echo "GOOGLE_SERVICES_JSON is not set: building without Firebase config." >&2
+            echo "Sign-In will report 'not configured' at runtime. Everything else is unaffected." >&2
+          fi
       - run: chmod +x gradlew && ./gradlew assembleRelease
       - uses: r0adkll/sign-android-release@v1
         id: sign

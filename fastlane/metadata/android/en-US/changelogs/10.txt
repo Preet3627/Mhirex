@@ -1,4 +1,5 @@
 <ul>
+  <li><b>Now Mhirex.</b> This app is a rebrand of LibreCuts by Tharun Birla (MIT), published under a new package name. It installs alongside LibreCuts rather than replacing it, so saved projects and settings from LibreCuts do not carry over.</li>
   <li>Added Project Save & Import (.lcprj) file format for non-destructive project serialization.</li>
   <li>Added Android 13+ monochrome themed app icon support.</li>
   <li>Added in-app haptic feedback toggle in settings.</li>
