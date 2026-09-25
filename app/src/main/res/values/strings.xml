@@ -132,8 +132,6 @@
     <string name="str_support_our_open_source_develo">Support our open source development directly</string>
     <string name="str_discord_server">Discord Server</string>
     <string name="str_join_us_for_app_updates_and_co">Join us for app updates and community chat</string>
-    <string name="str_troubleshooting_amp_wiki_guide">Troubleshooting &amp; Wiki Guide</string>
-    <string name="str_if_you_encounter_any_export_is">If you encounter any export issues or rendering errors, tap here to read our wiki guide for troubleshooting and error codes.</string>
     <string name="str_get_started">Get Started</string>
     <string name="toast_microphone_permission_required">Microphone permission required for voice over</string>
     <string name="toast_snapping_enabled">Snapping enabled</string>
@@ -185,8 +183,6 @@
     <string name="str_system_default">System Default</string>
     <string name="str_opacity">Opacity</string>
     <string name="str_reset">Reset</string>
-    <string name="str_help_translate">Translate Mhirex</string>
-    <string name="str_contribute_translations_on_weblate">Contribute translations on Weblate</string>
     <string name="str_fullscreen_editor">Fullscreen Editor</string>
     <string name="str_fullscreen_editor_desc">Hide status bar and navigation bar while editing</string>
     <string name="str_fullscreen_enabled_desc">Enabled (Hides status &amp; navigation bar)</string>
