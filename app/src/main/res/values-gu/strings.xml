@@ -99,6 +99,10 @@
     <string name="str_about_open_instagram">Instagram પ્રોફાઇલ ખોલો</string>
     <string name="str_about_idea_photo">@_fivetriple.8_ ની Instagram પ્રોફાઇલ તસ્વીર</string>
     <string name="str_about_mehul_photo">@il__mehul_patel__li ની Instagram પ્રોફાઇલ તસ્વીર</string>
+    <string name="str_about_preet_label">લીડ ડેવલપર</string>
+    <string name="str_about_preet_handle">@_preert_</string>
+    <string name="str_about_preet_description">Mhirex ના સર્જક. Preet ને Instagram પર શોધો.</string>
+    <string name="str_about_preet_photo">@_preert_ ની Instagram પ્રોફાઇલ તસ્વીર</string>
     <string name="str_about_support_title">Mhirex ને પ્રેમ છે?</string>
     <string name="str_about_support_body">નવી GitHub રિપોઝિટરીને સ્ટાર કરો અને આ પ્રવાસ સાથે જોડાઓ. આ વ્યક્તિગત પ્રોજેક્ટને વધવામાં દરેક પ્રતિભાગની મદદ કરે છે.</string>
     <string name="str_about_open_github">નવી GitHub રિપોઝિટરી ખોલો</string>
@@ -110,8 +114,9 @@
     <string name="str_onboarding_welcome_body">એક વ્યક્તિગત એપ, પહેલા વિચારથી છેલ્લા નિયાત સુધી દરેક વિગતની કાળજી સાથે બનાવવામાં આવી.</string>
     <string name="str_onboarding_start_creating">બનાવવાનું શરૂ કરો</string>
     <string name="str_onboarding_tap_to_visit">Instagram મુલાકાત લેવા ટેપ કરો</string>
-    <string name="str_onboarding_star_title">GitHub પર Mhirex ને સ્ટાર કરો</string>
-    <string name="str_onboarding_star_body">@Preet3627/Mhirex ને ફોલો કરો અને થોડો પ્રેમ દાખવો</string>
+    <string name="str_onboarding_website_title">Mhirex ની વેબસાઇટ જુઓ</string>
+    <string name="str_onboarding_website_body">વૈશિષ્ટ્યો, ડાઉનલોડ અને નવીનતમ રિલીઝ નોંધ.</string>
+    <string name="str_visit_website">વેબસાઇટ જુઓ</string>
     <string name="str_support_amp_feedback">સહાય અને પ્રતિક્રિયા</string>
     <string name="str_mhirex_is_open_source_help">Mhirex ઓપન-સોર્સ છે. GitHub પર પ્રોજેક્ટ સ્ટાર કરીને અથવા બગ નોંધીને અમને સુધારવામાં મદદ કરો.</string>
     <!-- MIT requires the original copyright notice in all copies. str_made_by_tharun_birla is

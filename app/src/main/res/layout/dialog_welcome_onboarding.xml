@@ -290,13 +290,106 @@
                         app:tint="@color/vibrantCyan" />
                 </LinearLayout>
 
-                <!-- New GitHub repository link -->
+                <!--
+                    Lead developer. Matches the About tab's third card so the two surfaces cannot
+                    disagree about who is credited. Compact popup metrics (48dp avatar, 9sp label)
+                    and the onboarding glass background, same as the two cards above.
+                -->
                 <LinearLayout
-                    android:id="@+id/layoutStarGithub"
+                    android:id="@+id/layoutPreetInstagram"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="9dp"
-                    android:background="@drawable/bg_github_glass"
+                    android:background="@drawable/bg_onboarding_link_glass"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:gravity="center_vertical"
+                    android:minHeight="82dp"
+                    android:orientation="horizontal"
+                    android:padding="12dp">
+
+                    <FrameLayout
+                        android:layout_width="52dp"
+                        android:layout_height="52dp">
+
+                        <com.google.android.material.imageview.ShapeableImageView
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:layout_gravity="top|start"
+                            android:contentDescription="@string/str_about_preet_photo"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/ig_preet"
+                            app:shapeAppearanceOverlay="@style/ProfileImageShapeAppearance"
+                            app:strokeColor="@color/vibrantOrange"
+                            app:strokeWidth="2dp" />
+
+                        <ImageView
+                            android:layout_width="19dp"
+                            android:layout_height="19dp"
+                            android:layout_gravity="bottom|end"
+                            android:background="@drawable/bg_instagram_badge"
+                            android:contentDescription="@null"
+                            android:padding="3dp"
+                            android:src="@drawable/ic_instagram_24" />
+                    </FrameLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="11dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="sans-serif-medium"
+                            android:letterSpacing="0.07"
+                            android:text="@string/str_about_preet_label"
+                            android:textColor="@color/vibrantOrange"
+                            android:textSize="9sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:fontFamily="sans-serif-medium"
+                            android:text="@string/str_about_preet_handle"
+                            android:textColor="@color/textColor"
+                            android:textSize="13sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/str_onboarding_tap_to_visit"
+                            android:textColor="@color/iconSecondary"
+                            android:textSize="10sp" />
+                    </LinearLayout>
+
+                    <ImageView
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:contentDescription="@string/str_about_open_instagram"
+                        android:src="@drawable/ic_chevron_right_24"
+                        app:tint="@color/vibrantCyan" />
+                </LinearLayout>
+
+                <!--
+                    Website link. The About tab has had a "Visit Website" action all along; this
+                    brings the startup popup to parity, so the site is reachable from the first
+                    screen a new user sees rather than only after finding the About tab.
+
+                    The host is deliberately not printed. Branding.WEBSITE_URL stays the single
+                    source of truth, so changing the domain cannot leave a stale string behind,
+                    the same reasoning that keeps str_visit_website free of the URL.
+                -->
+                <LinearLayout
+                    android:id="@+id/layoutOnboardingWebsite"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="9dp"
+                    android:background="@drawable/bg_onboarding_link_glass"
                     android:clickable="true"
                     android:focusable="true"
                     android:foreground="?attr/selectableItemBackground"
@@ -311,8 +404,8 @@
                         android:background="@drawable/bg_glass_pill"
                         android:contentDescription="@null"
                         android:padding="7dp"
-                        android:src="@drawable/ic_github_24"
-                        app:tint="@color/textColor" />
+                        android:src="@drawable/ic_public_24"
+                        app:tint="@color/vibrantCyan" />
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -325,7 +418,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="sans-serif-medium"
-                            android:text="@string/str_onboarding_star_title"
+                            android:text="@string/str_onboarding_website_title"
                             android:textColor="@color/textColor"
                             android:textSize="14sp" />
 
@@ -333,7 +426,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="2dp"
-                            android:text="@string/str_onboarding_star_body"
+                            android:text="@string/str_onboarding_website_body"
                             android:textColor="@color/iconSecondary"
                             android:textSize="10sp" />
                     </LinearLayout>
@@ -341,9 +434,9 @@
                     <ImageView
                         android:layout_width="18dp"
                         android:layout_height="18dp"
-                        android:contentDescription="@string/str_onboarding_star_title"
-                        android:src="@drawable/ic_star_24"
-                        app:tint="@color/vibrantPink" />
+                        android:contentDescription="@string/str_visit_website"
+                        android:src="@drawable/ic_arrow_up_right_24"
+                        app:tint="@color/vibrantOrange" />
                 </LinearLayout>
 
                 <LinearLayout

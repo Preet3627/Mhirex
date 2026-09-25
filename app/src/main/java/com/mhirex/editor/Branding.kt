@@ -64,6 +64,19 @@ object Branding {
     const val INSTAGRAM_IDEA_URL = "https://www.instagram.com/_fivetriple.8_/"
     const val INSTAGRAM_MEHUL_URL = "https://www.instagram.com/il__mehul_patel__li/"
 
+    /**
+     * Preet Patel's Instagram, credited as lead developer alongside the two profiles above.
+     *
+     * Lowercase on purpose. A capitalised `_Preert_` was tried first and the link did not resolve, so
+     * do not "tidy" this back to mixed case. The two handles above are all-lowercase too, which is
+     * also how Instagram renders a handle, so the on-screen text and this URL agree.
+     *
+     * The matching avatar is `res/drawable-nodpi/ig_preet.jpg`. The fingerprints that let Google
+     * recognise a signed build of this app are recorded permanently in
+     * `docs/signing-fingerprints.md`; see that file before regenerating the release keystore.
+     */
+    const val INSTAGRAM_PREET_URL = "https://www.instagram.com/_preert_/"
+
     // No WEBLATE constant. Mhirex has no translation project of its own, and the inherited
     // project is hosted.weblate.org/engage/librecuts — an entry labelled "Translate Mhirex"
     // pointing there sends contributors into the upstream project, and the Weblate badge

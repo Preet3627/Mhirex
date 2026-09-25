@@ -99,6 +99,10 @@
     <string name="str_about_open_instagram">Open Instagram profile</string>
     <string name="str_about_idea_photo">Instagram profile picture of @_fivetriple.8_</string>
     <string name="str_about_mehul_photo">Instagram profile picture of @il__mehul_patel__li</string>
+    <string name="str_about_preet_label">LEAD DEVELOPER</string>
+    <string name="str_about_preet_handle">@_preert_</string>
+    <string name="str_about_preet_description">Creator of Mhirex. Find Preet on Instagram.</string>
+    <string name="str_about_preet_photo">Instagram profile picture of @_preert_</string>
     <string name="str_about_support_title">Love Mhirex?</string>
     <string name="str_about_support_body">Star the new GitHub repository and follow the journey. Every bit of support helps this personal project grow.</string>
     <string name="str_about_open_github">Open the new GitHub repository</string>
@@ -110,8 +114,8 @@
     <string name="str_onboarding_welcome_body">A personal app, made with care from the first idea to every final export.</string>
     <string name="str_onboarding_start_creating">Start Creating</string>
     <string name="str_onboarding_tap_to_visit">Tap to visit Instagram</string>
-    <string name="str_onboarding_star_title">Star Mhirex on GitHub</string>
-    <string name="str_onboarding_star_body">Follow @Preet3627/Mhirex and show some love</string>
+    <string name="str_onboarding_website_title">Visit the Mhirex website</string>
+    <string name="str_onboarding_website_body">Features, downloads and the latest release notes.</string>
     <string name="str_support_amp_feedback">Support &amp; Feedback</string>
     <string name="str_mhirex_is_open_source_help">Mhirex is open source. Help us improve by starring the project on GitHub or reporting bugs.</string>
     <!-- MIT requires the original copyright notice in all copies. str_made_by_tharun_birla is

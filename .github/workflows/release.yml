@@ -68,7 +68,21 @@ jobs:
             cp "$apk" "release-artifacts/Mhirex-${arch}.apk"
           done
           ls -lh release-artifacts/
+      - name: Require release notes for this tag
+        if: github.ref_type == 'tag'
+        run: |
+          # The release body comes from docs/releases/<tag>.md, the tracked copy of the notes.
+          # Without this guard a typo in the tag would still publish a release with an empty body,
+          # and the only symptom would be a blank page for readers.
+          notes="docs/releases/${GITHUB_REF_NAME}.md"
+          if [ ! -f "$notes" ]; then
+            echo "No release notes at $notes" >&2
+            echo "Write them before tagging; the release body is taken from that file." >&2
+            exit 1
+          fi
+          echo "Release notes: $notes ($(wc -c < "$notes") bytes)"
       - uses: softprops/action-gh-release@v3
         if: github.ref_type == 'tag'
         with:
           files: release-artifacts/*.apk
+          body_path: docs/releases/${{ github.ref_name }}.md

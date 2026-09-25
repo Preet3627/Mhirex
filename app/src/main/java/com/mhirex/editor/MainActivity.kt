@@ -290,6 +290,9 @@ class MainActivity : AppCompatActivity() {
         binding.layoutMehulInstagram.setBounceClickListener {
             openUrl(Branding.INSTAGRAM_MEHUL_URL)
         }
+        binding.layoutPreetInstagram.setBounceClickListener {
+            openUrl(Branding.INSTAGRAM_PREET_URL)
+        }
 
         // A short welcome appears each time Mhirex starts so the people behind
         // the app are always visible without taking away the main workspace.
@@ -561,6 +564,7 @@ class MainActivity : AppCompatActivity() {
             binding.aboutHeroCard,
             binding.layoutIdeaInstagram,
             binding.layoutMehulInstagram,
+            binding.layoutPreetInstagram,
             binding.aboutSupportCard
         )
         entranceViews.forEach { view ->
@@ -631,6 +635,7 @@ class MainActivity : AppCompatActivity() {
             binding.aboutHeroCard,
             binding.layoutIdeaInstagram,
             binding.layoutMehulInstagram,
+            binding.layoutPreetInstagram,
             binding.aboutSupportCard,
             binding.aboutHeroLogo
         ).forEach { it.animate().cancel() }
@@ -754,8 +759,10 @@ class MainActivity : AppCompatActivity() {
         view.findViewById<View>(R.id.layoutMehulInstagram)?.setBounceClickListener {
             openUrl(Branding.INSTAGRAM_MEHUL_URL)
         }
-        view.findViewById<View>(R.id.layoutStarGithub)?.setBounceClickListener {
-            openUrl(Branding.REPO_URL)
+        // Same destination as the About tab's btnWebsite, reached from the first screen instead.
+        // The popup's own copy of the site, not a separate link: one constant, one target.
+        view.findViewById<View>(R.id.layoutOnboardingWebsite)?.setBounceClickListener {
+            openUrl(Branding.WEBSITE_URL)
         }
         view.findViewById<View>(R.id.btnOnboardingGetStarted)?.setBounceClickListener {
             dialog.dismiss()
@@ -764,7 +771,8 @@ class MainActivity : AppCompatActivity() {
         val animatedCards = listOf(
             view.findViewById<View>(R.id.layoutIdeaInstagram),
             view.findViewById<View>(R.id.layoutMehulInstagram),
-            view.findViewById<View>(R.id.layoutStarGithub)
+            view.findViewById<View>(R.id.layoutPreetInstagram),
+            view.findViewById<View>(R.id.layoutOnboardingWebsite)
         )
         animatedCards.forEachIndexed { index, card ->
             card.alpha = 0f

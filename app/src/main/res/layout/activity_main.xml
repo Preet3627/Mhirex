@@ -891,6 +891,96 @@
                         app:tint="@color/vibrantCyan" />
                 </LinearLayout>
 
+                <!--
+                    Lead developer. Third card in the group, and the only one whose accent
+                    (vibrantOrange) is not reused from the two above it, so the three read as
+                    distinct people rather than one repeating pattern. Structure is deliberately
+                    identical to layoutIdeaInstagram/layoutMehulInstagram: one tappable target per
+                    person, so the whole row is the affordance and there is no second link to
+                    mis-tap. The website is a separate action in the support card below.
+                -->
+                <LinearLayout
+                    android:id="@+id/layoutPreetInstagram"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:background="@drawable/bg_about_profile_glass"
+                    android:clickable="true"
+                    android:elevation="5dp"
+                    android:focusable="true"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:gravity="center_vertical"
+                    android:minHeight="104dp"
+                    android:orientation="horizontal"
+                    android:padding="16dp">
+
+                    <FrameLayout
+                        android:layout_width="58dp"
+                        android:layout_height="58dp">
+
+                        <com.google.android.material.imageview.ShapeableImageView
+                            android:layout_width="54dp"
+                            android:layout_height="54dp"
+                            android:layout_gravity="top|start"
+                            android:contentDescription="@string/str_about_preet_photo"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/ig_preet"
+                            app:shapeAppearanceOverlay="@style/ProfileImageShapeAppearance"
+                            app:strokeColor="@color/vibrantOrange"
+                            app:strokeWidth="2dp" />
+
+                        <ImageView
+                            android:layout_width="21dp"
+                            android:layout_height="21dp"
+                            android:layout_gravity="bottom|end"
+                            android:background="@drawable/bg_instagram_badge"
+                            android:contentDescription="@null"
+                            android:padding="4dp"
+                            android:src="@drawable/ic_instagram_24" />
+                    </FrameLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="14dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="sans-serif-medium"
+                            android:letterSpacing="0.08"
+                            android:text="@string/str_about_preet_label"
+                            android:textColor="@color/vibrantOrange"
+                            android:textSize="10sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:fontFamily="sans-serif-medium"
+                            android:text="@string/str_about_preet_handle"
+                            android:textColor="@color/textColor"
+                            android:textSize="15sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="3dp"
+                            android:text="@string/str_about_preet_description"
+                            android:textColor="@color/iconSecondary"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:contentDescription="@string/str_about_open_instagram"
+                        android:src="@drawable/ic_chevron_right_24"
+                        app:tint="@color/vibrantCyan" />
+                </LinearLayout>
+
                 <!-- Support card -->
                 <LinearLayout
                     android:id="@+id/aboutSupportCard"

@@ -35,8 +35,13 @@ android {
         applicationId "com.mhirex.editor"
         minSdk 26
         targetSdk 34
-        versionCode project.hasProperty('versionCode') ? project.property('versionCode').toInteger() : 11
-        versionName "1.0-beta9"
+        // Per-ABI version codes are base + 0/1/2 (armeabi-v7a/arm64-v8a/x86_64), so the base has to
+        // advance by MORE than the largest offset for every ABI to be offered the upgrade.
+        // v1.0-beta9 shipped base 11, i.e. per-ABI 11/12/13. Bumping the base by 1 would have left
+        // armeabi-v7a installs (which are on 11) with nothing higher than what they already have,
+        // and Android silently refuses such an "upgrade". Base 14 gives 14/15/16, clear of all three.
+        versionCode project.hasProperty('versionCode') ? project.property('versionCode').toInteger() : 14
+        versionName "1.0-beta10"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
