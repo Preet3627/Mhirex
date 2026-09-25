@@ -104,8 +104,6 @@
     <string name="str_support_our_open_source_develo">எங்களது திறந்த மூல உருவாக்கத்திற்கு நேரடியாக ஆதரவளிக்கவும்</string>
     <string name="str_discord_server">Discord சர்வர்</string>
     <string name="str_join_us_for_app_updates_and_co">பயன்பாட்டுப் புதுப்பிப்புகள் மற்றும் சமூக உரையாடல்களுக்கு எங்களுடன் இணையுங்கள்</string>
-    <string name="str_troubleshooting_amp_wiki_guide">சரிசெய்தல் &amp; விக்கி வழிகாட்டி</string>
-    <string name="str_if_you_encounter_any_export_is">ஏற்றுமதி சிக்கல்கள் அல்லது ரெண்டரிங் பிழைகள் ஏதேனும் ஏற்பட்டால், பிழைக் குறியீடுகள் மற்றும் சரிசெய்தலுக்கான எங்கள் விக்கி வழிகாட்டியைப் படிக்க இங்கே தட்டவும்.</string>
     <string name="str_get_started">தொடங்குங்கள்</string>
     <string name="toast_microphone_permission_required">பின்னணிக் குரல் பதிவு செய்ய மைக்ரோஃபோன் அனுமதி தேவை</string>
     <string name="toast_snapping_enabled">ஸ்னாப்பிங் இயக்கப்பட்டது</string>
@@ -157,8 +155,6 @@
     <string name="str_system_default">சாதன இயல்புநிலை</string>
     <string name="str_opacity">ஒளிபுகாமை</string>
     <string name="str_reset">மீட்டமை</string>
-    <string name="str_help_translate">Mhirex-ஐ மொழிபெயர்க்கவும்</string>
-    <string name="str_contribute_translations_on_weblate">Weblate இல் மொழிபெயர்ப்புகளைப் பங்களிக்கவும்</string>
     <string name="str_fullscreen_editor">முழுத்திரை எடிட்டர்</string>
     <string name="str_fullscreen_editor_desc">எடிட் செய்யும் போது நிலைப்பட்டி மற்றும் வழிசெலுத்தல் பட்டியை மறைக்கவும்</string>
     <string name="str_fullscreen_enabled_desc">இயக்கப்பட்டது (நிலை &amp; வழிசெலுத்தல் பட்டியை மறைக்கிறது)</string>

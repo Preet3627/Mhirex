@@ -105,8 +105,6 @@
     <string name="str_support_our_open_source_develo">Apoya nuestro desarrollo de código abierto directamente.</string>
     <string name="str_discord_server">Encontrar servidor</string>
     <string name="str_join_us_for_app_updates_and_co">Sumate para actualizaciones y chat comunitario</string>
-    <string name="str_troubleshooting_amp_wiki_guide">Wiki de ayuda</string>
-    <string name="str_if_you_encounter_any_export_is">Si encuentras errores o fallas, toca aqui para leer nuestra guia de resolución de problemas.</string>
     <string name="toast_log_copied_to_clipboard">Copiado al portapapeles</string>
     <string name="toast_failed_to_start_recording">Error al grabar</string>
     <string name="toast_subtitles_removed">Subtitulos removidos</string>

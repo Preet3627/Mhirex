@@ -100,8 +100,6 @@
     <string name="str_support_our_open_source_develo">Apoie o desenvolvimento de código aberto diretamente</string>
     <string name="str_discord_server">Servidor no Discord</string>
     <string name="str_join_us_for_app_updates_and_co">Junte se a nós para atualizações sobre o app e chat da comunidade</string>
-    <string name="str_troubleshooting_amp_wiki_guide">Resolução de problemas &amp; Guias da Wiki</string>
-    <string name="str_if_you_encounter_any_export_is">Se você encontrar qualquer problema de exportação ou erros de renderização, clique aqui para ler nosso guia na wiki para solução de problemas e códigos de erro.</string>
     <string name="str_get_started">Comece</string>
     <string name="toast_microphone_permission_required">Permissão de microfone necessária para comentários de voz</string>
     <string name="toast_log_copied_to_clipboard">Log copiado para a área de transferência</string>

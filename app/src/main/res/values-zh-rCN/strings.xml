@@ -103,8 +103,6 @@
     <string name="str_support_our_open_source_develo">直接支持我们的开源开发</string>
     <string name="str_discord_server">Discord 服务器</string>
     <string name="str_join_us_for_app_updates_and_co">加入我们，获取应用更新并参与社区交流</string>
-    <string name="str_troubleshooting_amp_wiki_guide">故障排除与维基指南</string>
-    <string name="str_if_you_encounter_any_export_is">如果遇到导出问题或渲染错误，请点击此处阅读我们的维基指南，了解故障排除方法和错误代码。</string>
     <string name="str_get_started">开始使用</string>
     <string name="toast_microphone_permission_required">画外音需要麦克风权限</string>
     <string name="toast_snapping_enabled">已启用吸附功能</string>
@@ -156,8 +154,6 @@
     <string name="str_system_default">系统默认</string>
     <string name="str_opacity">不透明度</string>
     <string name="str_reset">重置</string>
-    <string name="str_help_translate">翻译 Mhirex</string>
-    <string name="str_contribute_translations_on_weblate">在 Weblate 上贡献翻译</string>
     <string name="str_fullscreen_editor">全屏编辑器</string>
     <string name="str_fullscreen_editor_desc">编辑时隐藏状态栏和导航栏</string>
     <string name="str_fullscreen_enabled_desc">已启用（隐藏状态栏和导航栏）</string>

@@ -104,8 +104,6 @@
     <string name="str_support_our_open_source_develo">Поддержать открытую разработку напрямую</string>
     <string name="str_discord_server">Сервер Discord</string>
     <string name="str_join_us_for_app_updates_and_co">Присоединяйтесь, чтобы получать новости и общаться с сообществом</string>
-    <string name="str_troubleshooting_amp_wiki_guide">Решение неполадок и руководства</string>
-    <string name="str_if_you_encounter_any_export_is">Если вы столкнулись с ошибками экспорта или рендера, коснитесь здесь чтобы прочитать наше руководство по неполадкам и кодам ошибок.</string>
     <string name="str_get_started">Приступить</string>
     <string name="toast_microphone_permission_required">Для озвучки требуется доступ к микрофону</string>
     <string name="toast_snapping_enabled">Зацеп включён</string>
@@ -157,8 +155,6 @@
     <string name="str_system_default">Как в системе</string>
     <string name="str_opacity">Прозрачность</string>
     <string name="str_reset">Сброс</string>
-    <string name="str_help_translate">Перевести Mhirex</string>
-    <string name="str_contribute_translations_on_weblate">Предложите перевод на Weblate</string>
     <string name="str_fullscreen_editor">Полноэкранный редактор</string>
     <string name="str_fullscreen_editor_desc">Скрыть панели навигации и статуса во время редактирования</string>
     <string name="str_fullscreen_enabled_desc">Включено (скрывает панели статуса и навигации)</string>

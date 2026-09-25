@@ -96,8 +96,6 @@
     <string name="str_github_sponsors">GitHub Sponsors</string>
     <string name="str_support_our_open_source_develo">Steun onze open source ontwikkeling direct</string>
     <string name="str_discord_server">Discord Server</string>
-    <string name="str_troubleshooting_amp_wiki_guide">Problemen oplossen en Wiki Gids</string>
-    <string name="str_if_you_encounter_any_export_is">Als je exportproblemen of renderfouten hebt, tik hier om onze wikigids voor probleemoplossing en foutcodes te lezen.</string>
     <string name="str_get_started">Aan de slag</string>
     <string name="toast_microphone_permission_required">Microfoon toestemming nodig voor voice-over</string>
     <string name="toast_snapping_enabled">Snapping ingeschakeld</string>
@@ -144,8 +142,6 @@
     <string name="str_system_default">Systeemtaal</string>
     <string name="str_opacity">Doorzichtigheid</string>
     <string name="str_reset">Opnieuw instellen</string>
-    <string name="str_help_translate">Vertaal Mhirex</string>
-    <string name="str_contribute_translations_on_weblate">Vertalingen op Weblate bijdragen</string>
     <string name="str_fullscreen_editor">Volledig scherm</string>
     <string name="str_fullscreen_editor_desc">Statusbalk en navigatiebalk verbergen tijdens het bewerken</string>
     <string name="str_fullscreen_enabled_desc">Ingeschakeld (verbergt status &amp; navigatiebalk)</string>

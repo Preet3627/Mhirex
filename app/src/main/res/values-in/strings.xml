@@ -104,8 +104,6 @@
     <string name="str_support_our_open_source_develo">Dukung pengembangan open source kami secara langsung</string>
     <string name="str_discord_server">Server Discord</string>
     <string name="str_join_us_for_app_updates_and_co">Bergabung untuk update aplikasi dan obrolan komunitas</string>
-    <string name="str_troubleshooting_amp_wiki_guide">Panduan Troubleshooting &amp; Wiki</string>
-    <string name="str_if_you_encounter_any_export_is">Jika mengalami masalah ekspor atau error rendering, ketuk di sini untuk membaca panduan wiki troubleshooting dan kode error.</string>
     <string name="str_get_started">Mulai</string>
     <string name="toast_microphone_permission_required">Izin mikrofon diperlukan untuk voice over</string>
     <string name="toast_snapping_enabled">Snapping diaktifkan</string>
@@ -157,8 +155,6 @@
     <string name="str_system_default">Default Sistem</string>
     <string name="str_opacity">Opasitas</string>
     <string name="str_reset">Reset</string>
-    <string name="str_help_translate">Terjemahkan Mhirex</string>
-    <string name="str_contribute_translations_on_weblate">Kontribusi terjemahan di Weblate</string>
     <string name="str_fullscreen_editor">Editor Layar Penuh</string>
     <string name="str_fullscreen_editor_desc">Sembunyikan status bar dan navigation bar saat mengedit</string>
     <string name="str_fullscreen_enabled_desc">Aktif (Sembunyikan status &amp; navigation bar)</string>

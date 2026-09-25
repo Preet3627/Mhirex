@@ -104,8 +104,6 @@
     <string name="str_support_our_open_source_develo">Toeta meie avatud lähtekoodiga arendust otse</string>
     <string name="str_discord_server">Discordi server</string>
     <string name="str_join_us_for_app_updates_and_co">Liitu meiega, et saada rakenduse uuendusi ja suhelda kogukonnaga</string>
-    <string name="str_troubleshooting_amp_wiki_guide">Veaotsing ja juhend vikis</string>
-    <string name="str_if_you_encounter_any_export_is">Kui sul tekib probleeme eksportimisel või renderdamisvigu, klõpsa siia, et lugeda meie juhendit vikis veaotsingu ja veakoodide kohta.</string>
     <string name="str_get_started">Alusta siit</string>
     <string name="toast_microphone_permission_required">Hääle salvestuseks on vajalik mikrofoni kasutamise luba</string>
     <string name="toast_snapping_enabled">Kinnitumine sisse lülitatud</string>
@@ -157,8 +155,6 @@
     <string name="str_system_default">Süsteemi vaikeseadistus</string>
     <string name="str_opacity">Läbipaistvus</string>
     <string name="str_reset">Lähtesta</string>
-    <string name="str_help_translate">Aita Mhirex-i tõlkimisel</string>
-    <string name="str_contribute_translations_on_weblate">Osale tõlkimisel Weblate\'i teenuses</string>
     <string name="str_fullscreen_editor">Muutmisvaade täisekraanina</string>
     <string name="str_fullscreen_editor_desc">Muutmise ajal peida oleku- ja menüüriba</string>
     <string name="str_fullscreen_enabled_desc">Kasutusel (Oleku- ja menüüriba on peidetud)</string>

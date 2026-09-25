@@ -104,8 +104,6 @@
     <string name="str_support_our_open_source_develo">ادعم تطويرنا مفتوح المصدر مباشرةً</string>
     <string name="str_discord_server">سيرفر ديسكورد</string>
     <string name="str_join_us_for_app_updates_and_co">انضم إلينا لتلقي تحديثات التطبيق والدردشة المجتمعية</string>
-    <string name="str_troubleshooting_amp_wiki_guide">استكشاف الأخطاء وإصلاحها ودليل ويكي</string>
-    <string name="str_if_you_encounter_any_export_is">إذا واجهت أي مشاكل في التصدير أو أخطاء في العرض، فانقر هنا لقراءة دليل ويكي الخاص بنا لحل المشكلات ورموز الأخطاء.</string>
     <string name="str_get_started">ابدأ الآن</string>
     <string name="toast_microphone_permission_required">إذن الميكروفون مطلوب للتعليق الصوتي</string>
     <string name="toast_snapping_enabled">تم تفعيل الالتقاط</string>
@@ -157,8 +155,6 @@
     <string name="str_system_default">افتراضي النظام</string>
     <string name="str_opacity">الشفافية</string>
     <string name="str_reset">إعادة ضبط</string>
-    <string name="str_help_translate">ترجم Mhirex</string>
-    <string name="str_contribute_translations_on_weblate">ساهم بالترجمات على Weblate</string>
     <string name="str_fullscreen_editor">محرر ملء الشاشة</string>
     <string name="str_fullscreen_editor_desc">إخفاء شريط الحالة وشريط التنقل أثناء التحرير</string>
     <string name="str_fullscreen_enabled_desc">مُفعّل (يخفي شريط الحالة والتنقل)</string>

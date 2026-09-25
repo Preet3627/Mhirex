@@ -104,8 +104,6 @@
     <string name="str_support_our_open_source_develo">Açık kaynak geliştirmemize doğrudan destek olun.</string>
     <string name="str_discord_server">Discord Sunucusu</string>
     <string name="str_join_us_for_app_updates_and_co">Uygulama güncellemeleri ve topluluk sohbeti için bize katılın</string>
-    <string name="str_troubleshooting_amp_wiki_guide">Sorun Giderme ve Wiki Rehberi</string>
-    <string name="str_if_you_encounter_any_export_is">Dışa aktarma sorunları veya işleme hatalarıyla karşılaşırsanız, sorun giderme ve hata kodları için wiki rehberimizi okumak üzere buraya dokunun.</string>
     <string name="str_get_started">Başlayalım</string>
     <string name="toast_microphone_permission_required">Seslendirme için mikrofon izni gerekli</string>
     <string name="toast_snapping_enabled">Yapışma etkin</string>

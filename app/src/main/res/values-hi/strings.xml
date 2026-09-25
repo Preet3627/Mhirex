@@ -104,8 +104,6 @@
     <string name="str_support_our_open_source_develo">हमारे ओपन सोर्स विकास का सीधे समर्थन करें</string>
     <string name="str_discord_server">Discord सर्वर</string>
     <string name="str_join_us_for_app_updates_and_co">ऐप अपडेट और समुदाय चैट के लिए हमसे जुड़ें</string>
-    <string name="str_troubleshooting_amp_wiki_guide">समस्या निवारण और विकी गाइड</string>
-    <string name="str_if_you_encounter_any_export_is">यदि आपको कोई निर्यात समस्या या रेंडरिंग त्रुटि आती है, तो समस्या निवारण और त्रुटि कोड के लिए हमारी विकी गाइड पढ़ने के लिए यहाँ टैप करें।</string>
     <string name="str_get_started">शुरू करें</string>
     <string name="toast_microphone_permission_required">वॉयस ओवर के लिए माइक्रोफ़ोन अनुमति आवश्यक है</string>
     <string name="toast_snapping_enabled">स्नैपिंग सक्षम की गई</string>
@@ -157,8 +155,6 @@
     <string name="str_system_default">सिस्टम डिफ़ॉल्ट</string>
     <string name="str_opacity">अपारदर्शिता (Opacity)</string>
     <string name="str_reset">रीसेट करें</string>
-    <string name="str_help_translate">Mhirex का अनुवाद करें</string>
-    <string name="str_contribute_translations_on_weblate">Weblate पर अनुवाद में योगदान दें</string>
     <string name="str_fullscreen_editor">फ़ुलस्क्रीन एडिटर</string>
     <string name="str_fullscreen_editor_desc">संपादन के दौरान स्टेटस बार और नेविगेशन बार छिपाएं</string>
     <string name="str_fullscreen_enabled_desc">सक्षम (स्टेटस और नेविगेशन बार छुपाता है)</string>

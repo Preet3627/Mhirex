@@ -86,7 +86,6 @@
     <string name="str_export_format_set_to_audio_only">Exportformat auf Nur-Audio gesetzt</string>
     <string name="str_general">Allgemein</string>
     <string name="str_crop_aspect_ratio">Seitenverhältnis zuschneiden</string>
-    <string name="str_if_you_encounter_any_export_is">Falls Probleme beim Export oder der Darstellung auftreten, tippe hier um unsere Wiki-Anleitung zur Fehlerbehebung und zu Fehlercodes zu lesen.</string>
     <string name="str_github_sponsors">GitHub Sponsoren</string>
     <string name="str_show_your_appreciation_by_star">Zeige deine Wertschätzung, indem du dem Repo einen Stern gibst</string>
     <string name="str_mhirex_is_open_source_help">Mhirex ist Open-Source. Hilf uns besser zu werden, in dem du dem Projekt einen Stern auf GitHub gibst oder Fehler meldest.</string>
@@ -102,7 +101,6 @@
     <string name="str_tap_to_start_recording">Tippe um die Aufnahme zu starten</string>
     <string name="str_custom_speed">Eigene Geschwindigkeit</string>
     <string name="str_custom">Eigen</string>
-    <string name="str_troubleshooting_amp_wiki_guide">Fehlerbehebung &amp; Wiki-Anleitung</string>
     <string name="str_0_5x">0.5x</string>
     <string name="str_1x">1x</string>
     <string name="str_1_5x">1.5x</string>
@@ -157,8 +155,6 @@
     <string name="str_system_default">Systemstandard</string>
     <string name="str_opacity">Deckkraft</string>
     <string name="str_reset">Zurücksetzen</string>
-    <string name="str_help_translate">Mhirex übersetzen</string>
-    <string name="str_contribute_translations_on_weblate">Übersetzungen auf Weblate beitragen</string>
     <string name="str_fullscreen_editor">Vollbildeditor</string>
     <string name="str_fullscreen_editor_desc">Status- und Navigationsleiste während Bearbeitung verstecken</string>
     <string name="str_fullscreen_enabled_desc">Aktiviert (Status- und Navigationsleiste verstecken)</string>

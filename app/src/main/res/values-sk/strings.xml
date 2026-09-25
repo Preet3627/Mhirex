@@ -76,8 +76,6 @@
     <string name="str_support_our_open_source_develo">Priamo podporte náš vývoj v rámci open source</string>
     <string name="str_discord_server">Discord Server</string>
     <string name="str_join_us_for_app_updates_and_co">Pripojte sa k nám a získajte novinky o aplikácii a prístup ku komunitnému chatu</string>
-    <string name="str_troubleshooting_amp_wiki_guide">Riešenie problémov a návod na Wiki</string>
-    <string name="str_if_you_encounter_any_export_is">Ak narazíte na akékoľvek problémy s exportom alebo chyby pri vykresľovaní, kliknite sem a prečítajte si náš návod na wiki, kde nájdete informácie o riešení problémov a chybových kódoch.</string>
     <string name="str_get_started">Začať</string>
     <string name="toast_microphone_permission_required">Na nahrávanie hlasu je potrebné povolenie na používanie mikrofónu</string>
     <string name="toast_snapping_enabled">Prichytávanie zapnuté</string>
@@ -115,8 +113,6 @@
     <string name="str_system_default">Predvolené nastavenie systému</string>
     <string name="str_opacity">Priehľadnosť</string>
     <string name="str_reset">Obnoviť</string>
-    <string name="str_help_translate">Preložiť Mhirex</string>
-    <string name="str_contribute_translations_on_weblate">Prispejte prekladmi na Weblate</string>
     <string name="str_fullscreen_editor">Editor na celú obrazovku</string>
     <string name="str_fullscreen_editor_desc">Skryť nástrojový panel a navigačný panel počas úprav</string>
     <string name="str_fullscreen_enabled_desc">Zapnuté (skryje nástrojový a navigačný panel)</string>
