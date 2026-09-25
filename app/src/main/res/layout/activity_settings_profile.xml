@@ -9,7 +9,7 @@
     The avatar is a FrameLayout so the cached photo and the initials TextView stack in one 56dp circle
     with no extra layout node; exactly one of the two is visible at a time.
 -->
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res.android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/layoutProfileCard"
     android:layout_width="match_parent"

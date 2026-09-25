@@ -163,11 +163,17 @@ class GoogleSignInManager(private val context: Context) {
         return SignInResult.Success(withAvatar)
     }
 
-    /** Clears the stored profile and deletes the cached avatar. */
+    /**
+     * Clears the stored profile and deletes the cached avatar.
+     *
+     * The cleanup runs on [Dispatchers.IO], but [onComplete] is delivered on the main thread. The
+     * callback updates the profile card, so invoking it on the IO thread would touch Views off the
+     * main thread and can crash the app during sign-out.
+     */
     fun signOut(scope: CoroutineScope, onComplete: () -> Unit) {
         scope.launch(Dispatchers.IO) {
             UserProfileStore.clear(context)
-            onComplete()
+            withContext(Dispatchers.Main) { onComplete() }
         }
     }
 
